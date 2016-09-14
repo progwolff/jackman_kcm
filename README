@@ -1,0 +1,8 @@
+KCM module for jackman, a tool that helps managing multiple audio interfaces with Jack.
+
+# Build / Installation
+
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix`
+make install

@@ -1,0 +1,6 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#define JACK_CONFIG_FILE    "@JACK_CONFIG_FILE@"
+
+#endif //CONFIG_H

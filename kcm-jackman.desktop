@@ -1,0 +1,15 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Exec=kcmshell5 kcm-jackman
+Icon=audio-card
+Type=Service
+Categories=Qt;KDE;X-KDE-settings-system;
+
+X-KDE-ServiceTypes=KCModule
+X-KDE-Library=kcm-jackman
+X-KDE-ParentApp=kcontrol
+X-KDE-System-Settings-Parent-Category=audio-and-video
+X-KDE-Keywords=jack,audio,devices
+
+Name=Audio Devices Configuration (Jack)
+Name[de]=Konfiguration der Audiogeräte (JACK)
