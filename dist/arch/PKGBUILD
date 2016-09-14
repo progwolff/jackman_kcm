@@ -1,15 +1,15 @@
-pkgname=kcm-jackman-git
-pkgver=20160813
+pkgname=jackman-kcm-git
+pkgver=20160914
 pkgrel=1
-pkgdesc="JACK configuration module for KDE"
+pkgdesc="KCM module for jackman"
 arch=('i686' 'x86_64')
-url="https://github.com/sddm/sddm-kcm"
+url="https://github.com/progwolff/jackman_kcm"
 license=("GPL")
-depends=('kdelibs')
+depends=('kdelibs' 'jackman')
 makedepends=('git' 'cmake' 'automoc4')
 
-_gitroot="git://github.com/jack/jackman_kcm.git"
-_gitname=sddm-kcm
+_gitroot="git@github.com:progwolff/jackman_kcm.git"
+_gitname=jack_kcm
 
 build() {
   cd "$srcdir"

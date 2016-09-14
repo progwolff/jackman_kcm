@@ -1,6 +1,12 @@
-KCM module for jackman, a tool that helps managing multiple audio interfaces with Jack.
+KCM module for [jackman](https://github.com/progwolff/jackman), a tool that helps managing multiple audio interfaces with Jack.
 
-# Build / Installation
+# Installation
+
+# Arch Linux
+
+use the provided PKGBUILD
+
+# Other Distros
 
 mkdir build
 cd build
