@@ -4,3 +4,6 @@
 *.kdev4
 *.pot
 *enpo*
+dist/arch/src*
+dist/arch/pkg*
+dist/arch/jackman*
