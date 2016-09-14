@@ -11,5 +11,5 @@ X-KDE-ParentApp=kcontrol
 X-KDE-System-Settings-Parent-Category=audio-and-video
 X-KDE-Keywords=jack,audio,devices
 
-Name=Audio Devices Configuration
-Name[de]=Konfiguration der Audiogeräte
+Name=Audio Devices Configuration (Jack)
+Name[de]=Konfiguration der Audiogeräte (JACK)
