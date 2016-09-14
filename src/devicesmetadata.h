@@ -1,6 +1,5 @@
 /*
-    Copyright 2013 by Reza Fatahilah Shah <rshah0385@kireihana.com>
-    Copyright 2014 by David Edmundson <davidedmundson@kde.org>
+    Copyright 2016 by Julian Wolff <wolff@julianwolff.de>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
