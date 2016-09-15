@@ -49,6 +49,7 @@ QStringList DevicesModel::vendorList = QStringList() //taken from http://www.als
 DevicesModel::DevicesModel(QObject *parent)
 : QAbstractListModel(parent)
 {
+    movedindex = -1;
 }
 
 DevicesModel::~DevicesModel()
@@ -64,6 +65,9 @@ int DevicesModel::rowCount(const QModelIndex &parent) const
 
 QVariant DevicesModel::data(const QModelIndex &index, int role) const
 {
+    if(!index.isValid())
+        return QVariant();
+    
     const DevicesMetadata metadata = mDevicesList[index.row()];
     
     QString devicename;
@@ -213,16 +217,15 @@ void DevicesModel::populate()
 
 void DevicesModel::update()
 {
-    populate();
-    /*
-     *    m_currentMaster = currentMaster();
-     *    for(DevicesMetadata& m : mDevicesList)
-     *    {
-     *"QString devicename = deviceName(m.name().split(',').first(), m.name().split(',').last().toInt());
-     *"if(devicename.isEmpty())
-     *"  m.resetDevice();
-}
-*/
+    //populate();
+    movedindex = -1;
+    m_currentMaster = currentMaster();
+    
+    for(DevicesMetadata& m : mDevicesList)
+    {
+        m.setDevice(deviceName(m.name().split(',').first(), m.name().split(',').last().toInt()));    
+        m.setVendor(deviceVendor(m.name().split(',').first(), m.name().split(',').last().toInt()));
+    }
 }
 
 const QString DevicesModel::deviceName(const QString& cardname, int device) const
@@ -492,18 +495,27 @@ bool DevicesModel::removeRows(int row, int count, const QModelIndex& parent)
 {
     beginInsertRows(QModelIndex(), mDevicesList.count(), mDevicesList.count());
     
-    DevicesMetadata d = mDevicesList.at(row);
+    if(movedindex >= 0)
+    {
+        DevicesMetadata d = mDevicesList.at(row);
     
-    if(row > movedindex)
+        if(row > movedindex)
+            mDevicesList.removeAt(row);
+        
+        mDevicesList.insert(movedindex, d);
+        
+        qDebug() << "moved " << d.name() << " from " << row << " to " << movedindex;
+        
+        if(row <= movedindex)
+            mDevicesList.removeAt(row);
+    
+        movedindex = -1;
+    }
+    else
+    {
         mDevicesList.removeAt(row);
-    
-    mDevicesList.insert(movedindex, d);
-    
-    qDebug() << "moved " << d.name() << " from " << row << " to " << movedindex;
-    
-    if(row <= movedindex)
-        mDevicesList.removeAt(row);
-    
+    }
+ 
     endInsertRows();
     
     return true;

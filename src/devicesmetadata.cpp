@@ -42,8 +42,8 @@ public:
         softmode = false;
         monitor = false;
         dither = DevicesMetadata::Dither::None;
-        inchannels = 0;
-        outchannels = 0;
+        inchannels = 2;
+        outchannels = 2;
         shorts = false;
         inputlatency = 0;
         outputlatency = 0;
@@ -222,11 +222,15 @@ int DevicesMetadata::buffersize() const
     return d->buffersize;
 }
 
-void DevicesMetadata::resetDevice()
+void DevicesMetadata::setDevice(const QString& name)
 {
-    d->device.clear();
+    d->device = name;
 }
 
+void DevicesMetadata::setVendor(const QString& name)
+{
+    d->vendor = name;
+}
 
 
 

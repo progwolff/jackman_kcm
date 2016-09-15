@@ -53,7 +53,8 @@ public:
     int buffersize() const;
     int samplerate() const;
     
-    void resetDevice();
+    void setDevice(const QString& name);
+    void setVendor(const QString& name);
     
     QString dump() const;
     

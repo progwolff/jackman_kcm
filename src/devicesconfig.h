@@ -57,6 +57,7 @@ private slots:
     //void backgroundChanged(const QString &imagePath);
     void prefer();
     void defer();
+    void remove();
     void test();
     void switchMasterFinished(int exitcode, QProcess::ExitStatus status);
     void testFinished(int exitcode, QProcess::ExitStatus status);

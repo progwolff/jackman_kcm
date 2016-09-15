@@ -85,9 +85,11 @@ void JackKcm::save()
     {
       QMap<QString, QVariant>::const_iterator iterator;
       
+	  QString groupName = "Devices";  
+      jackConfig->deleteGroup(groupName);
+      
       for (iterator = args.constBegin() ; iterator != args.constEnd() ; ++iterator) {
 	  
-	  QString groupName = "Devices";
 	  QString keyName = iterator.key();
 
 	  jackConfig->group(groupName).writeEntry(keyName, iterator.value());

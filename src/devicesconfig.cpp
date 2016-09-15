@@ -1,18 +1,18 @@
 /*
-    Copyright 2016 by Julian Wolff <wolff@julianwolff.de>
- 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 2 of the License, or
-    (at your option) any later version.
-   
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-   
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *    Copyright 2016 by Julian Wolff <wolff@julianwolff.de>
+ * 
+ *    This program is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation, either version 2 of the License, or
+ *    (at your option) any later version.
+ *   
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *   
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #define TRANSLATION_DOMAIN "kcm-jackman"
@@ -47,7 +47,7 @@
 
 
 DevicesConfig::DevicesConfig(QWidget *parent) :
-    QWidget(parent)
+QWidget(parent)
 {
     //mConfig = KSharedConfig::openConfig(JACK_CONFIG_FILE, KConfig::SimpleConfig);
     
@@ -64,7 +64,7 @@ DevicesConfig::DevicesConfig(QWidget *parent) :
     
     DevicesModel *model = new DevicesModel(this);
     configUi->devicesListView->setModel(model);
-
+    
     //TODO
     QStyledItemDelegate *delegate = new QStyledItemDelegate(configUi->devicesListView);
     configUi->devicesListView->setItemDelegate(delegate);
@@ -74,12 +74,12 @@ DevicesConfig::DevicesConfig(QWidget *parent) :
     
     configUi->devicesListView->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(configUi->devicesListView, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(showContextMenu(QPoint)));
-
+    
     connect(configUi->devicesListView, SIGNAL(activated(QModelIndex)), SLOT(deviceSelected(QModelIndex)));
     connect(configUi->devicesListView, SIGNAL(clicked(QModelIndex)), SLOT(deviceSelected(QModelIndex)));
     connect(model, SIGNAL(changed(bool)), this, SIGNAL(changed(bool)));
     //connect(configUi->selectBackgroundButton, SIGNAL(imagePathChanged(QString)), SLOT(backgroundChanged(QString)));
-
+    
     connect(configUi->preferButton, SIGNAL(clicked()), SLOT(prefer()));
     connect(configUi->deferButton, SIGNAL(clicked()), SLOT(defer()));
     connect(configUi->testButton, SIGNAL(clicked()), SLOT(test()));
@@ -95,7 +95,7 @@ void DevicesConfig::prefer()
 {
     QModelIndex index = configUi->devicesListView->currentIndex();
     if(!index.isValid() || index.row() <= 0)
-      return;
+        return;
     configUi->devicesListView->model()->dropMimeData(NULL, Qt::DropAction(), index.row()-1, index.column(), index.parent());
     configUi->devicesListView->model()->removeRows(index.row(), 1, index.parent());
     index = configUi->devicesListView->model()->index(index.row()-1, index.column());
@@ -104,16 +104,16 @@ void DevicesConfig::prefer()
     configUi->deferButton->setEnabled(false);
     configUi->preferButton->setEnabled(false);
     if(index.row() < configUi->devicesListView->model()->rowCount()-1)
-      configUi->deferButton->setEnabled(true);
+        configUi->deferButton->setEnabled(true);
     if(index.row() > 0)
-      configUi->preferButton->setEnabled(true);
+        configUi->preferButton->setEnabled(true);
 }
 
 void DevicesConfig::defer()
 {
     QModelIndex index = configUi->devicesListView->currentIndex();
     if(!index.isValid() || index.row() >= configUi->devicesListView->model()->rowCount()-1)
-      return;
+        return;
     configUi->devicesListView->model()->dropMimeData(NULL, Qt::DropAction(), index.row()+2, index.column(), index.parent());
     configUi->devicesListView->model()->removeRows(index.row(), 1, index.parent());
     index = configUi->devicesListView->model()->index(index.row()+1, index.column());
@@ -122,47 +122,63 @@ void DevicesConfig::defer()
     configUi->deferButton->setEnabled(false);
     configUi->preferButton->setEnabled(false);
     if(index.row() < configUi->devicesListView->model()->rowCount()-1)
-      configUi->deferButton->setEnabled(true);
+        configUi->deferButton->setEnabled(true);
     if(index.row() > 0)
-      configUi->preferButton->setEnabled(true);
+        configUi->preferButton->setEnabled(true);
+}
+
+void DevicesConfig::remove()
+{
+    QModelIndex index = configUi->devicesListView->currentIndex();
+    if(!index.isValid())
+        return;
+    configUi->devicesListView->model()->removeRow(index.row());
+    configUi->devicesListView->clearSelection();
+    configUi->devicesListView->setCurrentIndex(QModelIndex());
+    emit saveconfig();
 }
 
 void DevicesConfig::showContextMenu(const QPoint &pos)
 {
-  
+    
     QModelIndex index = configUi->devicesListView->indexAt(pos);
     DevicesModel* model = (DevicesModel*)configUi->devicesListView->model();
     if(index.isValid())
     {
-      deviceSelected(index);
-      
-      
-      // Handle global position
-      QPoint globalPos = configUi->devicesListView->mapToGlobal(pos);
-
-      // Create menu and insert some actions
-      QMenu myMenu;
-      QAction *action;
-      
-      action = myMenu.addAction(QIcon::fromTheme("audio-card"), i18n("Switch Master"), this, SLOT(switchMaster()));
-      if(index.data(DevicesModel::DeviceRole).toString().isEmpty())
-	action->setEnabled(false);
-      if(index.data(DevicesModel::MasterRole).toBool())
-	action->setEnabled(false);
-      
-      myMenu.addSeparator();
-      
-      action = myMenu.addAction(QIcon::fromTheme("go-up"), i18n("Prefer"), this, SLOT(prefer()));
-      if(index.row() <= 0)
-	action->setEnabled(false);
-      
-      action = myMenu.addAction(QIcon::fromTheme("go-down"), i18n("Defer"), this, SLOT(defer()));
-      if(index.row() >= configUi->devicesListView->model()->rowCount()-1)
-	action->setEnabled(false);
-      //myMenu.addAction("Erase",  this, SLOT(eraseItem()));
-
-      // Show context menu at handling position
-      myMenu.exec(globalPos);
+        deviceSelected(index);
+        
+        
+        // Handle global position
+        QPoint globalPos = configUi->devicesListView->mapToGlobal(pos);
+        
+        // Create menu and insert some actions
+        QMenu myMenu;
+        QAction *action;
+        
+        action = myMenu.addAction(QIcon::fromTheme("audio-card"), i18n("Switch Master"), this, SLOT(switchMaster()));
+        if(index.data(DevicesModel::DeviceRole).toString().isEmpty())
+            action->setEnabled(false);
+        if(index.data(DevicesModel::MasterRole).toBool())
+            action->setEnabled(false);
+        
+        myMenu.addSeparator();
+        
+        action = myMenu.addAction(QIcon::fromTheme("go-up"), i18n("Prefer"), this, SLOT(prefer()));
+        if(index.row() <= 0)
+            action->setEnabled(false);
+        
+        action = myMenu.addAction(QIcon::fromTheme("go-down"), i18n("Defer"), this, SLOT(defer()));
+        if(index.row() >= configUi->devicesListView->model()->rowCount()-1)
+            action->setEnabled(false);
+        
+        if(index.data(DevicesModel::DeviceRole).toString().isEmpty())
+        {
+            myMenu.addSeparator();
+            myMenu.addAction(QIcon::fromTheme("list-remove"), i18n("Remove entry"), this, SLOT(remove()));
+        }
+        
+        // Show context menu at handling position
+        myMenu.exec(globalPos);
     }
 }
 
@@ -172,26 +188,26 @@ void DevicesConfig::switchMaster(QModelIndex index)
         index = configUi->devicesListView->currentIndex();
     if(index.isValid())
     {
-      QStringList env = QProcess::systemEnvironment();
-      
-      QProcess *exec;
-      
-      env << "DEVICE="+index.data(DevicesModel::IdRole).toString().split(',').last();
-      env << "ID_MODEL="+index.data(DevicesModel::IdRole).toString().split(',').first();
-      env << "FORCEREPLACE=true";
-      
-      exec = new QProcess(this);
-      exec->setEnvironment(env);
-      
-      qDebug() << "switch master";
-      
-      connect(exec, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(switchMasterFinished(int, QProcess::ExitStatus)));
-      
-      exec->start("bash",QStringList() << "jackman");
+        QStringList env = QProcess::systemEnvironment();
+        
+        QProcess *exec;
+        
+        env << "DEVICE="+index.data(DevicesModel::IdRole).toString().split(',').last();
+        env << "ID_MODEL="+index.data(DevicesModel::IdRole).toString().split(',').first();
+        env << "FORCEREPLACE=true";
+        
+        exec = new QProcess(this);
+        exec->setEnvironment(env);
+        
+        qDebug() << "switch master";
+        
+        connect(exec, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(switchMasterFinished(int, QProcess::ExitStatus)));
+        
+        exec->start("bash",QStringList() << "jackman");
     }
     else
     {
-      qDebug() << "can't switch master to invalid index";
+        qDebug() << "can't switch master to invalid index";
     }
 }
 
@@ -200,30 +216,30 @@ void DevicesConfig::test()
     QModelIndex index = configUi->devicesListView->currentIndex();
     if(index.isValid())
     {
-      QStringList env = QProcess::systemEnvironment();
-      
-      QProcess *exec;
-      exec = new QProcess(this);
-      exec->setEnvironment(env);
-      
-      QString port = index.data(DevicesModel::IdRole).toString();
-      if(index.data(DevicesModel::MasterRole).toBool())
-          port = "system";
-      
-      QString soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/KDE-Sys-Log-In.ogg");
-      
-      connect(exec, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(testFinished(int, QProcess::ExitStatus)));
-      
-      exec->start("mplayer", QStringList() << "-ao" << "jack:port="+port << "-volume" << "80" << soundfile);
-      qDebug() << "mplayer" << exec->arguments().join(' ');
-      
-      mTestPlaying = true;
-      configUi->testButton->setEnabled(false);
-      
+        QStringList env = QProcess::systemEnvironment();
+        
+        QProcess *exec;
+        exec = new QProcess(this);
+        exec->setEnvironment(env);
+        
+        QString port = index.data(DevicesModel::IdRole).toString();
+        if(index.data(DevicesModel::MasterRole).toBool())
+            port = "system";
+        
+        QString soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/KDE-Sys-Log-In.ogg");
+        
+        connect(exec, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(testFinished(int, QProcess::ExitStatus)));
+        
+        exec->start("mplayer", QStringList() << "-ao" << "jack:port="+port << "-volume" << "80" << soundfile);
+        qDebug() << "mplayer" << exec->arguments().join(' ');
+        
+        mTestPlaying = true;
+        configUi->testButton->setEnabled(false);
+        
     }
     else
     {
-      qDebug() << "can't test card with invalid index";
+        qDebug() << "can't test card with invalid index";
     }
 }
 
@@ -244,13 +260,13 @@ void DevicesConfig::switchMasterFinished(int exitcode, QProcess::ExitStatus stat
     }
     
     QObject::sender()->deleteLater();
-
+    
     /*else
-    {
-	QMessageBox msgBox;
-	msgBox.setText(i18n("Jack started"));
-	msgBox.exec();
-    }*/
+     *    {
+     *	QMessageBox msgBox;
+     *	msgBox.setText(i18n("Jack started"));
+     *	msgBox.exec();
+}*/
     reset();
 }
 
@@ -261,7 +277,7 @@ void DevicesConfig::testFinished(int exitcode, QProcess::ExitStatus status)
     
     QModelIndex index = configUi->devicesListView->currentIndex();
     if(!index.data(DevicesModel::DeviceRole).toString().isEmpty())
-      configUi->testButton->setEnabled(true);
+        configUi->testButton->setEnabled(true);
 }
 
 
@@ -274,6 +290,7 @@ void DevicesConfig::dropEvent(QDropEvent *event)
 {
     event->acceptProposedAction();
     emit changed(true);
+    mChanged = true;
 }
 
 
@@ -287,9 +304,9 @@ void DevicesConfig::reset()
     model->populate();
     
     if(configUi->devicesListView->currentIndex().isValid())
-      deviceSelected(configUi->devicesListView->currentIndex());
+        deviceSelected(configUi->devicesListView->currentIndex());
     //configUi->quickWidget->setVisible(false);
-
+    
     emit changed(false);
     mChanged = false;
     
@@ -302,14 +319,14 @@ QVariantMap DevicesConfig::save()
     mChanged = false;
     
     QVariantMap args;
-  
+    
     const DevicesModel* model = (DevicesModel*)configUi->devicesListView->model();
     QModelIndex index = configUi->devicesListView->currentIndex();
     for(int i=0; i<model->rowCount(index); ++i)
     {
-      index = model->index(i, index.column(), index.parent());
-      args[index.data(DevicesModel::IdRole).toString().split('[').first().trimmed()] = index.data(DevicesModel::ConfigRole).toString()+";priority="+QString::number(i);
-      qDebug() << " found " << index.data(DevicesModel::IdRole).toString() << " at " << i;
+        index = model->index(i, index.column(), index.parent());
+        args[index.data(DevicesModel::IdRole).toString().split('[').first().trimmed()] = index.data(DevicesModel::ConfigRole).toString()+";priority="+QString::number(i);
+        qDebug() << " found " << index.data(DevicesModel::IdRole).toString() << " at " << i;
     }
     
     index = configUi->devicesListView->currentIndex();
@@ -339,28 +356,28 @@ QVariantMap DevicesConfig::save()
     args[index.data(DevicesModel::IdRole).toString().split('[').first().trimmed()] = data;//index.data(DevicesModel::ConfigRole);
     
     if(index.data(DevicesModel::MasterRole).toBool())
-      QTimer::singleShot(200, this, [this,index](){switchMaster(index);});
-      
+        QTimer::singleShot(200, this, [this,index](){switchMaster(index);});
+    
     return args;
 }
 
 /*QString DevicesConfig::devicesConfigPath() const
-{
-    return mDevicesConfigPath;
-}*/
+ * {
+ *    return mDevicesConfigPath;
+ * }*/
 
 /*void DevicesConfig::prepareInitialDevice()
-{
-    const QString initialDevice = mConfig->group("Device").readEntry("Current");
-    
-    const QModelIndex index = findDeviceIndex(initialDevice);
-    if (!index.isValid()) {
-        //KMessageBox::error(this, i18n("Could not find any themes. \nPlease install SDDM themes."), i18n("No SDDM themes"));
-        return;
-    }
-    configUi->themesListView->setCurrentIndex(index);
-    themeSelected(index);
-}*/
+ * {
+ *    const QString initialDevice = mConfig->group("Device").readEntry("Current");
+ *    
+ *    const QModelIndex index = findDeviceIndex(initialDevice);
+ *    if (!index.isValid()) {
+ *        //KMessageBox::error(this, i18n("Could not find any themes. \nPlease install SDDM themes."), i18n("No SDDM themes"));
+ *        return;
+ *    }
+ *    configUi->themesListView->setCurrentIndex(index);
+ *    themeSelected(index);
+ * }*/
 
 QModelIndex DevicesConfig::findDeviceIndex(const QString &id) const
 {
@@ -390,43 +407,43 @@ void DevicesConfig::deviceSelected(const QModelIndex &index)
         msgBox.setDefaultButton(QMessageBox::Save);
         int ret = msgBox.exec();
         switch (ret) {
-        case QMessageBox::Save:
-            configUi->devicesListView->setCurrentIndex(mChangedIndex);
-            emit saveconfig();
-            mChanged = false;
-            configUi->devicesListView->setCurrentIndex(index);
-            break;
-        case QMessageBox::Discard:
-            break;
-        case QMessageBox::Cancel:
-            configUi->devicesListView->setCurrentIndex(mChangedIndex);
-            return;
-        default:
-            break;
+            case QMessageBox::Save:
+                configUi->devicesListView->setCurrentIndex(mChangedIndex);
+                emit saveconfig();
+                mChanged = false;
+                configUi->devicesListView->setCurrentIndex(index);
+                break;
+            case QMessageBox::Discard:
+                break;
+            case QMessageBox::Cancel:
+                configUi->devicesListView->setCurrentIndex(mChangedIndex);
+                return;
+            default:
+                break;
         }
     }
     mChanged = false;
-        
+    
     configUi->deferButton->setEnabled(false);
     configUi->preferButton->setEnabled(false);
     configUi->testButton->setEnabled(false);
     
     if(index.row() < configUi->devicesListView->model()->rowCount()-1)
-      configUi->deferButton->setEnabled(true);
+        configUi->deferButton->setEnabled(true);
     if(index.row() > 0)
-      configUi->preferButton->setEnabled(true);
+        configUi->preferButton->setEnabled(true);
     
     if(!mTestPlaying && !index.data(DevicesModel::DeviceRole).toString().isEmpty())
-      configUi->testButton->setEnabled(true);
-        
+        configUi->testButton->setEnabled(true);
+    
     if(!configUi->quickWidget->source().isValid())
     {
-      const QString mainQmlPath = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "jackman_kcm/main.qml");
-      configUi->quickWidget->setSource(QUrl::fromLocalFile(mainQmlPath));
+        const QString mainQmlPath = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "jackman_kcm/main.qml");
+        configUi->quickWidget->setSource(QUrl::fromLocalFile(mainQmlPath));
     }
-      configUi->quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
+    configUi->quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
     connect(configUi->quickWidget->rootObject(), SIGNAL(configChanged(bool)), this, SLOT(widgetChanged(bool)));
-
+    
     
     configUi->quickWidget->rootObject()->setProperty("name", index.data(DevicesModel::IdRole).toString());
     configUi->quickWidget->rootObject()->setProperty("device", index.data(DevicesModel::DeviceRole).toString());
@@ -445,14 +462,14 @@ void DevicesConfig::deviceSelected(const QModelIndex &index)
     configUi->quickWidget->rootObject()->setProperty("dither", index.data(DevicesModel::DitherRole).toInt());
     configUi->quickWidget->rootObject()->setProperty("buffersize", index.data(DevicesModel::BufferSizeRole).toInt());
     configUi->quickWidget->rootObject()->setProperty("samplerate", index.data(DevicesModel::SampleRateRole).toInt());
-
+    
     QMetaObject::invokeMethod(configUi->quickWidget->rootObject(), "update");
     ((DevicesModel*)configUi->devicesListView->model())->update();
     
     //Check if we need to display configuration group
     QString configPath;
     prepareConfigurationUi(configPath);
-
+    
 }
 
 void DevicesConfig::prepareConfigurationUi(const QString &configPath)
