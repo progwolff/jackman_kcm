@@ -10,11 +10,12 @@ arch:
   packages:
     - extra-cmake-modules
     - kdeclarative
-    - kdelibs
     - jack2
     - alsa-utils
     - systemd
     - coreutils
+    - qt5-tools
+    - xdg-utils
   script:
     - "git clone https://github.com/progwolff/jackman.git"
     - "cd jackman && makepkg -i && cd .."
