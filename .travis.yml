@@ -17,6 +17,7 @@ arch:
     - qt5-tools
     - xdg-utils
     - python
+    - kdelibs
   script:
     - "git clone https://github.com/progwolff/jackman.git"
     - "cd jackman && makepkg -i && cd .."
