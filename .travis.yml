@@ -5,6 +5,7 @@ language: cpp
 compiler:
   - gcc
   - clang
+  - kdeclarative
 
 arch:
   packages:
