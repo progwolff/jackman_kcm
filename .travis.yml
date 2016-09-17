@@ -11,6 +11,8 @@ arch:
     - extra-cmake-modules
   script:
     - "cd dist/arch/"
+    - "ls"
+    - "echo $PWD"
     - "makepkg -i"
 
 script:
