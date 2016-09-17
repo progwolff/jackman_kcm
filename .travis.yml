@@ -5,11 +5,11 @@ language: cpp
 compiler:
   - gcc
   - clang
-  - kdeclarative
 
 arch:
   packages:
     - extra-cmake-modules
+    - kdeclarative
   script:
     - "cd dist/arch/ && makepkg -i"
 
