@@ -8,7 +8,7 @@ license=("GPL")
 depends=('kdelibs' 'jackman')
 makedepends=('git' 'cmake' 'kdeclarative')
 
-_gitroot="git@github.com:progwolff/jackman_kcm.git"
+_gitroot="https://github.com/progwolff/jackman_kcm.git"
 _gitname=jack_kcm
 
 build() {
