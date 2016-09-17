@@ -10,10 +10,7 @@ arch:
   packages:
     - extra-cmake-modules
   script:
-    - "cd dist/arch/"
-    - "ls"
-    - "echo $PWD"
-    - "makepkg -i"
+    - "cd dist/arch/ && makepkg -i"
 
 script:
   - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
