@@ -1,4 +1,4 @@
-KCM module for [jackman](https://github.com/progwolff/jackman), a tool that helps managing multiple audio interfaces with Jack.
+KCM module for [jackman](https://github.com/progwolff/jackman), a tool that helps managing multiple audio interfaces with [Jack](https://github.com/jackaudio).
 
 [![Build Status](https://travis-ci.org/progwolff/jackman_kcm.svg?branch=master)](https://travis-ci.org/progwolff/jackman_kcm)
 
