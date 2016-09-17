@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 18:23+0200\n"
+"POT-Creation-Date: 2016-09-15 15:38+0200\n"
 "PO-Revision-Date: 2016-08-22 14:46+0200\n"
 "Last-Translator: Julian Wolff <wolff@julianwolff.de>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -16,114 +16,98 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 16bit\n"
 
-#. i18n: file: src/ui/devicesconfig.ui:50
+#. i18n: file: dist/arch/src/jack_kcm/src/ui/devicesconfig.ui:50
 #. i18n: ectx: property (toolTip), widget (QListView, devicesListView)
-#. i18n: file: src/ui/devicesconfig.ui:53
+#. i18n: file: dist/arch/src/jack_kcm/src/ui/devicesconfig.ui:53
 #. i18n: ectx: property (whatsThis), widget (QListView, devicesListView)
 #. i18n: file: src/ui/devicesconfig.ui:50
 #. i18n: ectx: property (toolTip), widget (QListView, devicesListView)
 #. i18n: file: src/ui/devicesconfig.ui:53
 #. i18n: ectx: property (whatsThis), widget (QListView, devicesListView)
-#: build/src/ui_devicesconfig.h:120 build/src/ui_devicesconfig.h:123 rc.cpp:3
-#: rc.cpp:6
+#. i18n: file: dist/arch/src/jack_kcm/src/ui/devicesconfig.ui:50
+#. i18n: ectx: property (toolTip), widget (QListView, devicesListView)
+#. i18n: file: dist/arch/src/jack_kcm/src/ui/devicesconfig.ui:53
+#. i18n: ectx: property (whatsThis), widget (QListView, devicesListView)
+#. i18n: file: src/ui/devicesconfig.ui:50
+#. i18n: ectx: property (toolTip), widget (QListView, devicesListView)
+#. i18n: file: src/ui/devicesconfig.ui:53
+#. i18n: ectx: property (whatsThis), widget (QListView, devicesListView)
+#: build/src/ui_devicesconfig.h:120 build/src/ui_devicesconfig.h:123
+#: dist/arch/src/build/src/ui_devicesconfig.h:120
+#: dist/arch/src/build/src/ui_devicesconfig.h:123 rc.cpp:3 rc.cpp:6 rc.cpp:21
+#: rc.cpp:24
 msgid "A list of audio devices"
 msgstr ""
 "Liste von Audiogeräten. Die Reihenfolge der Geräte in dieser Liste gibt an, "
 "welche Geräte als Master bevorzugt werden."
 
+#. i18n: file: dist/arch/src/jack_kcm/src/ui/devicesconfig.ui:81
+#. i18n: ectx: property (text), widget (QToolButton, preferButton)
 #. i18n: file: src/ui/devicesconfig.ui:81
 #. i18n: ectx: property (text), widget (QToolButton, preferButton)
-#: build/src/ui_devicesconfig.h:125 rc.cpp:9 src/devicesconfig.cpp:155
+#. i18n: file: dist/arch/src/jack_kcm/src/ui/devicesconfig.ui:81
+#. i18n: ectx: property (text), widget (QToolButton, preferButton)
+#. i18n: file: src/ui/devicesconfig.ui:81
+#. i18n: ectx: property (text), widget (QToolButton, preferButton)
+#: build/src/ui_devicesconfig.h:125
+#: dist/arch/src/build/src/ui_devicesconfig.h:125
+#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:155 rc.cpp:9 rc.cpp:27
+#: src/devicesconfig.cpp:166
 msgid "Prefer"
 msgstr "Vorziehen"
 
+#. i18n: file: dist/arch/src/jack_kcm/src/ui/devicesconfig.ui:97
+#. i18n: ectx: property (text), widget (QToolButton, deferButton)
 #. i18n: file: src/ui/devicesconfig.ui:97
 #. i18n: ectx: property (text), widget (QToolButton, deferButton)
-#: build/src/ui_devicesconfig.h:126 rc.cpp:12 src/devicesconfig.cpp:159
+#. i18n: file: dist/arch/src/jack_kcm/src/ui/devicesconfig.ui:97
+#. i18n: ectx: property (text), widget (QToolButton, deferButton)
+#. i18n: file: src/ui/devicesconfig.ui:97
+#. i18n: ectx: property (text), widget (QToolButton, deferButton)
+#: build/src/ui_devicesconfig.h:126
+#: dist/arch/src/build/src/ui_devicesconfig.h:126
+#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:159 rc.cpp:12 rc.cpp:30
+#: src/devicesconfig.cpp:170
 msgid "Defer"
 msgstr "Zurückstellen"
 
+#. i18n: file: dist/arch/src/jack_kcm/src/ui/devicesconfig.ui:113
+#. i18n: ectx: property (text), widget (QToolButton, testButton)
 #. i18n: file: src/ui/devicesconfig.ui:113
 #. i18n: ectx: property (text), widget (QToolButton, testButton)
-#: build/src/ui_devicesconfig.h:127 rc.cpp:15
+#. i18n: file: dist/arch/src/jack_kcm/src/ui/devicesconfig.ui:113
+#. i18n: ectx: property (text), widget (QToolButton, testButton)
+#. i18n: file: src/ui/devicesconfig.ui:113
+#. i18n: ectx: property (text), widget (QToolButton, testButton)
+#: build/src/ui_devicesconfig.h:127
+#: dist/arch/src/build/src/ui_devicesconfig.h:127 rc.cpp:15 rc.cpp:33
 msgid "Test"
 msgstr ""
 
-#. i18n: file: src/ui/devicesconfig.ui:135
-#. i18n: ectx: property (source), widget (QQuickWidget, quickWidget)
-#: rc.cpp:18
-msgid "file:///home/wolff/repos/jackman_kcm/src/qml/main.qml"
-msgstr ""
-
-#: rc.cpp:19
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Julian Wolff"
-
-#: rc.cpp:20
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "wolff@julianwolff.de"
-
-#: src/devicesconfig.cpp:147
-msgid "Switch Master"
-msgstr "Master wechseln"
-
-#: src/devicesconfig.cpp:235
-msgid "Jack failed to start"
-msgstr "JACK konnte nicht gestartet werden."
-
-#: src/devicesconfig.cpp:236
-msgid ""
-"This audio device is not compatible with the current settings. Please try "
-"other values."
-msgstr ""
-"Dieses Gerät ist mit den gewählten Einstellungen nicht kompatibel. Bitte "
-"versuchen Sie es mit anderen Einstellungen erneut."
-
-#: src/devicesconfig.cpp:387
-msgid "The configuration of the currently selected device has been modified."
-msgstr "Die Konfiguration des aktuell ausgewählten Geräts wurde geändert."
-
-#: src/devicesconfig.cpp:388
-msgid "Do you want to save your changes?"
-msgstr "Möchten Sie die Änderungen speichern?"
-
-#: src/plugkcm.cpp:45
-msgid "JACK Audio Devices Config"
-msgstr "Konfiguration der Audiogeräte"
-
-#: src/plugkcm.cpp:47
-msgid "Configure audio devices used with Jack"
-msgstr "Konfiguration der Audiogeräte, die von Jack benutzt werden"
-
-#: src/plugkcm.cpp:51
-msgid "Author"
-msgstr "Autor"
-
-#: src/plugkcm.cpp:113
-msgid "Audio Devices"
-msgstr "Audiogeräte"
-
-#: src/qml/main.qml:79
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:79
+#: dist/arch/src/jack_kcm/src/qml/main.qml:79 src/qml/main.qml:79
 msgid "Configure Device"
 msgstr "Gerät konfigurieren"
 
-#: src/qml/main.qml:95
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:95
+#: dist/arch/src/jack_kcm/src/qml/main.qml:95 src/qml/main.qml:95
 msgid "Sample Rate"
 msgstr "Abtastrate"
 
-#: src/qml/main.qml:97
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:97
+#: dist/arch/src/jack_kcm/src/qml/main.qml:97 src/qml/main.qml:97
 msgid ""
 "Specify the sample rate.\n"
 "The default is 48000."
 msgstr "Abtastrate. Voreinstellung ist 48000Hz"
 
-#: src/qml/main.qml:137
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:137
+#: dist/arch/src/jack_kcm/src/qml/main.qml:137 src/qml/main.qml:137
 msgid "Buffer Size"
 msgstr "Puffergröße"
 
-#: src/qml/main.qml:139
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:139
+#: dist/arch/src/jack_kcm/src/qml/main.qml:139 src/qml/main.qml:139
 msgid ""
 "Specify the number of frames between JACK process() calls.\n"
 "This value must be a power of 2, and the default is 1024.\n"
@@ -141,11 +125,13 @@ msgstr ""
 "Die Aufnahmelatenz für JACK in Sekunden berechnet sich aus der Puffergröße "
 "dividiert durch die Abtastrate."
 
-#: src/qml/main.qml:181
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:181
+#: dist/arch/src/jack_kcm/src/qml/main.qml:181 src/qml/main.qml:181
 msgid "Periods/Buffer"
 msgstr "Perioden/Puffer"
 
-#: src/qml/main.qml:183
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:183
+#: dist/arch/src/jack_kcm/src/qml/main.qml:183 src/qml/main.qml:183
 msgid ""
 "Specify the number of periods of playback latency.\n"
 "The default is 2, the minimum allowable.\n"
@@ -163,19 +149,23 @@ msgstr ""
 "Dies kann helfen, falls das System nicht für Echtzeitbedingungen optimiert "
 "ist."
 
-#: src/qml/main.qml:203
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:203
+#: dist/arch/src/jack_kcm/src/qml/main.qml:203 src/qml/main.qml:203
 msgid "Monitor"
 msgstr "Monitor"
 
-#: src/qml/main.qml:205
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:205
+#: dist/arch/src/jack_kcm/src/qml/main.qml:205 src/qml/main.qml:205
 msgid "Provide monitor ports for the output."
 msgstr "Stelle zusätzliche Monitor-Kanäle bereit."
 
-#: src/qml/main.qml:223
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:223
+#: dist/arch/src/jack_kcm/src/qml/main.qml:223 src/qml/main.qml:223
 msgid "Hardware Monitor"
 msgstr "Hardware-Monitor"
 
-#: src/qml/main.qml:225
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:225
+#: dist/arch/src/jack_kcm/src/qml/main.qml:225 src/qml/main.qml:225
 msgid ""
 "Enable hardware monitoring of capture ports.\n"
 "This is a method for obtaining \"zero latency\" monitoring of audio input.\n"
@@ -186,11 +176,13 @@ msgstr ""
 "Diese Einstellung erfordert Unterstützung der Hardware und des "
 "Gerätetreibers."
 
-#: src/qml/main.qml:242
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:242
+#: dist/arch/src/jack_kcm/src/qml/main.qml:242 src/qml/main.qml:242
 msgid "Hardware Meter"
 msgstr "Hardware-Pegelmessung"
 
-#: src/qml/main.qml:244
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:244
+#: dist/arch/src/jack_kcm/src/qml/main.qml:244 src/qml/main.qml:244
 msgid ""
 "Enable hardware metering for devices that support it.\n"
 "Otherwise, use software metering."
@@ -198,35 +190,46 @@ msgstr ""
 "Aktiviere Hardware-Pegelmessung für Geräte, die dies unterstützen.\n"
 "Ansonsten wird eine softwareseitige Pegelmessung verwendet."
 
-#: src/qml/main.qml:280
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:280
+#: dist/arch/src/jack_kcm/src/qml/main.qml:280 src/qml/main.qml:280
 msgid "Dither"
 msgstr "Dither"
 
-#: src/qml/main.qml:282
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:282
+#: dist/arch/src/jack_kcm/src/qml/main.qml:282 src/qml/main.qml:282
 msgid "Set dithering mode."
 msgstr "Dithering"
 
-#: src/qml/main.qml:290 src/qml/main.qml:429
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:290
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:429
+#: dist/arch/src/jack_kcm/src/qml/main.qml:290
+#: dist/arch/src/jack_kcm/src/qml/main.qml:429 src/qml/main.qml:290
+#: src/qml/main.qml:429
 msgid "None"
 msgstr "Kein"
 
-#: src/qml/main.qml:290
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:290
+#: dist/arch/src/jack_kcm/src/qml/main.qml:290 src/qml/main.qml:290
 msgid "Rectangular"
 msgstr "Rechteck"
 
-#: src/qml/main.qml:290
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:290
+#: dist/arch/src/jack_kcm/src/qml/main.qml:290 src/qml/main.qml:290
 msgid "Shaped"
 msgstr ""
 
-#: src/qml/main.qml:290
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:290
+#: dist/arch/src/jack_kcm/src/qml/main.qml:290 src/qml/main.qml:290
 msgid "Triangular"
 msgstr "Dreieck"
 
-#: src/qml/main.qml:302
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:302
+#: dist/arch/src/jack_kcm/src/qml/main.qml:302 src/qml/main.qml:302
 msgid "Softmode"
 msgstr "Ignoriere XRuns"
 
-#: src/qml/main.qml:304
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:304
+#: dist/arch/src/jack_kcm/src/qml/main.qml:304 src/qml/main.qml:304
 msgid ""
 "Ignore xruns reported by the ALSA driver.\n"
 "This makes JACK less likely to disconnect unresponsive ports"
@@ -235,11 +238,13 @@ msgstr ""
 "Hierdurch sinkt die Wahrscheinlichkeit, dass JACK nicht reagierende Ports "
 "abschaltet."
 
-#: src/qml/main.qml:322
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:322
+#: dist/arch/src/jack_kcm/src/qml/main.qml:322 src/qml/main.qml:322
 msgid "Input Channels"
 msgstr "Eingangskanäle"
 
-#: src/qml/main.qml:324
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:324
+#: dist/arch/src/jack_kcm/src/qml/main.qml:324 src/qml/main.qml:324
 msgid ""
 "Number of capture channels.\n"
 "If set to 0, the maximum supported by hardware is used."
@@ -247,11 +252,13 @@ msgstr ""
 "Anzahl der Eingangskanäle.\n"
 "Falls 0, werden alle verfügbaren Kanäle verwendet."
 
-#: src/qml/main.qml:342
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:342
+#: dist/arch/src/jack_kcm/src/qml/main.qml:342 src/qml/main.qml:342
 msgid "Input Latency"
 msgstr "Eingangslatenz"
 
-#: src/qml/main.qml:344
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:344
+#: dist/arch/src/jack_kcm/src/qml/main.qml:344 src/qml/main.qml:344
 msgid ""
 "Extra input latency (frames).\n"
 "This value might be used by audio software to compensate lantency e.g.\n"
@@ -261,11 +268,13 @@ msgstr ""
 "Dieser Wert kann von Audio-Software verwendet werden, um Latenzen z.B. "
 "während einer Aufnahme zu kompensieren."
 
-#: src/qml/main.qml:361
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:361
+#: dist/arch/src/jack_kcm/src/qml/main.qml:361 src/qml/main.qml:361
 msgid "Output Channels"
 msgstr "Ausgangskanäle"
 
-#: src/qml/main.qml:363
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:363
+#: dist/arch/src/jack_kcm/src/qml/main.qml:363 src/qml/main.qml:363
 msgid ""
 "Number of playback channels.\n"
 "If set to 0, the maximum supported by hardware is used."
@@ -273,11 +282,13 @@ msgstr ""
 "Anzahl der Ausgangskanäle.\n"
 "Falls 0, werden alle verfügbaren Kanäle verwendet."
 
-#: src/qml/main.qml:380
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:380
+#: dist/arch/src/jack_kcm/src/qml/main.qml:380 src/qml/main.qml:380
 msgid "Output Latency"
 msgstr "Ausgangslatenz"
 
-#: src/qml/main.qml:382
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:382
+#: dist/arch/src/jack_kcm/src/qml/main.qml:382 src/qml/main.qml:382
 msgid ""
 "Extra output latency (frames).\n"
 "This value might be used by audio software to compensate lantency e.g.\n"
@@ -287,11 +298,13 @@ msgstr ""
 "Dieser Wert kann von Audio-Software verwendet werden, um Latenzen z.B. "
 "während einer Aufnahme zu kompensieren."
 
-#: src/qml/main.qml:401
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:401
+#: dist/arch/src/jack_kcm/src/qml/main.qml:401 src/qml/main.qml:401
 msgid "Force 16-bit"
 msgstr "16-bit erzwingen"
 
-#: src/qml/main.qml:403
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:403
+#: dist/arch/src/jack_kcm/src/qml/main.qml:403 src/qml/main.qml:403
 msgid ""
 "Try to configure card for 16-bit samples first, only trying 32-bits if "
 "unsuccessful.\n"
@@ -301,11 +314,13 @@ msgstr ""
 "dies fehlschlägt.\n"
 "Falls deaktiviert werden 32-bit bevorzugt."
 
-#: src/qml/main.qml:420
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:420
+#: dist/arch/src/jack_kcm/src/qml/main.qml:420 src/qml/main.qml:420
 msgid "MIDI Driver"
 msgstr "MIDI-Treiber"
 
-#: src/qml/main.qml:422
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:422
+#: dist/arch/src/jack_kcm/src/qml/main.qml:422 src/qml/main.qml:422
 msgid ""
 "Specify which ALSA MIDI system to provide access to.\n"
 "Using raw will provide a set of JACK MIDI ports that correspond to each raw "
@@ -324,13 +339,81 @@ msgstr ""
 "ALSA Raw-MIDI ist geringfügig performanter, lässt jedoch keine Verbindung "
 "mit Software zu, die die ALSA Sequencer API verwendet."
 
-#: src/qml/main.qml:429
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:429
+#: dist/arch/src/jack_kcm/src/qml/main.qml:429 src/qml/main.qml:429
 msgid "Alsa Sequencer"
 msgstr ""
 
-#: src/qml/main.qml:429
+#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:429
+#: dist/arch/src/jack_kcm/src/qml/main.qml:429 src/qml/main.qml:429
 msgid "Alsa Raw-MIDI"
 msgstr ""
+
+#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:147 src/devicesconfig.cpp:158
+msgid "Switch Master"
+msgstr "Master wechseln"
+
+#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:235 src/devicesconfig.cpp:251
+msgid "Jack failed to start"
+msgstr "JACK konnte nicht gestartet werden."
+
+#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:236 src/devicesconfig.cpp:252
+msgid ""
+"This audio device is not compatible with the current settings. Please try "
+"other values."
+msgstr ""
+"Dieses Gerät ist mit den gewählten Einstellungen nicht kompatibel. Bitte "
+"versuchen Sie es mit anderen Einstellungen erneut."
+
+#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:387 src/devicesconfig.cpp:404
+msgid "The configuration of the currently selected device has been modified."
+msgstr "Die Konfiguration des aktuell ausgewählten Geräts wurde geändert."
+
+#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:388 src/devicesconfig.cpp:405
+msgid "Do you want to save your changes?"
+msgstr "Möchten Sie die Änderungen speichern?"
+
+#: dist/arch/src/jack_kcm/src/jackmankcm.cpp:45 src/jackmankcm.cpp:45
+msgid "JACK Audio Devices Config"
+msgstr "Konfiguration der Audiogeräte"
+
+#: dist/arch/src/jack_kcm/src/jackmankcm.cpp:47 src/jackmankcm.cpp:47
+msgid "Configure audio devices used with Jack"
+msgstr "Konfiguration der Audiogeräte, die von Jack benutzt werden"
+
+#: dist/arch/src/jack_kcm/src/jackmankcm.cpp:51 src/jackmankcm.cpp:51
+msgid "Author"
+msgstr "Autor"
+
+#: dist/arch/src/jack_kcm/src/jackmankcm.cpp:113 src/jackmankcm.cpp:115
+msgid "Audio Devices"
+msgstr "Audiogeräte"
+
+#. i18n: file: dist/arch/src/jack_kcm/src/ui/devicesconfig.ui:135
+#. i18n: ectx: property (source), widget (QQuickWidget, quickWidget)
+#. i18n: file: src/ui/devicesconfig.ui:135
+#. i18n: ectx: property (source), widget (QQuickWidget, quickWidget)
+#. i18n: file: dist/arch/src/jack_kcm/src/ui/devicesconfig.ui:135
+#. i18n: ectx: property (source), widget (QQuickWidget, quickWidget)
+#. i18n: file: src/ui/devicesconfig.ui:135
+#. i18n: ectx: property (source), widget (QQuickWidget, quickWidget)
+#: rc.cpp:18 rc.cpp:36
+msgid "file:///home/wolff/repos/jackman_kcm/src/qml/main.qml"
+msgstr ""
+
+#: rc.cpp:37
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Julian Wolff"
+
+#: rc.cpp:38
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "wolff@julianwolff.de"
+
+#: src/devicesconfig.cpp:177
+msgid "Remove entry"
+msgstr "Eintrag löschen"
 
 #~ msgid "Audio Devices Configuration (Jack)"
 #~ msgstr "Konfiguration der Audiogeräte (Jack)"

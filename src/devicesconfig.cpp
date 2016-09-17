@@ -189,12 +189,13 @@ void DevicesConfig::switchMaster(QModelIndex index)
     if(index.isValid())
     {
         QStringList env = QProcess::systemEnvironment();
+        QStringList args;
         
         QProcess *exec;
         
-        env << "DEVICE="+index.data(DevicesModel::IdRole).toString().split(',').last();
-        env << "ID_MODEL="+index.data(DevicesModel::IdRole).toString().split(',').first();
-        env << "FORCEREPLACE=true";
+        args << "-d" << index.data(DevicesModel::IdRole).toString().split(',').last();
+        args << "-m" << index.data(DevicesModel::IdRole).toString().split(',').first();
+        args << "-f";
         
         exec = new QProcess(this);
         exec->setEnvironment(env);
@@ -203,7 +204,7 @@ void DevicesConfig::switchMaster(QModelIndex index)
         
         connect(exec, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(switchMasterFinished(int, QProcess::ExitStatus)));
         
-        exec->start("bash",QStringList() << "jackman");
+        exec->start("bash",QStringList() << "jackman" << args);
     }
     else
     {
@@ -252,11 +253,6 @@ void DevicesConfig::switchMasterFinished(int exitcode, QProcess::ExitStatus stat
         msgBox.setInformativeText(i18n("This audio device is not compatible with the current settings. Please try other values."));
         msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
-        QStringList env = QProcess::systemEnvironment();
-        QProcess *exec;
-        exec = new QProcess(this);
-        exec->setEnvironment(env);
-        exec->start("bash",QStringList() << "jackman");
     }
     
     QObject::sender()->deleteLater();
@@ -442,6 +438,7 @@ void DevicesConfig::deviceSelected(const QModelIndex &index)
         configUi->quickWidget->setSource(QUrl::fromLocalFile(mainQmlPath));
     }
     configUi->quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
+    configUi->quickWidget->setEnabled(true);
     connect(configUi->quickWidget->rootObject(), SIGNAL(configChanged(bool)), this, SLOT(widgetChanged(bool)));
     
     

@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/progwolff/jackman_kcm"
 license=("GPL")
 depends=('kdelibs' 'jackman')
-makedepends=('git' 'cmake' 'automoc4')
+makedepends=('git' 'cmake' 'automoc4' 'kdeclarative')
 
 _gitroot="git@github.com:progwolff/jackman_kcm.git"
 _gitname=jack_kcm
