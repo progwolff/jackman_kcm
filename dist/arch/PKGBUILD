@@ -28,7 +28,7 @@ build() {
   mkdir -p build
   cd build
 
-  cmake ../${_gitname} -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUIĹD_TYPE=Release
+  cmake ../${_gitname} -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release
   make
 }
 
