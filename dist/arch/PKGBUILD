@@ -1,34 +1,29 @@
 pkgname=jackman-kcm-git
-pkgver=20160919
+pkgver=r33.9d24d09
 pkgrel=1
 pkgdesc="KCM module for jackman"
 arch=('i686' 'x86_64')
 url="https://github.com/progwolff/jackman_kcm"
+provides=('jackman-kcm')
 license=("GPL")
 depends=('jackman' 'xdg-utils' 'kdeclarative' 'kdelibs' 'plasma-framework')
 makedepends=('git' 'extra-cmake-modules' 'qt5-tools' 'python')
+source=('jack_kcm::git+https://github.com/progwolff/jackman_kcm.git')
+md5sums=('SKIP')
 
 _gitroot="https://github.com/progwolff/jackman_kcm.git"
 _gitname=jack_kcm
 
 pkgver() {
-  cd $_pkgname
-  git describe --always | sed 's:^v::;s:-:.:g'
+  cd "$_gitname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
   cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
 
   mkdir -p build
   cd build
