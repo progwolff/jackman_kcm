@@ -18,6 +18,7 @@ arch:
     - xdg-utils
     - python
     - kdelibs
+    - plasma-framework
   script:
     - "git clone https://github.com/progwolff/jackman.git"
     - "cd jackman && makepkg -i && cd .."

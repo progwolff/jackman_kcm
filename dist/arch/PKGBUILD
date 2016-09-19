@@ -5,7 +5,7 @@ pkgdesc="KCM module for jackman"
 arch=('i686' 'x86_64')
 url="https://github.com/progwolff/jackman_kcm"
 license=("GPL")
-depends=('jackman' 'xdg-utils' 'kdeclarative' 'kdelibs')
+depends=('jackman' 'xdg-utils' 'kdeclarative' 'kdelibs' 'plasma-framework')
 makedepends=('git' 'cmake' 'qt5-tools' 'python')
 
 _gitroot="https://github.com/progwolff/jackman_kcm.git"
