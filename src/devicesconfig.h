@@ -58,6 +58,7 @@ private slots:
     void prefer();
     void defer();
     void remove();
+    void measureLatency();
     void test();
     void switchMasterFinished(int exitcode, QProcess::ExitStatus status);
     void testFinished(int exitcode, QProcess::ExitStatus status);
@@ -66,12 +67,14 @@ private:
     Ui::DevicesConfig *configUi;
     KSharedConfigPtr mConfig;
     bool mTestPlaying;
+    bool mChangingMaster;
     bool mChanged;
+    float mMs;
     QModelIndex mChangedIndex;
     
     //void prepareInitialTheme();
     QModelIndex findDeviceIndex(const QString &device) const;
-    void prepareConfigurationUi(const QString &configPath);
+    void updateConfigurationUi(float jacklatency);
     void dump();
 };
 

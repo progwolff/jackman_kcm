@@ -15,6 +15,6 @@ use the provided PKGBUILD
 ```shell
 $ mkdir build
 $ cd build
-$ cmake .. -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix`
+$ cmake .. -DCMAKE_INSTALL_PREFIX="/usr"
 # make install
 ```

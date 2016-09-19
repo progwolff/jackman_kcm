@@ -39,11 +39,20 @@
 #include <QMenu>
 #include <QProcess>
 
-#include <KMessageBox>
+#include <QMessageBox>
+#include <QProgressDialog>
 #include <KConfigGroup>
 #include <QIcon>
 
 #include <kdeclarative/kdeclarative.h>
+#include <QGraphicsScene>
+
+#include <cfloat>
+#include <cmath>
+
+
+#define PROP(a) configUi->quickWidget->rootObject()->property(a)
+
 
 
 DevicesConfig::DevicesConfig(QWidget *parent) :
@@ -53,7 +62,7 @@ QWidget(parent)
     
     configUi = new Ui::DevicesConfig();
     configUi->setupUi(this);
-    configUi->quickWidget->setVisible(false);
+    configUi->configArea->setVisible(false);
     
     KDeclarative::KDeclarative kdeclarative;
     //view refers to the QDeclarativeView
@@ -83,8 +92,10 @@ QWidget(parent)
     connect(configUi->preferButton, SIGNAL(clicked()), SLOT(prefer()));
     connect(configUi->deferButton, SIGNAL(clicked()), SLOT(defer()));
     connect(configUi->testButton, SIGNAL(clicked()), SLOT(test()));
+    connect(configUi->latencyButton, SIGNAL(clicked()), SLOT(measureLatency()));
     
     mTestPlaying = false;
+    mChangingMaster = false;
     
     reset();
     
@@ -138,6 +149,145 @@ void DevicesConfig::remove()
     emit saveconfig();
 }
 
+void DevicesConfig::measureLatency()
+{
+    
+    if(mChanged)
+    {
+        emit saveconfig();
+        QTimer::singleShot(200, this, SLOT(measureLatency()));
+        return;
+    }
+    
+    QModelIndex index = configUi->devicesListView->currentIndex();
+    
+    QMessageBox warnBox;
+    warnBox.setText(
+        i18n("Disconnect speakers from the first output of your audio device.\nLoud noise will be send to this output.")
+        +((index.data(DevicesModel::MasterRole).toBool())?"":i18n("\n\nNote that this device is not the current master device.\nThe round trip latency of this device would be much lower if it was set as master device."))
+    );
+    warnBox.setIcon(QMessageBox::Warning);
+    warnBox.setInformativeText(i18n("Do you want to continue?"));
+    warnBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    warnBox.setDefaultButton(QMessageBox::Save);
+    int ret = warnBox.exec();
+    switch (ret) {
+        case QMessageBox::No:
+            return;
+        default:
+            break;
+    }
+    
+    QStringList env = QProcess::systemEnvironment();
+    
+    QProcess *exec;    
+    exec = new QProcess(this);
+    exec->setEnvironment(env);
+    
+    qDebug() << "measure latency";
+    
+    //connect(exec, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(switchMasterFinished(int, QProcess::ExitStatus)));
+    QProgressDialog *msgBox = new QProgressDialog(i18n("Use a patch cable to connect the first output of your audio device to the first input.\nThis message box will close automatically when a connection is established.\n\nNote that in rare cases connecting inputs and outputs of the same card might damage an audio device. Ask your device manufacturer if you're unsure."), i18n("Cancel"), 0, 0, this);
+    msgBox->setWindowModality(Qt::WindowModal);
+    msgBox->setWindowTitle(i18n("Measuring round trip latency"));
+    msgBox->show();
+    connect(msgBox, &QProgressDialog::canceled, exec, [exec,msgBox](){
+        exec->terminate();
+        disconnect(exec, &QProcess::errorOccurred, 0, 0);
+        msgBox->deleteLater();
+    });
+    //connect(exec, &QProcess::started, this, [this,msgBox](){msgBox->setValue(20);});
+    
+    connect(exec, &QProcess::errorOccurred, this, [msgBox,exec](){
+        msgBox->reset();
+        msgBox->deleteLater();
+        QMessageBox msgBox;
+        msgBox.setText(i18n("Could not measure latency"));
+        msgBox.setInformativeText(exec->errorString());
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.exec();
+        exec->deleteLater();
+    });
+    
+    connect(exec, &QProcess::readyReadStandardOutput, this, [this,msgBox,exec](){
+        QStringList env = QProcess::systemEnvironment();
+    
+        QString stdout = QString::fromLatin1(exec->readAllStandardOutput());     
+        QRegularExpression re("[\\d\\.]+\\s+frames\\s+([\\d\\.]+)\\s+ms\\s+total\\s+roundtrip\\s+latency\\s*extra\\s+loopback\\s+latency:\\s+[\\d\\.]+\\s+frames\\s*use\\s+([\\d\\.]+)\\s+for\\s+the\\s+backend\\s+arguments\\s+-I\\s+and\\s+-O");
+        QRegularExpressionMatch match = re.match(stdout);
+        if(match.hasMatch())
+        {
+            qDebug() << "round trip latency: " << match.captured(1) << ", additional latency in frames: " << match.captured(2);
+            exec->terminate();
+            disconnect(exec, &QProcess::errorOccurred, 0, 0);
+            msgBox->reset();
+            msgBox->deleteLater();
+            
+            if(match.captured(2).length() < 5) //jack_iodelay seems to give weird output if input-/outputlatency was too high
+            {
+                configUi->quickWidget->rootObject()->setProperty("inputlatency", match.captured(2).toInt());
+                configUi->quickWidget->rootObject()->setProperty("outputlatency", match.captured(2).toInt());
+            }
+            configUi->latency_roundtrip->setText(i18nc("ms for Milliseconds", "Round trip latency: %1ms", QString::number(match.captured(1).toFloat(), 'f', 2)));
+            
+            return;
+        }
+    
+    });
+    
+    connect(exec, &QProcess::readyReadStandardError, this, [this,msgBox,exec](){
+        qDebug() << "error: " << QString::fromLatin1(exec->readAllStandardError());     
+    });
+    
+    connect(exec, SIGNAL(finished(int,QProcess::ExitStatus)), exec, SLOT(deleteLater()));
+    
+    exec->start("jack_iodelay");
+    exec->waitForStarted();
+    
+    QTimer::singleShot(200, this, [this,env,msgBox](){
+                       
+        //connect jack_iodelay to the first ports of this audio device
+        
+        QModelIndex index = configUi->devicesListView->currentIndex();
+        QString port = index.data(DevicesModel::IdRole).toString();
+        QString inport = port+" - in:capture_1";
+        QString outport = port+" - out:playback_1";
+        if(index.data(DevicesModel::MasterRole).toBool())
+        {
+            port = "system";
+            inport = port+":capture_1";
+            outport = port+":playback_1";
+        }
+        QProcess *exec = new QProcess(this);
+        exec->setEnvironment(env);
+        connect(exec, SIGNAL(finished(int,QProcess::ExitStatus)), exec, SLOT(deleteLater()));
+        connect(exec, &QProcess::errorOccurred, this, [msgBox,exec](){
+            msgBox->cancel();
+            QMessageBox msgBox;
+            msgBox.setText(i18n("Could not measure latency"));
+            msgBox.setInformativeText(exec->errorString());
+            msgBox.setIcon(QMessageBox::Critical);
+            msgBox.exec();
+            exec->deleteLater();
+        });
+        exec->start("jack_connect", QStringList() << "jack_delay:out" << outport);
+        exec = new QProcess(this);
+        exec->setEnvironment(env);
+        connect(exec, SIGNAL(finished(int,QProcess::ExitStatus)), exec, SLOT(deleteLater()));
+        connect(exec, &QProcess::errorOccurred, this, [msgBox,exec](){
+            msgBox->cancel();
+            QMessageBox msgBox;
+            msgBox.setText(i18n("Could not measure latency"));
+            msgBox.setInformativeText(exec->errorString());
+            msgBox.setIcon(QMessageBox::Critical);
+            msgBox.exec();
+            exec->deleteLater();
+        });
+        exec->start("jack_connect", QStringList() << inport << "jack_delay:in");
+        qDebug() << "connecting " << inport << " and " << outport << " to jack_delay";
+    });
+}
+
 void DevicesConfig::showContextMenu(const QPoint &pos)
 {
     
@@ -158,7 +308,7 @@ void DevicesConfig::showContextMenu(const QPoint &pos)
         action = myMenu.addAction(QIcon::fromTheme("audio-card"), i18n("Switch Master"), this, SLOT(switchMaster()));
         if(index.data(DevicesModel::DeviceRole).toString().isEmpty())
             action->setEnabled(false);
-        if(index.data(DevicesModel::MasterRole).toBool())
+        if(index.data(DevicesModel::MasterRole).toBool() || mChangingMaster)
             action->setEnabled(false);
         
         myMenu.addSeparator();
@@ -205,6 +355,9 @@ void DevicesConfig::switchMaster(QModelIndex index)
         connect(exec, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(switchMasterFinished(int, QProcess::ExitStatus)));
         
         exec->start("bash",QStringList() << "jackman" << args);
+        
+        mChangingMaster = true;
+        configUi->latencyButton->setEnabled(false);
     }
     else
     {
@@ -254,6 +407,8 @@ void DevicesConfig::switchMasterFinished(int exitcode, QProcess::ExitStatus stat
         msgBox.setIcon(QMessageBox::Critical);
         msgBox.exec();
     }
+    
+    mChangingMaster = false;
     
     QObject::sender()->deleteLater();
     
@@ -309,7 +464,6 @@ void DevicesConfig::reset()
 }
 
 
-#define PROP(a) configUi->quickWidget->rootObject()->property(a)
 QVariantMap DevicesConfig::save()
 {
     mChanged = false;
@@ -420,10 +574,10 @@ void DevicesConfig::deviceSelected(const QModelIndex &index)
     }
     mChanged = false;
     
+    
     configUi->deferButton->setEnabled(false);
     configUi->preferButton->setEnabled(false);
     configUi->testButton->setEnabled(false);
-    
     if(index.row() < configUi->devicesListView->model()->rowCount()-1)
         configUi->deferButton->setEnabled(true);
     if(index.row() > 0)
@@ -432,12 +586,15 @@ void DevicesConfig::deviceSelected(const QModelIndex &index)
     if(!mTestPlaying && !index.data(DevicesModel::DeviceRole).toString().isEmpty())
         configUi->testButton->setEnabled(true);
     
+    if(!mChangingMaster)
+        configUi->latencyButton->setEnabled(true);
+    
     if(!configUi->quickWidget->source().isValid())
     {
         const QString mainQmlPath = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "jackman_kcm/main.qml");
         configUi->quickWidget->setSource(QUrl::fromLocalFile(mainQmlPath));
     }
-    configUi->quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
+    //configUi->quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
     configUi->quickWidget->setEnabled(true);
     connect(configUi->quickWidget->rootObject(), SIGNAL(configChanged(bool)), this, SLOT(widgetChanged(bool)));
     
@@ -463,17 +620,38 @@ void DevicesConfig::deviceSelected(const QModelIndex &index)
     QMetaObject::invokeMethod(configUi->quickWidget->rootObject(), "update");
     ((DevicesModel*)configUi->devicesListView->model())->update();
     
-    //Check if we need to display configuration group
-    QString configPath;
-    prepareConfigurationUi(configPath);
+    mMs = 0;
+    
+    float ms = 1000 * index.data(DevicesModel::NPeriodsRole).toFloat() * index.data(DevicesModel::BufferSizeRole).toFloat() / index.data(DevicesModel::SampleRateRole).toFloat();
+    configUi->latency_jack->setText(i18nc("ms for Milliseconds", "%1ms", 
+                                          QString::number(ms, 'f', 2)
+    ));
+    
+    updateConfigurationUi(ms);
     
 }
 
-void DevicesConfig::prepareConfigurationUi(const QString &configPath)
+void DevicesConfig::updateConfigurationUi(float ms)
 {
     
-    configUi->quickWidget->setVisible(true);
+    if(mMs != ms)
+        configUi->latency_roundtrip->setText(i18nc("ms for Milliseconds", "Round trip latency: %1ms", "?"));
+    
+    mMs = ms;
+    if(fabs(ms - round(ms)) >= FLT_EPSILON)
+    {
+        configUi->latency_jack->setStyleSheet("QLabel { color : red; }");
+        configUi->latency_jack->setToolTip(i18n("This value should be a whole number if this device is a USB device.\nIf this device is not a USB device, ignore this warning.\n\n")+i18n("This value is \"%1\" multiplied with \"%2\" and divided by \"%3\".", i18n("Periods/Buffer"), i18n("Buffer Size"), i18n("Sample Rate")));
+    }
+    else
+    {
+        configUi->latency_jack->setStyleSheet("QLabel {  }");
+        configUi->latency_jack->setToolTip(i18n("This value is \"%1\" multiplied with \"%2\" and divided by \"%3\".", i18n("Periods/Buffer"), i18n("Buffer Size"), i18n("Sample Rate")));
+    }
+    
+    configUi->configArea->setVisible(true);
     //configUi->quickWidget->updateGeometry();
+    
 }
 
 void DevicesConfig::widgetChanged(bool change)
@@ -484,6 +662,13 @@ void DevicesConfig::widgetChanged(bool change)
     {
         mChangedIndex = configUi->devicesListView->currentIndex();
     }
+    
+    float ms = 1000 * PROP("nperiods").toFloat() * PROP("buffersize").toFloat() / PROP("samplerate").toFloat();
+    configUi->latency_jack->setText(i18nc("ms for Milliseconds", "%1ms", 
+                                          QString::number(ms, 'f', 2)
+    ));
+    updateConfigurationUi(ms);
+    
 }
 
 void DevicesConfig::dump()
@@ -491,3 +676,4 @@ void DevicesConfig::dump()
     //dump jack conf
     //TODO
 }
+

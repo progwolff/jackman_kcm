@@ -14,7 +14,9 @@ set(JACK_KCM_SRCS
 )
 
 set(JACK_KCM_UI
-    ui/devicesconfig.ui)
+    ui/devicesconfig.ui
+    qml/main.qml
+    qml/TooltipArea.qml)
 
 ki18n_wrap_ui(JACK_KCM_SRCS ${JACK_KCM_UI})
 add_library(kcm-jackman MODULE ${JACK_KCM_SRCS})

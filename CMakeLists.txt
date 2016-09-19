@@ -2,7 +2,7 @@ project(jackman_kcm)
 cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
 set(PROJECT_VERSION "0.1.0")
 set(QT_MIN_VERSION "0.1.0")
-find_package(ECM 1.0.0 REQUIRED NO_MODULE)
+find_package(ECM REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 include(ECMInstallIcons)
 include(KDEInstallDirs)
@@ -13,6 +13,7 @@ include(FeatureSummary)
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets Designer X11Extras Quick QuickWidgets)
 
 find_package(KF5 REQUIRED COMPONENTS
+    Plasma
     CoreAddons
     I18n
     XmlGui
@@ -40,6 +41,8 @@ find_package(XCB
 
 find_package(ALSA)
 
+list(APPEND QML_DIRS "${ECM_MODULE_DIR}")
+set(QML_IMPORT_PATH "${QML_DIRS}" CACHE STRING "Qt Creator 4.1 extra qml import paths")
 
 add_definitions(-DTRANSLATION_DOMAIN=\"kcm-jackman\")
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING)

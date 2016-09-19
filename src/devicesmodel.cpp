@@ -346,6 +346,7 @@ const QString DevicesModel::deviceVendor(const QString& cardname, int device) co
                 if(QString::fromLatin1(snd_ctl_card_info_get_name(info)).trimmed() == cardname
                     && dev == device)
                 {
+                    //qDebug() << "long name: " << snd_ctl_card_info_get_longname(info);
                     for(const QString& str : QString::fromLatin1(snd_ctl_card_info_get_longname(info)).toLower().split(' '))
                     {
                         if(vendorList.contains(str))
