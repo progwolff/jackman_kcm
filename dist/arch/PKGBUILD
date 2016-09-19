@@ -1,15 +1,20 @@
 pkgname=jackman-kcm-git
-pkgver=20160914
+pkgver=20160919
 pkgrel=1
 pkgdesc="KCM module for jackman"
 arch=('i686' 'x86_64')
 url="https://github.com/progwolff/jackman_kcm"
 license=("GPL")
 depends=('jackman' 'xdg-utils' 'kdeclarative' 'kdelibs' 'plasma-framework')
-makedepends=('git' 'cmake' 'qt5-tools' 'python')
+makedepends=('git' 'extra-cmake-modules' 'qt5-tools' 'python')
 
 _gitroot="https://github.com/progwolff/jackman_kcm.git"
 _gitname=jack_kcm
+
+pkgver() {
+  cd $_pkgname
+  git describe --always | sed 's:^v::;s:-:.:g'
+}
 
 build() {
   cd "$srcdir"
@@ -28,7 +33,7 @@ build() {
   mkdir -p build
   cd build
 
-  cmake ../${_gitname} -DCMAKE_INSTALL_PREFIX="/usr" -DLIB_INSTALL_DIR=lib -DCMAKE_BUIĹD_TYPE=Release
+  cmake ../${_gitname} -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUIĹD_TYPE=Release
   make
 }
 

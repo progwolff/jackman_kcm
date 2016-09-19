@@ -61,7 +61,7 @@ private slots:
     void measureLatency();
     void test();
     void switchMasterFinished(int exitcode, QProcess::ExitStatus status);
-    void testFinished(int exitcode, QProcess::ExitStatus status);
+    void testFinished(int, QProcess::ExitStatus);
     
 private:
     Ui::DevicesConfig *configUi;
@@ -75,7 +75,6 @@ private:
     //void prepareInitialTheme();
     QModelIndex findDeviceIndex(const QString &device) const;
     void updateConfigurationUi(float jacklatency);
-    void dump();
 };
 
 #endif // DEVICESCONFIG_H

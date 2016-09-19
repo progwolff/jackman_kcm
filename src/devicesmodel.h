@@ -71,7 +71,6 @@ signals:
     
 private:
     void add(const QString &name, const QString &conf);
-    void dump(const QString &id);
     
     QString m_currentMaster;
     
@@ -82,4 +81,4 @@ private:
     static QStringList vendorList;
 };
 
-#endif //THEMESMODEL_H
+#endif //DEVICESMODEL_H

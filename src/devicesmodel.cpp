@@ -144,7 +144,7 @@ void DevicesModel::populate()
     mDevicesList.clear();
     
     snd_ctl_t *handle;
-    int card, err, dev, idx;
+    int card, err, dev;
     snd_ctl_card_info_t *info;
     snd_pcm_info_t *pcminfo;
     snd_ctl_card_info_alloca(&info);
@@ -169,19 +169,12 @@ void DevicesModel::populate()
             dev = -1;
             while (true) 
             {
-                unsigned int count;
-                //if (
                 snd_ctl_pcm_next_device(handle, &dev);
-                //<0)
-                //error("snd_ctl_pcm_next_device");
                 if (dev < 0)
                     break;
                 snd_pcm_info_set_device(pcminfo, dev);
                 snd_pcm_info_set_subdevice(pcminfo, 0);
-                //snd_pcm_info_set_stream(pcminfo, stream);
                 if ((err = snd_ctl_pcm_info(handle, pcminfo)) < 0) {
-                    //if (err != -ENOENT)
-                    //  error("control digital audio info (%i): %s", card, snd_strerror(err));
                     continue;
                 }
                 
@@ -194,7 +187,6 @@ void DevicesModel::populate()
             next_card:
             if (snd_card_next(&card) < 0) 
             {
-                //error("snd_card_next");
                 break;
             }
         }
@@ -202,12 +194,9 @@ void DevicesModel::populate()
     
     QString dir = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
     KSharedConfigPtr jackConfig = KSharedConfig::openConfig(dir+"/"+JACK_CONFIG_FILE);
-    //read existing config
     devices.append( jackConfig->group("Devices").keyList() );
-    //qDebug() << dir+"/"+JACK_CONFIG_FILE;
     
     foreach (const QString &device, devices) {
-        //qDebug() << "found device config for " << device;
         const QString& conf = jackConfig->group("Devices").readEntry(device);
         add(device, conf);
     }
@@ -217,7 +206,6 @@ void DevicesModel::populate()
 
 void DevicesModel::update()
 {
-    //populate();
     movedindex = -1;
     m_currentMaster = currentMaster();
     
@@ -230,9 +218,8 @@ void DevicesModel::update()
 
 const QString DevicesModel::deviceName(const QString& cardname, int device) const
 {
-    //qDebug() << "looking for " << cardname << "," << device;
     snd_ctl_t *handle;
-    int card, err, dev, idx;
+    int card, err, dev;
     snd_ctl_card_info_t *info;
     snd_pcm_info_t *pcminfo;
     snd_ctl_card_info_alloca(&info);
@@ -259,37 +246,24 @@ const QString DevicesModel::deviceName(const QString& cardname, int device) cons
             dev = -1;
             while (true) 
             {
-                unsigned int count;
-                //if (
                 snd_ctl_pcm_next_device(handle, &dev);
-                //<0)
-                //error("snd_ctl_pcm_next_device");
                 if (dev < 0)
                     break;
                 snd_pcm_info_set_device(pcminfo, dev);
                 snd_pcm_info_set_subdevice(pcminfo, 0);
-                //snd_pcm_info_set_stream(pcminfo, stream);
                 if ((err = snd_ctl_pcm_info(handle, pcminfo)) < 0) {
-                    //if (err != -ENOENT)
-                    //  error("control digital audio info (%i): %s", card, snd_strerror(err));
                     continue;
                 }
                 if(QString::fromLatin1(snd_ctl_card_info_get_name(info)).trimmed() == cardname
                     && dev == device)
                 {
                     devicename = QString::fromLatin1(snd_pcm_info_get_name(pcminfo));
-                    //qDebug() << "device name of " << cardname << "," << device << " is " << devicename;
-                }
-                else
-                {
-                    //qDebug() << "not looking for " << snd_ctl_card_info_get_name(info) << "," << dev << " ...";
                 }
             }
             snd_ctl_close(handle);
             devicename_next_card:
             if (!devicename.isEmpty() || snd_card_next(&card) < 0) 
             {
-                //error("snd_card_next");
                 break;
             }
         }
@@ -299,9 +273,8 @@ const QString DevicesModel::deviceName(const QString& cardname, int device) cons
 
 const QString DevicesModel::deviceVendor(const QString& cardname, int device) const
 {
-    //qDebug() << "looking for " << cardname << "," << device;
     snd_ctl_t *handle;
-    int card, err, dev, idx;
+    int card, err, dev;
     snd_ctl_card_info_t *info;
     snd_pcm_info_t *pcminfo;
     snd_ctl_card_info_alloca(&info);
@@ -328,25 +301,17 @@ const QString DevicesModel::deviceVendor(const QString& cardname, int device) co
             dev = -1;
             while (true) 
             {
-                unsigned int count;
-                //if (
                 snd_ctl_pcm_next_device(handle, &dev);
-                //<0)
-                //error("snd_ctl_pcm_next_device");
                 if (dev < 0)
                     break;
                 snd_pcm_info_set_device(pcminfo, dev);
                 snd_pcm_info_set_subdevice(pcminfo, 0);
-                //snd_pcm_info_set_stream(pcminfo, stream);
                 if ((err = snd_ctl_pcm_info(handle, pcminfo)) < 0) {
-                    //if (err != -ENOENT)
-                    //  error("control digital audio info (%i): %s", card, snd_strerror(err));
                     continue;
                 }
                 if(QString::fromLatin1(snd_ctl_card_info_get_name(info)).trimmed() == cardname
                     && dev == device)
                 {
-                    //qDebug() << "long name: " << snd_ctl_card_info_get_longname(info);
                     for(const QString& str : QString::fromLatin1(snd_ctl_card_info_get_longname(info)).toLower().split(' '))
                     {
                         if(vendorList.contains(str))
@@ -356,16 +321,11 @@ const QString DevicesModel::deviceVendor(const QString& cardname, int device) co
                         }
                     }
                 }
-                else
-                {
-                    //qDebug() << "not looking for " << snd_ctl_card_info_get_name(info) << "," << dev << " ...";
-                }
             }
             snd_ctl_close(handle);
             devicename_next_card:
             if (!vendor.isEmpty() || snd_card_next(&card) < 0) 
             {
-                //error("snd_card_next");
                 break;
             }
         }
@@ -376,7 +336,6 @@ const QString DevicesModel::deviceVendor(const QString& cardname, int device) co
 
 const QString DevicesModel::currentMaster() const
 {
-    // fuser -v /dev/snd/pcmC0D* 2>&1 | grep jack | grep -o -P '[^:]*' | head -1
     QStringList env;
     env.clear();
     QProcess *exec;
@@ -393,7 +352,6 @@ const QString DevicesModel::currentMaster() const
     
     for(const QString& line : result.split('\n'))
     {
-        //qDebug() << "result: " << line;
         if(line.indexOf("jackdbus") != -1)
         {
             QRegularExpressionMatchIterator it = QRegularExpression("(\\d+)").globalMatch(line.split(':').first());
@@ -403,15 +361,13 @@ const QString DevicesModel::currentMaster() const
             if(!it.hasNext()) return QString();
             int device = it.next().captured(1).toInt();
             snd_ctl_t *handle;
-            int card, err, dev, idx;
+            int card;
             snd_ctl_card_info_t *info;
             snd_pcm_info_t *pcminfo;
             snd_ctl_card_info_alloca(&info);
             snd_pcm_info_alloca(&pcminfo);
             
             card = -1;
-            
-            //qDebug() << "Jack master is " << cardnum << "," << device;
             
             QString ret;
             if (snd_card_next(&card) >= 0 && card >= 0) 
@@ -434,13 +390,11 @@ const QString DevicesModel::currentMaster() const
                     if(card < cardnum)
                         goto master_next_card;
                     ret = QString::fromLatin1(snd_ctl_card_info_get_name(info))+","+QString::number(device);
-                    //qDebug() << "Jack master is " << ret;
                     snd_ctl_close(handle);
                     return ret;
                     master_next_card:
                     if (snd_card_next(&card) < 0) 
                     {
-                        //error("snd_card_next");
                         break;
                     }
                 }
@@ -468,7 +422,7 @@ void DevicesModel::add(const QString &id, const QString &conf)
     endInsertRows();
 }
 
-bool DevicesModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent)
+bool DevicesModel::dropMimeData(const QMimeData */*data*/, Qt::DropAction /*action*/, int row, int /*column*/, const QModelIndex &/*parent*/)
 {
     movedindex = row;
     
@@ -492,7 +446,7 @@ Qt::ItemFlags DevicesModel::flags(const QModelIndex &index) const
         return Qt::ItemIsSelectable | Qt::ItemIsDropEnabled | defaultFlags;
 }
 
-bool DevicesModel::removeRows(int row, int count, const QModelIndex& parent)
+bool DevicesModel::removeRows(int row, int /*count*/, const QModelIndex& /*parent*/)
 {
     beginInsertRows(QModelIndex(), mDevicesList.count(), mDevicesList.count());
     
@@ -520,22 +474,4 @@ bool DevicesModel::removeRows(int row, int count, const QModelIndex& parent)
     endInsertRows();
     
     return true;
-}
-
-void DevicesModel::dump(const QString &id)
-{
-    Q_UNUSED(id)
-    
-    /*ThemeMetadata metadata(path);
-     * 
-     *    qDebug() << "Theme Path:" << metadata.path();
-     *    qDebug() << "Name: " << metadata.name();
-     *    qDebug() << "Version: " << metadata.version();
-     *    qDebug() << "Author: " << metadata.author();
-     *    qDebug() << "Description: " << metadata.description();
-     *    qDebug() << "Email: " << metadata.email();
-     *    qDebug() << "License: " << metadata.license();
-     *    qDebug() << "Copyright: " << metadata.copyright();
-     *    qDebug() << "Screenshot: " << metadata.screenshot();*/
-    //TODO
 }

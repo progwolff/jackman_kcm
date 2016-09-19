@@ -37,7 +37,7 @@
 #include <kdeclarative.h>
 
 K_PLUGIN_FACTORY(JackKcmFactory, registerPlugin<JackKcm>();)
-K_EXPORT_PLUGIN(JackKcmFactory("kcm-jackman"))
+//K_EXPORT_PLUGIN(JackKcmFactory("kcm-jackman"))
 
 JackKcm::JackKcm(QWidget *parent, const QVariantList &args) :
     KCModule(parent, args)
@@ -46,7 +46,7 @@ JackKcm::JackKcm(QWidget *parent, const QVariantList &args) :
 
     aboutData->setShortDescription(i18n("Configure audio devices used with Jack"));
     aboutData->setLicense(KAboutLicense::GPL_V2);
-    aboutData->setHomepage("https://TODO");//TODO
+    aboutData->setHomepage("https://github.com/progwolff/jackman_kcm");
 
     aboutData->addAuthor("Julian Wolff", i18n("Author"), "wolff@julianwolff.de");
 
@@ -69,7 +69,6 @@ void JackKcm::load()
 void JackKcm::defaults()
 {
     mDevicesConfig->reset();
-    //TODO: set defaults?
 }
 
 void JackKcm::save()

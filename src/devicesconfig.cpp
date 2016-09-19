@@ -59,8 +59,6 @@
 DevicesConfig::DevicesConfig(QWidget *parent) :
 QWidget(parent)
 {
-    //mConfig = KSharedConfig::openConfig(JACK_CONFIG_FILE, KConfig::SimpleConfig);
-    
     configUi = new Ui::DevicesConfig();
     configUi->setupUi(this);
     configUi->configArea->setVisible(false);
@@ -75,12 +73,8 @@ QWidget(parent)
     DevicesModel *model = new DevicesModel(this);
     configUi->devicesListView->setModel(model);
     
-    //TODO
     QStyledItemDelegate *delegate = new QStyledItemDelegate(configUi->devicesListView);
     configUi->devicesListView->setItemDelegate(delegate);
-    //DevicesDelegate *delegate = new DevicesDelegate(configUi->devicesListView);
-    //delegate->setPreviewSize(QSize(128,128));
-    //configUi->devicesListView->setItemDelegate(delegate);
     
     configUi->devicesListView->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(configUi->devicesListView, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(showContextMenu(QPoint)));
@@ -100,7 +94,6 @@ QWidget(parent)
     
     reset();
     
-    //prepareInitialDevice();
 }
 
 void DevicesConfig::prefer()
@@ -112,7 +105,7 @@ void DevicesConfig::prefer()
     configUi->devicesListView->model()->removeRows(index.row(), 1, index.parent());
     index = configUi->devicesListView->model()->index(index.row()-1, index.column());
     configUi->devicesListView->setCurrentIndex(index);
-    //deviceSelected(index);
+    
     configUi->deferButton->setEnabled(false);
     configUi->preferButton->setEnabled(false);
     if(index.row() < configUi->devicesListView->model()->rowCount()-1)
@@ -130,7 +123,7 @@ void DevicesConfig::defer()
     configUi->devicesListView->model()->removeRows(index.row(), 1, index.parent());
     index = configUi->devicesListView->model()->index(index.row()+1, index.column());
     configUi->devicesListView->setCurrentIndex(index);
-    //deviceSelected(index);
+    
     configUi->deferButton->setEnabled(false);
     configUi->preferButton->setEnabled(false);
     if(index.row() < configUi->devicesListView->model()->rowCount()-1)
@@ -188,7 +181,6 @@ void DevicesConfig::measureLatency()
     
     qDebug() << "measure latency";
     
-    //connect(exec, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(switchMasterFinished(int, QProcess::ExitStatus)));
     QProgressDialog *msgBox = new QProgressDialog(i18n("Use a patch cable to connect the first output of your audio device to the first input.\nThis message box will close automatically when a connection is established.\n\nNote that in rare cases connecting inputs and outputs of the same card might damage an audio device. Ask your device manufacturer if you're unsure."), i18n("Cancel"), 0, 0, this);
     msgBox->setValue(0);
     msgBox->setMinimumDuration(std::numeric_limits<int>::max()); //TODO: is there a better workaround to prevent the dialog from showing up?
@@ -197,7 +189,6 @@ void DevicesConfig::measureLatency()
         disconnect(exec, &QProcess::errorOccurred, 0, 0);
         msgBox->deleteLater();
     });
-    //connect(exec, &QProcess::started, this, [this,msgBox](){msgBox->setValue(20);});
     
     connect(exec, &QProcess::errorOccurred, this, [msgBox,exec](){
         msgBox->reset();
@@ -320,7 +311,6 @@ void DevicesConfig::showContextMenu(const QPoint &pos)
 {
     
     QModelIndex index = configUi->devicesListView->indexAt(pos);
-    DevicesModel* model = (DevicesModel*)configUi->devicesListView->model();
     if(index.isValid())
     {
         deviceSelected(index);
@@ -440,16 +430,10 @@ void DevicesConfig::switchMasterFinished(int exitcode, QProcess::ExitStatus stat
     
     QObject::sender()->deleteLater();
     
-    /*else
-     *    {
-     *	QMessageBox msgBox;
-     *	msgBox.setText(i18n("Jack started"));
-     *	msgBox.exec();
-}*/
     reset();
 }
 
-void DevicesConfig::testFinished(int exitcode, QProcess::ExitStatus status)
+void DevicesConfig::testFinished(int /*exitcode*/, QProcess::ExitStatus /*status*/)
 {
     mTestPlaying = false;
     QObject::sender()->deleteLater();
@@ -484,7 +468,6 @@ void DevicesConfig::reset()
     
     if(configUi->devicesListView->currentIndex().isValid())
         deviceSelected(configUi->devicesListView->currentIndex());
-    //configUi->quickWidget->setVisible(false);
     
     emit changed(false);
     mChanged = false;
@@ -538,24 +521,6 @@ QVariantMap DevicesConfig::save()
     
     return args;
 }
-
-/*QString DevicesConfig::devicesConfigPath() const
- * {
- *    return mDevicesConfigPath;
- * }*/
-
-/*void DevicesConfig::prepareInitialDevice()
- * {
- *    const QString initialDevice = mConfig->group("Device").readEntry("Current");
- *    
- *    const QModelIndex index = findDeviceIndex(initialDevice);
- *    if (!index.isValid()) {
- *        //KMessageBox::error(this, i18n("Could not find any themes. \nPlease install SDDM themes."), i18n("No SDDM themes"));
- *        return;
- *    }
- *    configUi->themesListView->setCurrentIndex(index);
- *    themeSelected(index);
- * }*/
 
 QModelIndex DevicesConfig::findDeviceIndex(const QString &id) const
 {
@@ -614,7 +579,8 @@ void DevicesConfig::deviceSelected(const QModelIndex &index)
     if(!mTestPlaying && !index.data(DevicesModel::DeviceRole).toString().isEmpty())
         configUi->testButton->setEnabled(true);
     
-    if(!mChangingMaster)
+    configUi->latencyButton->setEnabled(false);
+    if(!mChangingMaster && !index.data(DevicesModel::DeviceRole).toString().isEmpty())
         configUi->latencyButton->setEnabled(true);
     
     if(!configUi->quickWidget->source().isValid())
@@ -622,7 +588,7 @@ void DevicesConfig::deviceSelected(const QModelIndex &index)
         const QString mainQmlPath = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "jackman_kcm/main.qml");
         configUi->quickWidget->setSource(QUrl::fromLocalFile(mainQmlPath));
     }
-    //configUi->quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
+    
     configUi->quickWidget->setEnabled(true);
     connect(configUi->quickWidget->rootObject(), SIGNAL(configChanged(bool)), this, SLOT(widgetChanged(bool)));
     
@@ -678,7 +644,6 @@ void DevicesConfig::updateConfigurationUi(float ms)
     }
     
     configUi->configArea->setVisible(true);
-    //configUi->quickWidget->updateGeometry();
     
 }
 
@@ -698,10 +663,3 @@ void DevicesConfig::widgetChanged(bool change)
     updateConfigurationUi(ms);
     
 }
-
-void DevicesConfig::dump()
-{
-    //dump jack conf
-    //TODO
-}
-

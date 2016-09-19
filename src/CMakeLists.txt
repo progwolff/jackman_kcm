@@ -53,4 +53,6 @@ install(TARGETS kcm-jackman DESTINATION ${CMAKE_INSTALL_PLUGINDIR})
 install(FILES qml/main.qml DESTINATION ${CMAKE_INSTALL_DATADIR}/jackman_kcm)
 install(FILES qml/TooltipArea.qml DESTINATION ${CMAKE_INSTALL_DATADIR}/jackman_kcm)
 
+kcoreaddons_desktop_to_json(kcm-jackman ../kcm-jackman.desktop)
+
 

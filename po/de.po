@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 22:48+0200\n"
+"POT-Creation-Date: 2016-09-19 16:43+0200\n"
 "PO-Revision-Date: 2016-08-22 14:46+0200\n"
 "Last-Translator: Julian Wolff <wolff@julianwolff.de>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QToolButton, testButton)
 #. i18n: file: src/ui/devicesconfig.ui:41
 #. i18n: ectx: property (text), widget (QToolButton, testButton)
-#: build/src/ui_devicesconfig.h:292
+#: build/src/ui_devicesconfig.h:372
 #: dist/arch/src/build/src/ui_devicesconfig.h:145 rc.cpp:15 rc.cpp:24
 msgid "Test"
 msgstr "Test"
@@ -37,10 +37,10 @@ msgstr "Test"
 #. i18n: ectx: property (text), widget (QToolButton, preferButton)
 #. i18n: file: src/ui/devicesconfig.ui:58
 #. i18n: ectx: property (text), widget (QToolButton, preferButton)
-#: build/src/ui_devicesconfig.h:293
+#: build/src/ui_devicesconfig.h:373
 #: dist/arch/src/build/src/ui_devicesconfig.h:143
-#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:166 rc.cpp:9 rc.cpp:27
-#: src/devicesconfig.cpp:174
+#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:158 rc.cpp:9 rc.cpp:27
+#: src/devicesconfig.cpp:334
 msgid "Prefer"
 msgstr "Vorziehen"
 
@@ -52,10 +52,10 @@ msgstr "Vorziehen"
 #. i18n: ectx: property (text), widget (QToolButton, deferButton)
 #. i18n: file: src/ui/devicesconfig.ui:74
 #. i18n: ectx: property (text), widget (QToolButton, deferButton)
-#: build/src/ui_devicesconfig.h:294
+#: build/src/ui_devicesconfig.h:374
 #: dist/arch/src/build/src/ui_devicesconfig.h:144
-#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:170 rc.cpp:12 rc.cpp:30
-#: src/devicesconfig.cpp:178
+#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:162 rc.cpp:12 rc.cpp:30
+#: src/devicesconfig.cpp:338
 msgid "Defer"
 msgstr "Zurückstellen"
 
@@ -75,7 +75,7 @@ msgstr "Zurückstellen"
 #. i18n: ectx: property (toolTip), widget (QListView, devicesListView)
 #. i18n: file: src/ui/devicesconfig.ui:112
 #. i18n: ectx: property (whatsThis), widget (QListView, devicesListView)
-#: build/src/ui_devicesconfig.h:296 build/src/ui_devicesconfig.h:299
+#: build/src/ui_devicesconfig.h:376 build/src/ui_devicesconfig.h:379
 #: dist/arch/src/build/src/ui_devicesconfig.h:138
 #: dist/arch/src/build/src/ui_devicesconfig.h:141 rc.cpp:3 rc.cpp:6 rc.cpp:33
 #: rc.cpp:36
@@ -86,154 +86,193 @@ msgstr ""
 
 #. i18n: file: src/ui/devicesconfig.ui:230
 #. i18n: ectx: property (toolTip), widget (QGroupBox, latencyBox)
-#: build/src/ui_devicesconfig.h:304 rc.cpp:42
+#: build/src/ui_devicesconfig.h:384 rc.cpp:42
 msgid ""
 "Latency is the period of delay between when an audio signal enters and when "
 "it emerges from a system."
 msgstr ""
-"Latenz ist die Verzögerung zwischen dem Eintreffen eines Audiosignals in ein System und der Wieder- oder Weitergabe dieses Signals."
+"Latenz ist die Verzögerung zwischen dem Eintreffen eines Audiosignals in ein "
+"System und der Wieder- oder Weitergabe dieses Signals."
 
 #
 #. i18n: file: src/ui/devicesconfig.ui:233
 #. i18n: ectx: property (title), widget (QGroupBox, latencyBox)
-#: build/src/ui_devicesconfig.h:306 rc.cpp:45
+#: build/src/ui_devicesconfig.h:386 rc.cpp:45
 msgid "Latency"
 msgstr "Latenz"
 
 #. i18n: file: src/ui/devicesconfig.ui:239
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_4)
-#: build/src/ui_devicesconfig.h:308 rc.cpp:48
+#: build/src/ui_devicesconfig.h:388 rc.cpp:48
 msgid ""
 "<html><head/><body><p>The analog to digital converters of your audio device "
 "add additional latency, typically less than 1ms.</p></body></html>"
-msgstr "<html><head/><body><p>Die Analog-Digital-Wandler des Audiogeräts erzeugen eine zusätzliche Latenz, welche meist weniger als 1ms beträgt.</p></body></html>"
+msgstr ""
+"<html><head/><body><p>Die Analog-Digital-Wandler des Audiogeräts erzeugen "
+"eine zusätzliche Latenz, welche meist weniger als 1ms beträgt.</p></body></"
+"html>"
 
 #. i18n: file: src/ui/devicesconfig.ui:242
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
-#: build/src/ui_devicesconfig.h:310 rc.cpp:51
+#: build/src/ui_devicesconfig.h:390 rc.cpp:51
 msgid "ADC"
 msgstr "ADC"
 
-#. i18n: file: src/ui/devicesconfig.ui:253
+#. i18n: file: src/ui/devicesconfig.ui:271
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_8)
-#: build/src/ui_devicesconfig.h:311 rc.cpp:54
+#: build/src/ui_devicesconfig.h:392 rc.cpp:54
 msgid "Computer"
 msgstr "Computer"
 
-#. i18n: file: src/ui/devicesconfig.ui:259
+#. i18n: file: src/ui/devicesconfig.ui:277
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_3)
-#. i18n: file: src/ui/devicesconfig.ui:314
+#. i18n: file: src/ui/devicesconfig.ui:376
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_2)
-#. i18n: file: src/ui/devicesconfig.ui:259
+#. i18n: file: src/ui/devicesconfig.ui:277
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_3)
-#. i18n: file: src/ui/devicesconfig.ui:314
+#. i18n: file: src/ui/devicesconfig.ui:376
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_2)
-#: build/src/ui_devicesconfig.h:313 build/src/ui_devicesconfig.h:330 rc.cpp:57
-#: rc.cpp:84
+#: build/src/ui_devicesconfig.h:394 build/src/ui_devicesconfig.h:414 rc.cpp:57
+#: rc.cpp:93
 msgid ""
 "<html><head/><body><p>The Bus system (i.e. the system that transfers data "
 "between your audio device and the computer, e.g. USB or PCI) adds additional "
 "latency, typically about 1ms.</p></body></html>"
 msgstr ""
-"<html><head/><body><p>Das Bussystem (das System, welches Daten zwischen dem Audiogerät und dem Computer überträgt, z.B. USB, PCI) erzeugt eine zusätzliche Latenz, welche meist etwa 1ms beträgt.</p></body></html>"
+"<html><head/><body><p>Das Bussystem (das System, welches Daten zwischen dem "
+"Audiogerät und dem Computer überträgt, z.B. USB, PCI) erzeugt eine "
+"zusätzliche Latenz, welche meist etwa 1ms beträgt.</p></body></html>"
 
-#. i18n: file: src/ui/devicesconfig.ui:262
+#. i18n: file: src/ui/devicesconfig.ui:280
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
-#. i18n: file: src/ui/devicesconfig.ui:317
+#. i18n: file: src/ui/devicesconfig.ui:379
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
-#. i18n: file: src/ui/devicesconfig.ui:262
+#. i18n: file: src/ui/devicesconfig.ui:280
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
-#. i18n: file: src/ui/devicesconfig.ui:317
+#. i18n: file: src/ui/devicesconfig.ui:379
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
-#: build/src/ui_devicesconfig.h:315 build/src/ui_devicesconfig.h:332 rc.cpp:60
-#: rc.cpp:87
+#: build/src/ui_devicesconfig.h:396 build/src/ui_devicesconfig.h:416 rc.cpp:60
+#: rc.cpp:96
 msgid "Bus"
 msgstr "Bus"
 
-#. i18n: file: src/ui/devicesconfig.ui:270
+#. i18n: file: src/ui/devicesconfig.ui:293
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#. i18n: file: src/ui/devicesconfig.ui:320
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#. i18n: file: src/ui/devicesconfig.ui:366
+#. i18n: ectx: property (text), widget (QLabel, label)
+#. i18n: file: src/ui/devicesconfig.ui:390
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#. i18n: file: src/ui/devicesconfig.ui:293
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#. i18n: file: src/ui/devicesconfig.ui:320
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#. i18n: file: src/ui/devicesconfig.ui:366
+#. i18n: ectx: property (text), widget (QLabel, label)
+#. i18n: file: src/ui/devicesconfig.ui:390
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: build/src/ui_devicesconfig.h:397 build/src/ui_devicesconfig.h:402
+#: build/src/ui_devicesconfig.h:412 build/src/ui_devicesconfig.h:417 rc.cpp:63
+#: rc.cpp:72 rc.cpp:90 rc.cpp:99
+msgid "→"
+msgstr ""
+
+#. i18n: file: src/ui/devicesconfig.ui:306
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_6)
-#. i18n: file: src/ui/devicesconfig.ui:303
+#. i18n: file: src/ui/devicesconfig.ui:352
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
-#. i18n: file: src/ui/devicesconfig.ui:270
+#. i18n: file: src/ui/devicesconfig.ui:306
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_6)
-#. i18n: file: src/ui/devicesconfig.ui:303
+#. i18n: file: src/ui/devicesconfig.ui:352
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
-#: build/src/ui_devicesconfig.h:317 build/src/ui_devicesconfig.h:326 rc.cpp:63
-#: rc.cpp:78
+#: build/src/ui_devicesconfig.h:399 build/src/ui_devicesconfig.h:409 rc.cpp:66
+#: rc.cpp:84
 msgid ""
 "The operating system and your card's device driver need additional time to "
 "transmit audio data between the bus system and JACK. This latency is "
 "typically about 1ms."
 msgstr ""
-"Das Betriebssystem und der Treiber des Audiogeräts benötigen zusätzliche Zeit, um Audiodaten zwischen dem Bussystem und JACK zu übertragen. Diese Latenz beträgt meist etwa 1ms"
+"Das Betriebssystem und der Treiber des Audiogeräts benötigen zusätzliche "
+"Zeit, um Audiodaten zwischen dem Bussystem und JACK zu übertragen. Diese "
+"Latenz beträgt meist etwa 1ms"
 
-#. i18n: file: src/ui/devicesconfig.ui:273
+#. i18n: file: src/ui/devicesconfig.ui:309
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
-#. i18n: file: src/ui/devicesconfig.ui:306
+#. i18n: file: src/ui/devicesconfig.ui:355
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#. i18n: file: src/ui/devicesconfig.ui:273
+#. i18n: file: src/ui/devicesconfig.ui:309
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
-#. i18n: file: src/ui/devicesconfig.ui:306
+#. i18n: file: src/ui/devicesconfig.ui:355
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#: build/src/ui_devicesconfig.h:319 build/src/ui_devicesconfig.h:328 rc.cpp:66
-#: rc.cpp:81
+#: build/src/ui_devicesconfig.h:401 build/src/ui_devicesconfig.h:411 rc.cpp:69
+#: rc.cpp:87
 msgid "Operating System"
 msgstr "Betriebssystem"
 
-#. i18n: file: src/ui/devicesconfig.ui:281
+#. i18n: file: src/ui/devicesconfig.ui:330
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_7)
-#: build/src/ui_devicesconfig.h:321 rc.cpp:69
+#: build/src/ui_devicesconfig.h:404 rc.cpp:75
 msgid ""
 "<html><head/><body><p>The latency of JACK can be set with the above "
 "parameters. If you encounter xruns (clicks, pops, crackles), try to set a "
 "higher buffer size or a lower sample rate to increase this latency and give "
 "our audio applications more time to process the audio data.</p></body></html>"
 msgstr ""
-"<html></head/><body><p>Die Latenz von JACK lässt sich mittels der obigen Parameter anpassen. Falls xruns auftreten (Klicken, Ploppen, Kratzen), versuchen Sie einen größeren Puffer oder eine niedrigere Abtastrate. So wird die Latenz erhöht und Audioanwendungen mehr Zeit zum Verarbeiten der Audiodaten gegeben."
+"<html></head/><body><p>Die Latenz von JACK lässt sich mittels der obigen "
+"Parameter anpassen. Falls xruns auftreten (Klicken, Ploppen, Kratzen), "
+"versuchen Sie einen größeren Puffer oder eine niedrigere Abtastrate. So wird "
+"die Latenz erhöht und Audioanwendungen mehr Zeit zum Verarbeiten der "
+"Audiodaten gegeben."
 
-#. i18n: file: src/ui/devicesconfig.ui:284
+#. i18n: file: src/ui/devicesconfig.ui:333
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_7)
-#: build/src/ui_devicesconfig.h:323 rc.cpp:72
+#: build/src/ui_devicesconfig.h:406 rc.cpp:78
 msgid "JACK"
 msgstr "JACK"
 
-#. i18n: file: src/ui/devicesconfig.ui:293
+#. i18n: file: src/ui/devicesconfig.ui:342
 #. i18n: ectx: property (text), widget (QLabel, latency_jack)
-#: build/src/ui_devicesconfig.h:324 rc.cpp:75
+#: build/src/ui_devicesconfig.h:407 rc.cpp:81
 msgid "?ms"
 msgstr ""
 
-#. i18n: file: src/ui/devicesconfig.ui:328
+#. i18n: file: src/ui/devicesconfig.ui:403
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox)
-#: build/src/ui_devicesconfig.h:334 rc.cpp:90
+#: build/src/ui_devicesconfig.h:419 rc.cpp:102
 msgid ""
 "<html><head/><body><p>The digital to analog converters of your audio device "
 "add additional latency, typically less than 1ms.</p></body></html>"
-msgstr "<html><head/><body><p>Die Digital-Analog-Wandler des Audiogeräts erzeugen eine zusätzliche Latenz, welche meist weniger als 1ms beträgt.</p></body></html>"
+msgstr ""
+"<html><head/><body><p>Die Digital-Analog-Wandler des Audiogeräts erzeugen "
+"eine zusätzliche Latenz, welche meist weniger als 1ms beträgt.</p></body></"
+"html>"
 
-#. i18n: file: src/ui/devicesconfig.ui:331
+#. i18n: file: src/ui/devicesconfig.ui:406
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: build/src/ui_devicesconfig.h:336 rc.cpp:93
+#: build/src/ui_devicesconfig.h:421 rc.cpp:105
 msgid "DAC"
 msgstr "DAC"
 
-#. i18n: file: src/ui/devicesconfig.ui:339
+#. i18n: file: src/ui/devicesconfig.ui:432
 #. i18n: ectx: property (toolTip), widget (QLabel, latency_roundtrip)
-#: build/src/ui_devicesconfig.h:338 rc.cpp:96
+#: build/src/ui_devicesconfig.h:424 rc.cpp:108
 msgid "Round Trip Latency is the sum of all of the components shown above."
 msgstr "Round-Trip-Latenz ist die Summe der obigen Komponenten."
 
-#. i18n: file: src/ui/devicesconfig.ui:342
+#. i18n: file: src/ui/devicesconfig.ui:435
 #. i18n: ectx: property (text), widget (QLabel, latency_roundtrip)
-#: build/src/ui_devicesconfig.h:340 rc.cpp:99
-msgid "Round Trip Latency: ?"
+#: build/src/ui_devicesconfig.h:426 rc.cpp:111
+#
+msgid "Round trip latency: ?"
 msgstr "Round-Trip-Latenz: ?"
 
-#. i18n: file: src/ui/devicesconfig.ui:361
-#. i18n: ectx: property (text), widget (QPushButton, pushButton)
-#: build/src/ui_devicesconfig.h:344 rc.cpp:102
 #
-msgid "Measure Round Trip Latency"
+#. i18n: file: src/ui/devicesconfig.ui:454
+#. i18n: ectx: property (text), widget (QPushButton, latencyButton)
+#: build/src/ui_devicesconfig.h:430 rc.cpp:114
+#
+msgid "Measure round trip latency"
 msgstr "Round-Trip-Latenz messen"
 
 #: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:74
@@ -242,8 +281,8 @@ msgid "Configure Device"
 msgstr "Gerät konfigurieren"
 
 #: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:87
-#: dist/arch/src/jack_kcm/src/qml/main.qml:87 src/devicesconfig.cpp:488
-#: src/devicesconfig.cpp:493 src/qml/main.qml:67
+#: dist/arch/src/jack_kcm/src/qml/main.qml:87 src/devicesconfig.cpp:637
+#: src/devicesconfig.cpp:642 src/qml/main.qml:67
 msgid "Sample Rate"
 msgstr "Abtastrate"
 
@@ -255,8 +294,8 @@ msgid ""
 msgstr "Abtastrate. Voreinstellung ist 48000Hz"
 
 #: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:129
-#: dist/arch/src/jack_kcm/src/qml/main.qml:129 src/devicesconfig.cpp:488
-#: src/devicesconfig.cpp:493 src/qml/main.qml:110
+#: dist/arch/src/jack_kcm/src/qml/main.qml:129 src/devicesconfig.cpp:637
+#: src/devicesconfig.cpp:642 src/qml/main.qml:110
 msgid "Buffer Size"
 msgstr "Puffergröße"
 
@@ -280,8 +319,8 @@ msgstr ""
 "dividiert durch die Abtastrate."
 
 #: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:173
-#: dist/arch/src/jack_kcm/src/qml/main.qml:173 src/devicesconfig.cpp:488
-#: src/devicesconfig.cpp:493 src/qml/main.qml:155
+#: dist/arch/src/jack_kcm/src/qml/main.qml:173 src/devicesconfig.cpp:637
+#: src/devicesconfig.cpp:642 src/qml/main.qml:155
 msgid "Periods/Buffer"
 msgstr "Perioden/Puffer"
 
@@ -510,19 +549,19 @@ msgstr ""
 msgid "transparent"
 msgstr ""
 
-#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:158 src/devicesconfig.cpp:166
+#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:150 src/devicesconfig.cpp:326
 msgid "Switch Master"
 msgstr "Master wechseln"
 
-#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:177 src/devicesconfig.cpp:185
+#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:169 src/devicesconfig.cpp:345
 msgid "Remove entry"
 msgstr "Eintrag löschen"
 
-#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:252 src/devicesconfig.cpp:260
+#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:244 src/devicesconfig.cpp:423
 msgid "Jack failed to start"
 msgstr "JACK konnte nicht gestartet werden."
 
-#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:253 src/devicesconfig.cpp:261
+#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:245 src/devicesconfig.cpp:424
 msgid ""
 "This audio device is not compatible with the current settings. Please try "
 "other values."
@@ -530,11 +569,13 @@ msgstr ""
 "Dieses Gerät ist mit den gewählten Einstellungen nicht kompatibel. Bitte "
 "versuchen Sie es mit anderen Einstellungen erneut."
 
-#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:400 src/devicesconfig.cpp:407
+#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:392 src/devicesconfig.cpp:159
+#: src/devicesconfig.cpp:547
 msgid "The configuration of the currently selected device has been modified."
 msgstr "Die Konfiguration des aktuell ausgewählten Geräts wurde geändert."
 
-#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:401 src/devicesconfig.cpp:408
+#: dist/arch/src/jack_kcm/src/devicesconfig.cpp:393 src/devicesconfig.cpp:160
+#: src/devicesconfig.cpp:548
 msgid "Do you want to save your changes?"
 msgstr "Möchten Sie die Änderungen speichern?"
 
@@ -550,7 +591,7 @@ msgstr "Konfiguration der Audiogeräte, die von Jack benutzt werden"
 msgid "Author"
 msgstr "Autor"
 
-#: dist/arch/src/jack_kcm/src/jackmankcm.cpp:115 src/jackmankcm.cpp:115
+#: dist/arch/src/jack_kcm/src/jackmankcm.cpp:114 src/jackmankcm.cpp:114
 msgid "Audio Devices"
 msgstr "Audiogeräte"
 
@@ -566,41 +607,93 @@ msgstr "Audiogeräte"
 msgid "file:///home/wolff/repos/jackman_kcm/src/qml/main.qml"
 msgstr ""
 
-#: rc.cpp:103
+#: rc.cpp:115
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Julian Wolff"
 
-#: rc.cpp:104
+#: rc.cpp:116
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wolff@julianwolff.de"
 
-#: src/devicesconfig.cpp:474 src/devicesconfig.cpp:511
+#: src/devicesconfig.cpp:160
+msgid "You need to save before round trip latency can be measured."
+msgstr ""
+
+#: src/devicesconfig.cpp:184
+msgid ""
+"Use a patch cable to connect the first output of your audio device to the "
+"first input.\n"
+"This message box will close automatically when a connection is established.\n"
+"\n"
+"Note that in rare cases connecting inputs and outputs of the same card might "
+"damage an audio device. Ask your device manufacturer if you're unsure."
+msgstr ""
+"Verbinden Sie den ersten Ausgang mit dem ersten Eingang des Audiogeräts.\nDiese Meldung schließt sich automatisch, wenn die Verbindung hergestellt ist.\n\n"
+"Beachten Sie, dass ein Kurzschließen der Ein- und Ausgänge eines Audiogeräts dieses in seltenen Fällen beschädigen kann. Fragen Sie im Zweifel vorher den Hersteller des Geräts."
+
+#: src/devicesconfig.cpp:184
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: src/devicesconfig.cpp:197 src/devicesconfig.cpp:286
+#: src/devicesconfig.cpp:299
+msgid "Could not measure latency"
+msgstr "Konnte Latenz nicht messen"
+
+#: src/devicesconfig.cpp:223 src/devicesconfig.cpp:631
+#, c-format
+msgctxt "ms for Milliseconds"
+msgid "Round trip latency: %1ms"
+msgstr "Round-Trip-Latenz: %1ms"
+
+#: src/devicesconfig.cpp:240
+msgid ""
+"Disconnect speakers from the first output of your audio device.\n"
+"Loud noise will be send to this output."
+msgstr "Entfernen Sie alle Lautsprecher vom ersten Ausgang des Audiogeräts.\nLaute Signale werden an diesen Ausgang angelegt."
+
+#: src/devicesconfig.cpp:241
+msgid ""
+"\n"
+"\n"
+"Note that this device is not the current master device.\n"
+"The round trip latency of this device would be much lower if it was set as "
+"master device."
+msgstr "\n\n"
+"Beachten Sie, dass dieses Gerät nicht das Mastergerät ist.\nDie Round-Trip-Latenz wäre wesentlich niedriger, wenn es das Mastergerät wäre."
+
+#: src/devicesconfig.cpp:244
+#
+msgid "Do you want to continue?"
+msgstr "Möchten Sie fortfahren?"
+
+#
+#: src/devicesconfig.cpp:260
+#
+msgid "Measuring round trip latency"
+msgstr "Messe die Round-Trip-Latenz"
+
+#: src/devicesconfig.cpp:619 src/devicesconfig.cpp:659
 #, c-format
 msgctxt "ms for Milliseconds"
 msgid "%1ms"
 msgstr "%1ms"
 
-#: src/devicesconfig.cpp:488
+#: src/devicesconfig.cpp:637
 msgid ""
 "This value should be a whole number if this device is a USB device.\n"
 "If this device is not a USB device, ignore this warning.\n"
 "\n"
-msgstr "Dieser Wert sollte ganzzahlig sein, falls dies ein USB-Gerät ist.\n"
+msgstr ""
+"Dieser Wert sollte ganzzahlig sein, falls dies ein USB-Gerät ist.\n"
 "Ignorieren Sie diese Warnung, falls es sich nicht um ein USB-Gerät handelt.\n"
 "\n"
 
-#: src/devicesconfig.cpp:488 src/devicesconfig.cpp:493
+#: src/devicesconfig.cpp:637 src/devicesconfig.cpp:642
 msgid "This value is \"%1\" multiplied with \"%2\" and divided by \"%3\"."
-msgstr "Dieser Wert berechnet sich aus \"%1\" multipliziert mit \"%2\" und dividiert durch \"%3\"."
+msgstr ""
+"Dieser Wert berechnet sich aus \"%1\" multipliziert mit \"%2\" und dividiert "
+"durch \"%3\"."
 
-#~ msgid "?"
-#~ msgstr "?"
-
-#
-#~ msgid "Software"
-#~ msgstr "Software"
-
-#~ msgid "BUS"
-#~ msgstr "BUS"
