@@ -48,6 +48,7 @@
 #include <QGraphicsScene>
 
 #include <cfloat>
+#include <limits>
 #include <cmath>
 
 
@@ -151,32 +152,33 @@ void DevicesConfig::remove()
 
 void DevicesConfig::measureLatency()
 {
-    
-    if(mChanged)
+    if(mChangingMaster)
     {
-        emit saveconfig();
         QTimer::singleShot(200, this, SLOT(measureLatency()));
         return;
     }
     
     QModelIndex index = configUi->devicesListView->currentIndex();
     
-    QMessageBox warnBox;
-    warnBox.setText(
-        i18n("Disconnect speakers from the first output of your audio device.\nLoud noise will be send to this output.")
-        +((index.data(DevicesModel::MasterRole).toBool())?"":i18n("\n\nNote that this device is not the current master device.\nThe round trip latency of this device would be much lower if it was set as master device."))
-    );
-    warnBox.setIcon(QMessageBox::Warning);
-    warnBox.setInformativeText(i18n("Do you want to continue?"));
-    warnBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-    warnBox.setDefaultButton(QMessageBox::Save);
-    int ret = warnBox.exec();
-    switch (ret) {
-        case QMessageBox::No:
-            return;
-        default:
-            break;
+    if(mChanged && index == mChangedIndex)
+    {
+        QMessageBox msgBox;
+        msgBox.setText(i18n("The configuration of the currently selected device has been modified."));
+        msgBox.setInformativeText(i18n("You need to save before round trip latency can be measured.")+"\n"+i18n("Do you want to save your changes?"));
+        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Cancel);
+        msgBox.setDefaultButton(QMessageBox::Save);
+        int ret = msgBox.exec();
+        switch (ret) {
+            case QMessageBox::Save:
+                emit saveconfig();
+                QTimer::singleShot(200, this, SLOT(measureLatency()));
+                break;
+            default:
+                break;
+        }
+        return;
     }
+    
     
     QStringList env = QProcess::systemEnvironment();
     
@@ -188,9 +190,8 @@ void DevicesConfig::measureLatency()
     
     //connect(exec, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(switchMasterFinished(int, QProcess::ExitStatus)));
     QProgressDialog *msgBox = new QProgressDialog(i18n("Use a patch cable to connect the first output of your audio device to the first input.\nThis message box will close automatically when a connection is established.\n\nNote that in rare cases connecting inputs and outputs of the same card might damage an audio device. Ask your device manufacturer if you're unsure."), i18n("Cancel"), 0, 0, this);
-    msgBox->setWindowModality(Qt::WindowModal);
-    msgBox->setWindowTitle(i18n("Measuring round trip latency"));
-    msgBox->show();
+    msgBox->setValue(0);
+    msgBox->setMinimumDuration(std::numeric_limits<int>::max()); //TODO: is there a better workaround to prevent the dialog from showing up?
     connect(msgBox, &QProgressDialog::canceled, exec, [exec,msgBox](){
         exec->terminate();
         disconnect(exec, &QProcess::errorOccurred, 0, 0);
@@ -242,6 +243,33 @@ void DevicesConfig::measureLatency()
     connect(exec, SIGNAL(finished(int,QProcess::ExitStatus)), exec, SLOT(deleteLater()));
     
     exec->start("jack_iodelay");
+    
+    QMessageBox warnBox;
+    warnBox.setText(
+        i18n("Disconnect speakers from the first output of your audio device.\nLoud noise will be send to this output.")
+        +((index.data(DevicesModel::MasterRole).toBool())?"":i18n("\n\nNote that this device is not the current master device.\nThe round trip latency of this device would be much lower if it was set as master device."))
+    );
+    warnBox.setIcon(QMessageBox::Warning);
+    warnBox.setInformativeText(i18n("Do you want to continue?"));
+    warnBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    warnBox.setDefaultButton(QMessageBox::Save);
+    int ret = warnBox.exec();
+    switch (ret) {
+        case QMessageBox::No:
+            exec->terminate();
+            disconnect(exec, &QProcess::errorOccurred, 0, 0);
+            msgBox->reset();
+            msgBox->deleteLater();
+            return;
+        default:
+            break;
+    }
+    
+    msgBox->setWindowModality(Qt::WindowModal);
+    msgBox->setWindowTitle(i18n("Measuring round trip latency"));
+    msgBox->setMinimumDuration(0);
+    msgBox->show();
+    
     exec->waitForStarted();
     
     QTimer::singleShot(200, this, [this,env,msgBox](){
