@@ -620,7 +620,12 @@ void DevicesConfig::deviceSelected(const QModelIndex &index)
     
     mMs = 0;
     
-    float ms = 1000 * index.data(DevicesModel::NPeriodsRole).toFloat() * index.data(DevicesModel::BufferSizeRole).toFloat() / index.data(DevicesModel::SampleRateRole).toFloat();
+    float ms = 1000 * index.data(DevicesModel::BufferSizeRole).toFloat() / index.data(DevicesModel::SampleRateRole).toFloat();
+    configUi->latency_jack_capture->setText(i18nc("ms for Milliseconds", "%1ms", 
+                                          QString::number(ms, 'f', 2)
+    ));
+    
+    ms = 1000 * index.data(DevicesModel::NPeriodsRole).toFloat() * index.data(DevicesModel::BufferSizeRole).toFloat() / index.data(DevicesModel::SampleRateRole).toFloat();
     configUi->latency_jack->setText(i18nc("ms for Milliseconds", "%1ms", 
                                           QString::number(ms, 'f', 2)
     ));
@@ -639,13 +644,14 @@ void DevicesConfig::updateConfigurationUi(float ms)
     if(fabs(ms - round(ms)) >= FLT_EPSILON)
     {
         configUi->latency_jack->setStyleSheet("QLabel { color : red; }");
-        configUi->latency_jack->setToolTip(i18n("This value should be a whole number if this device is a USB device.\nIf this device is not a USB device, ignore this warning.\n\n")+i18n("This value is \"%1\" multiplied with \"%2\" and divided by \"%3\".", i18n("Periods/Buffer"), i18n("Buffer Size"), i18n("Sample Rate")));
+        configUi->latency_jack->setToolTip(i18n("Playback latency.")+"\n\n"+i18n("This value should be a whole number if this device is a USB device.\nIf this device is not a USB device, ignore this warning.\n\n")+i18n("This value is \"%1\" multiplied with \"%2\" and divided by \"%3\".", i18n("Periods/Buffer"), i18n("Buffer Size"), i18n("Sample Rate")));
     }
     else
     {
         configUi->latency_jack->setStyleSheet("QLabel {  }");
-        configUi->latency_jack->setToolTip(i18n("This value is \"%1\" multiplied with \"%2\" and divided by \"%3\".", i18n("Periods/Buffer"), i18n("Buffer Size"), i18n("Sample Rate")));
+        configUi->latency_jack->setToolTip(i18n("Playback latency.")+" "+i18n("This value is \"%1\" multiplied with \"%2\" and divided by \"%3\".", i18n("Periods/Buffer"), i18n("Buffer Size"), i18n("Sample Rate")));
     }
+    configUi->latency_jack_capture->setToolTip(i18n("Capture latency. This value is \"%1\" divided by \"%2\".", i18n("Buffer Size"), i18n("Sample Rate")));
     
     configUi->configArea->setVisible(true);
     
@@ -660,7 +666,11 @@ void DevicesConfig::widgetChanged(bool change)
         mChangedIndex = configUi->devicesListView->currentIndex();
     }
     
-    float ms = 1000 * PROP("nperiods").toFloat() * PROP("buffersize").toFloat() / PROP("samplerate").toFloat();
+    float ms = 1000 * PROP("buffersize").toFloat() / PROP("samplerate").toFloat();
+    configUi->latency_jack_capture->setText(i18nc("ms for Milliseconds", "%1ms", 
+                                          QString::number(ms, 'f', 2)
+    ));
+    ms = 1000 * PROP("nperiods").toFloat() * PROP("buffersize").toFloat() / PROP("samplerate").toFloat();
     configUi->latency_jack->setText(i18nc("ms for Milliseconds", "%1ms", 
                                           QString::number(ms, 'f', 2)
     ));
