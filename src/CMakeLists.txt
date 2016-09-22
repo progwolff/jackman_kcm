@@ -8,6 +8,7 @@ configure_file(config.h.in config.h IMMEDIATE @ONLY)
 set(JACK_KCM_SRCS
     jackmankcm.cpp
     devicesconfig.cpp
+    behaviorconfig.cpp
     devicesmodel.cpp
     devicesmetadata.cpp
     #devicesdelegate.cpp
@@ -16,7 +17,9 @@ set(JACK_KCM_SRCS
 set(JACK_KCM_UI
     ui/devicesconfig.ui
     qml/main.qml
-    qml/TooltipArea.qml)
+    qml/TooltipArea.qml
+    ui/behaviorconfig.ui
+    qml/behavior.qml)
 
 ki18n_wrap_ui(JACK_KCM_SRCS ${JACK_KCM_UI})
 add_library(kcm-jackman MODULE ${JACK_KCM_SRCS})
@@ -52,6 +55,7 @@ install(TARGETS kcm-jackman DESTINATION ${CMAKE_INSTALL_PLUGINDIR})
 
 install(FILES qml/main.qml DESTINATION ${CMAKE_INSTALL_DATADIR}/jackman_kcm)
 install(FILES qml/TooltipArea.qml DESTINATION ${CMAKE_INSTALL_DATADIR}/jackman_kcm)
+install(FILES qml/behavior.qml DESTINATION ${CMAKE_INSTALL_DATADIR}/jackman_kcm)
 
 kcoreaddons_desktop_to_json(kcm-jackman ../kcm-jackman.desktop)
 

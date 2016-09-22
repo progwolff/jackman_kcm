@@ -14,36 +14,42 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef JACKKCM_H
-#define JACKKCM_H
+#ifndef BEHAVIORCONFIG_H
+#define BEHAVIORCONFIG_H
 
-#include <KCModule>
+#include <QWidget>
 
-#include <KConfig>
-#include <KConfigGroup>
-#include <QFile>
+#include <klocalizedstring.h>
 
-class DevicesConfig;
-class BehaviorConfig;
+#include <KSharedConfig>
 
-class JackKcm : public KCModule
+namespace Ui {
+    class BehaviorConfig;
+}
+
+class BehaviorConfig : public QWidget
 {
     Q_OBJECT
 public:
-    explicit JackKcm(QWidget *parent, const QVariantList &args);
-    ~JackKcm();
+    explicit BehaviorConfig(QWidget *parent = 0);
+    ~BehaviorConfig();
+    
+    QVariantMap save();
 
-public slots:
-    void save();
-    void load();
-    void defaults();
+    void reset();
+
+signals:
+    void changed(bool);
+    void saveconfig();
+    
+private slots:
+    void updateConfigurationUi();
     
 private:
-    void prepareUi();
+    Ui::BehaviorConfig *configUi;
+    KSharedConfigPtr mConfig;
     
-private:
-    DevicesConfig *mDevicesConfig;
-    BehaviorConfig *mBehaviorConfig;
+    bool mHotplug,mAttachOthers;
 };
 
-#endif // JACKKCM_H
+#endif // BEHAVIORCONFIG_H

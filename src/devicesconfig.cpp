@@ -483,6 +483,10 @@ QVariantMap DevicesConfig::save()
     
     const DevicesModel* model = (DevicesModel*)configUi->devicesListView->model();
     QModelIndex index = configUi->devicesListView->currentIndex();
+    
+    if(!index.isValid())
+        return args;
+    
     for(int i=0; i<model->rowCount(index); ++i)
     {
         index = model->index(i, index.column(), index.parent());
