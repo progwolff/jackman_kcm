@@ -219,6 +219,7 @@ void DevicesConfig::measureLatency()
             {
                 configUi->quickWidget->rootObject()->setProperty("inputlatency", match.captured(2).toInt());
                 configUi->quickWidget->rootObject()->setProperty("outputlatency", match.captured(2).toInt());
+                emit saveconfig();
             }
             configUi->latency_roundtrip->setText(i18nc("ms for Milliseconds", "Round trip latency: %1ms", QString::number(match.captured(1).toFloat(), 'f', 2)));
             
