@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-22 17:27+0200\n"
+"POT-Creation-Date: 2016-09-23 18:17+0200\n"
 "PO-Revision-Date: 2016-08-22 14:46+0200\n"
 "Last-Translator: Julian Wolff <wolff@julianwolff.de>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgstr "Test"
 #: build/src/ui_devicesconfig.h:385
 #: dist/arch/src/build/src/ui_devicesconfig.h:373
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:334 rc.cpp:6 rc.cpp:102
-#: src/devicesconfig.cpp:334
+#: src/devicesconfig.cpp:409
 msgid "Prefer"
 msgstr "Vorziehen"
 
@@ -55,7 +55,7 @@ msgstr "Vorziehen"
 #: build/src/ui_devicesconfig.h:386
 #: dist/arch/src/build/src/ui_devicesconfig.h:374
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:338 rc.cpp:9 rc.cpp:105
-#: src/devicesconfig.cpp:338
+#: src/devicesconfig.cpp:413
 msgid "Defer"
 msgstr "Zurückstellen"
 
@@ -445,8 +445,8 @@ msgstr "Gerät konfigurieren"
 #: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:67
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:638
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:643
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:67 src/devicesconfig.cpp:647
-#: src/devicesconfig.cpp:652 src/devicesconfig.cpp:654 src/qml/main.qml:67
+#: dist/arch/src/jackman_kcm/src/qml/main.qml:67 src/devicesconfig.cpp:725
+#: src/devicesconfig.cpp:730 src/devicesconfig.cpp:732 src/qml/main.qml:67
 msgid "Sample Rate"
 msgstr "Abtastrate"
 
@@ -460,8 +460,8 @@ msgstr "Abtastrate. Voreinstellung ist 48000Hz"
 #: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:110
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:638
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:643
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:110 src/devicesconfig.cpp:647
-#: src/devicesconfig.cpp:652 src/devicesconfig.cpp:654 src/qml/main.qml:110
+#: dist/arch/src/jackman_kcm/src/qml/main.qml:110 src/devicesconfig.cpp:725
+#: src/devicesconfig.cpp:730 src/devicesconfig.cpp:732 src/qml/main.qml:110
 msgid "Buffer Size"
 msgstr "Puffergröße"
 
@@ -487,8 +487,8 @@ msgstr ""
 #: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:155
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:638
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:643
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:155 src/devicesconfig.cpp:647
-#: src/devicesconfig.cpp:652 src/qml/main.qml:155
+#: dist/arch/src/jackman_kcm/src/qml/main.qml:155 src/devicesconfig.cpp:725
+#: src/devicesconfig.cpp:730 src/qml/main.qml:155
 msgid "Periods/Buffer"
 msgstr "Perioden/Puffer"
 
@@ -713,7 +713,7 @@ msgstr ""
 
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:159
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:547
-#: src/devicesconfig.cpp:159 src/devicesconfig.cpp:551
+#: src/devicesconfig.cpp:159 src/devicesconfig.cpp:629
 msgid "The configuration of the currently selected device has been modified."
 msgstr "Die Konfiguration des aktuell ausgewählten Geräts wurde geändert."
 
@@ -725,12 +725,12 @@ msgstr ""
 
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:160
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:548
-#: src/devicesconfig.cpp:160 src/devicesconfig.cpp:552
+#: src/devicesconfig.cpp:160 src/devicesconfig.cpp:630
 msgid "Do you want to save your changes?"
 msgstr "Möchten Sie die Änderungen speichern?"
 
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:184
-#: src/devicesconfig.cpp:184
+#: src/devicesconfig.cpp:187
 msgid ""
 "Use a patch cable to connect the first output of your audio device to the "
 "first input.\n"
@@ -748,28 +748,28 @@ msgstr ""
 "Hersteller des Geräts."
 
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:184
-#: src/devicesconfig.cpp:184
+#: src/devicesconfig.cpp:187
 msgid "Cancel"
 msgstr "Abbrechen"
 
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:197
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:286
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:299
-#: src/devicesconfig.cpp:197 src/devicesconfig.cpp:286
-#: src/devicesconfig.cpp:299
+#: src/devicesconfig.cpp:200 src/devicesconfig.cpp:290
+#: src/devicesconfig.cpp:303
 msgid "Could not measure latency"
 msgstr "Konnte Latenz nicht messen"
 
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:223
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:632
-#: src/devicesconfig.cpp:223 src/devicesconfig.cpp:641
+#: src/devicesconfig.cpp:227 src/devicesconfig.cpp:719
 #, c-format
 msgctxt "ms for Milliseconds"
 msgid "Round trip latency: %1ms"
 msgstr "Round-Trip-Latenz: %1ms"
 
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:240
-#: src/devicesconfig.cpp:240
+#: src/devicesconfig.cpp:244
 msgid ""
 "Disconnect speakers from the first output of your audio device.\n"
 "Loud noise will be send to this output."
@@ -778,7 +778,7 @@ msgstr ""
 "Laute Signale werden an diesen Ausgang angelegt."
 
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:241
-#: src/devicesconfig.cpp:241
+#: src/devicesconfig.cpp:245
 msgid ""
 "\n"
 "\n"
@@ -794,34 +794,34 @@ msgstr ""
 
 #
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:244
-#: src/devicesconfig.cpp:244
+#: src/devicesconfig.cpp:248
 msgid "Do you want to continue?"
 msgstr "Möchten Sie fortfahren?"
 
 #
 #
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:260
-#: src/devicesconfig.cpp:260
+#: src/devicesconfig.cpp:264
 msgid "Measuring round trip latency"
 msgstr "Messe die Round-Trip-Latenz"
 
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:326
-#: src/devicesconfig.cpp:326
+#: src/devicesconfig.cpp:392
 msgid "Switch Master"
 msgstr "Master wechseln"
 
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:345
-#: src/devicesconfig.cpp:345
+#: src/devicesconfig.cpp:420
 msgid "Remove entry"
 msgstr "Eintrag löschen"
 
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:423
-#: src/devicesconfig.cpp:423
+#: src/devicesconfig.cpp:501
 msgid "Jack failed to start"
 msgstr "JACK konnte nicht gestartet werden."
 
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:424
-#: src/devicesconfig.cpp:424
+#: src/devicesconfig.cpp:502
 msgid ""
 "This audio device is not compatible with the current settings. Please try "
 "other values."
@@ -831,15 +831,15 @@ msgstr ""
 
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:620
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:660
-#: src/devicesconfig.cpp:624 src/devicesconfig.cpp:629
-#: src/devicesconfig.cpp:670 src/devicesconfig.cpp:674
+#: src/devicesconfig.cpp:702 src/devicesconfig.cpp:707
+#: src/devicesconfig.cpp:748 src/devicesconfig.cpp:752
 #, c-format
 msgctxt "ms for Milliseconds"
 msgid "%1ms"
 msgstr "%1ms"
 
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:638
-#: src/devicesconfig.cpp:647
+#: src/devicesconfig.cpp:725
 msgid ""
 "This value should be a whole number if this device is a USB device.\n"
 "If this device is not a USB device, ignore this warning.\n"
@@ -851,7 +851,7 @@ msgstr ""
 
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:638
 #: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:643
-#: src/devicesconfig.cpp:647 src/devicesconfig.cpp:652
+#: src/devicesconfig.cpp:725 src/devicesconfig.cpp:730
 msgid "This value is \"%1\" multiplied with \"%2\" and divided by \"%3\"."
 msgstr ""
 "Dieser Wert berechnet sich aus \"%1\" multipliziert mit \"%2\" und dividiert "
@@ -901,11 +901,19 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wolff@julianwolff.de"
 
-#: src/devicesconfig.cpp:647 src/devicesconfig.cpp:652
+#: src/devicesconfig.cpp:402
+msgid "Detach device"
+msgstr "Gerät aushängen"
+
+#: src/devicesconfig.cpp:404
+msgid "Attach device"
+msgstr "Gerät einbinden"
+
+#: src/devicesconfig.cpp:725 src/devicesconfig.cpp:730
 msgid "Playback latency."
 msgstr "Ausgangslatenz."
 
-#: src/devicesconfig.cpp:654
+#: src/devicesconfig.cpp:732
 msgid "Capture latency. This value is \"%1\" divided by \"%2\"."
 msgstr ""
 "Eingangslatenz. Dieser Wert berechnet sich aus \"%1\" dividiert durch \"%2\"."
