@@ -343,7 +343,7 @@ void DevicesConfig::addAlsaInOut()
         
         connect(exec, SIGNAL(finished(int,QProcess::ExitStatus)), exec, SLOT(deleteLater()));
         
-        exec->startDetached("alsa_in",QStringList() << args);
+        exec->startDetached("alsa_in", QStringList() << args);
     }
 }
 
@@ -366,7 +366,7 @@ void DevicesConfig::removeAlsaInOut()
         
         connect(exec, SIGNAL(finished(int,QProcess::ExitStatus)), exec, SLOT(deleteLater()));
         
-        exec->start("kill",QStringList() << args);
+        exec->start("kill", QStringList() << args);
     }
 }
 
