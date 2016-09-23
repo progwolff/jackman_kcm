@@ -308,6 +308,68 @@ void DevicesConfig::measureLatency()
     });
 }
 
+void DevicesConfig::addAlsaInOut()
+{
+    //alsa_out -d hw:0,8 -j HDA Intel PCH,8 - out
+    QModelIndex index = configUi->devicesListView->currentIndex();
+    if(index.isValid())
+    {
+        QStringList env = QProcess::systemEnvironment();
+        QStringList args;
+        
+        QProcess *exec;
+        
+        args << "-d" << "hw:"+index.data(DevicesModel::NumberRole).toString()+","+index.data(DevicesModel::IdRole).toString().split(',').last();
+        args << "-j" << index.data(DevicesModel::IdRole).toString()+" - out";
+        
+        exec = new QProcess(this);
+        exec->setEnvironment(env);
+        
+        qDebug() << "switch master";
+        
+        connect(exec, SIGNAL(finished(int,QProcess::ExitStatus)), exec, SLOT(deleteLater()));
+        
+        exec->startDetached("alsa_out",QStringList() << args);
+        
+        args.clear();
+        
+        args << "-d" << "hw:"+index.data(DevicesModel::NumberRole).toString()+","+index.data(DevicesModel::IdRole).toString().split(',').last();
+        args << "-j" << index.data(DevicesModel::IdRole).toString()+" - in";
+        
+        exec = new QProcess(this);
+        exec->setEnvironment(env);
+        
+        qDebug() << "switch master";
+        
+        connect(exec, SIGNAL(finished(int,QProcess::ExitStatus)), exec, SLOT(deleteLater()));
+        
+        exec->startDetached("alsa_in",QStringList() << args);
+    }
+}
+
+void DevicesConfig::removeAlsaInOut()
+{
+    QModelIndex index = configUi->devicesListView->currentIndex();
+    if(index.isValid())
+    {
+        QStringList env = QProcess::systemEnvironment();
+        QStringList args;
+        
+        QProcess *exec;
+        
+        args << "-9" << index.data(DevicesModel::AttachedRole).toStringList();
+        
+        exec = new QProcess(this);
+        exec->setEnvironment(env);
+        
+        qDebug() << "switch master";
+        
+        connect(exec, SIGNAL(finished(int,QProcess::ExitStatus)), exec, SLOT(deleteLater()));
+        
+        exec->start("kill",QStringList() << args);
+    }
+}
+
 void DevicesConfig::showContextMenu(const QPoint &pos)
 {
     
@@ -328,7 +390,16 @@ void DevicesConfig::showContextMenu(const QPoint &pos)
         if(index.data(DevicesModel::DeviceRole).toString().isEmpty())
             action->setEnabled(false);
         if(index.data(DevicesModel::MasterRole).toBool() || mChangingMaster)
+        {
             action->setEnabled(false);
+        }
+        else
+        {
+            if(! index.data(DevicesModel::AttachedRole).toStringList().isEmpty())
+                action = myMenu.addAction(QIcon::fromTheme("list-remove"), i18n("Detach device"), this, SLOT(removeAlsaInOut()));
+            else if (! index.data(DevicesModel::DeviceRole).toString().isEmpty())
+                action = myMenu.addAction(QIcon::fromTheme("list-add"), i18n("Attach device"), this, SLOT(addAlsaInOut()));
+        }
         
         myMenu.addSeparator();
         
@@ -389,13 +460,16 @@ void DevicesConfig::test()
     QModelIndex index = configUi->devicesListView->currentIndex();
     if(index.isValid())
     {
+        if(index.data(DevicesModel::AttachedRole).toStringList().isEmpty())
+            addAlsaInOut();
+        
         QStringList env = QProcess::systemEnvironment();
         
         QProcess *exec;
         exec = new QProcess(this);
         exec->setEnvironment(env);
         
-        QString port = index.data(DevicesModel::IdRole).toString();
+        QString port = index.data(DevicesModel::IdRole).toString().replace(',',"\\,");
         if(index.data(DevicesModel::MasterRole).toBool())
             port = "system";
         

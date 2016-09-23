@@ -98,6 +98,8 @@ QVariant DevicesModel::data(const QModelIndex &index, int role) const
             return QVariant::fromValue<bool>(metadata.name() == m_currentMaster);
         case DevicesModel::IdRole:
             return metadata.name();
+        case DevicesModel::NumberRole:
+            return numberFromName(metadata.name());
         case DevicesModel::DeviceRole:
             return metadata.device();
         case DevicesModel::NPeriodsRole:
@@ -132,6 +134,8 @@ QVariant DevicesModel::data(const QModelIndex &index, int role) const
             return metadata.samplerate();
         case DevicesModel::ConfigRole:
             return metadata.dump();
+        case DevicesModel::AttachedRole:
+            return alsaInOut(metadata.name());
     }
     
     return QVariant();
@@ -360,49 +364,144 @@ const QString DevicesModel::currentMaster() const
             int cardnum = it.next().captured(1).toInt();
             if(!it.hasNext()) return QString();
             int device = it.next().captured(1).toInt();
-            snd_ctl_t *handle;
-            int card;
-            snd_ctl_card_info_t *info;
-            snd_pcm_info_t *pcminfo;
-            snd_ctl_card_info_alloca(&info);
-            snd_pcm_info_alloca(&pcminfo);
             
-            card = -1;
-            
-            QString ret;
-            if (snd_card_next(&card) >= 0 && card >= 0) 
+            const QString ret = nameFromNumber(cardnum, device);
+            if(!ret.isEmpty())
+                return ret;
+        }
+    }
+    
+    return QString();
+}
+
+int DevicesModel::numberFromName(const QString& cardname) const
+{
+    snd_ctl_t *handle;
+    int card, err, dev;
+    snd_ctl_card_info_t *info;
+    snd_pcm_info_t *pcminfo;
+    snd_ctl_card_info_alloca(&info);
+    snd_pcm_info_alloca(&pcminfo);
+    
+    card = -1;
+    if (snd_card_next(&card) >= 0 && card >= 0) 
+    {
+        
+        while (card >= 0) {
+            char name[32];
+            sprintf(name, "hw:%d", card);
+            if ((err = snd_ctl_open(&handle, name, 0)) < 0) 
             {
-                
-                while (card >= 0) {
-                    char name[32];
-                    sprintf(name, "hw:%d", card);
-                    if ((snd_ctl_open(&handle, name, 0)) < 0) 
-                    {
-                        qDebug() << "snd_ctl_open failed";
-                        goto master_next_card;
-                    }
-                    if ((snd_ctl_card_info(handle, info)) < 0) 
-                    {
-                        qDebug() << "snd_ctl_card_info failed";
-                        snd_ctl_close(handle);
-                        goto master_next_card;
-                    }
-                    if(card < cardnum)
-                        goto master_next_card;
-                    ret = QString::fromLatin1(snd_ctl_card_info_get_name(info))+","+QString::number(device);
-                    snd_ctl_close(handle);
-                    return ret;
-                    master_next_card:
-                    if (snd_card_next(&card) < 0) 
-                    {
-                        break;
-                    }
+                goto next_card;
+            }
+            if ((err = snd_ctl_card_info(handle, info)) < 0) 
+            {
+                snd_ctl_close(handle);
+                goto next_card;
+            }
+            dev = -1;
+            while (true) 
+            {
+                snd_ctl_pcm_next_device(handle, &dev);
+                if (dev < 0)
+                    break;
+                snd_pcm_info_set_device(pcminfo, dev);
+                snd_pcm_info_set_subdevice(pcminfo, 0);
+                if ((err = snd_ctl_pcm_info(handle, pcminfo)) < 0) {
+                    continue;
                 }
+                
+                if (
+                    QString::fromLatin1(snd_ctl_card_info_get_name(info))
+                    +","+QString::number(dev)
+                
+                    ==
+                    
+                    cardname
+                )
+                    return card;
+            }
+            snd_ctl_close(handle);
+            next_card:
+            if (snd_card_next(&card) < 0) 
+            {
+                break;
+            }
+        }
+    }
+    return -1;
+}
+
+const QString DevicesModel::nameFromNumber(int cardnum, int device) const
+{
+    snd_ctl_t *handle;
+    int card;
+    snd_ctl_card_info_t *info;
+    snd_pcm_info_t *pcminfo;
+    snd_ctl_card_info_alloca(&info);
+    snd_pcm_info_alloca(&pcminfo);
+    
+    card = -1;
+    
+    QString ret;
+    if (snd_card_next(&card) >= 0 && card >= 0) 
+    {
+        
+        while (card >= 0) {
+            char name[32];
+            sprintf(name, "hw:%d", card);
+            if ((snd_ctl_open(&handle, name, 0)) < 0) 
+            {
+                qDebug() << "snd_ctl_open failed";
+                goto master_next_card;
+            }
+            if ((snd_ctl_card_info(handle, info)) < 0) 
+            {
+                qDebug() << "snd_ctl_card_info failed";
+                snd_ctl_close(handle);
+                goto master_next_card;
+            }
+            if(card < cardnum)
+                goto master_next_card;
+            ret = QString::fromLatin1(snd_ctl_card_info_get_name(info))+","+QString::number(device);
+            snd_ctl_close(handle);
+            return ret;
+            master_next_card:
+            if (snd_card_next(&card) < 0) 
+            {
+                break;
             }
         }
     }
     
     return QString();
+}
+
+const QStringList DevicesModel::alsaInOut(const QString& name) const
+{
+    QStringList env;
+    env.clear();
+    QProcess *exec;
+    env << "PATH=/usr/bin:/usr/local/bin";
+    exec = new QProcess();
+    exec->setEnvironment(env);
+    exec->start("ps", QStringList() << "a" << "x");
+    
+    if(!exec->waitForFinished(3000))
+        return QStringList();
+    
+    QRegularExpressionMatchIterator it = QRegularExpression("(\\d+)(?= .*[/?].*alsa.*"+name+")").globalMatch(QString::fromLatin1(exec->readAllStandardOutput()));
+    
+    QStringList ret;
+    while(it.hasNext())
+    {
+        ret << it.next().captured(1);
+        qDebug() << ret.last();        
+    }
+        
+    exec->deleteLater();
+    return ret;
+    
 }
 
 void DevicesModel::add(const QString &id, const QString &conf)

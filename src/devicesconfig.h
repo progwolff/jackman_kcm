@@ -62,6 +62,8 @@ private slots:
     void test();
     void switchMasterFinished(int exitcode, QProcess::ExitStatus status);
     void testFinished(int, QProcess::ExitStatus);
+    void addAlsaInOut();
+    void removeAlsaInOut();
     
 private:
     Ui::DevicesConfig *configUi;

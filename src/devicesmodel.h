@@ -28,6 +28,7 @@ class DevicesModel: public QAbstractListModel
 public:
     enum Roles {
         IdRole = Qt::UserRole,
+    NumberRole,
 	DeviceRole,
         NPeriodsRole,
         HWMonRole,
@@ -45,7 +46,8 @@ public:
 	BufferSizeRole,
 	SampleRateRole,
 	MasterRole,
-	ConfigRole
+	ConfigRole,
+    AttachedRole
     };
                
     explicit DevicesModel(QObject *parent=0);
@@ -62,15 +64,18 @@ public:
     bool removeRows ( int row, int count, const QModelIndex & parent = QModelIndex() );
     bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent);
     
-    const QString deviceName(const QString& card, int device) const;
-    const QString deviceVendor(const QString& card, int device) const;
-    const QString currentMaster() const;
     
 signals:
     void changed(bool);
     
 private:
     void add(const QString &name, const QString &conf);
+    const QStringList alsaInOut(const QString& name) const;
+    const QString deviceName(const QString& card, int device) const;
+    const QString deviceVendor(const QString& card, int device) const;
+    const QString currentMaster() const;
+    const QString nameFromNumber(int cardnum, int device) const;
+    int numberFromName(const QString& name) const;
     
     QString m_currentMaster;
     
