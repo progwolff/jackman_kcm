@@ -172,6 +172,9 @@ void DevicesConfig::measureLatency()
         return;
     }
     
+    if((! index.data(DevicesModel::MasterRole).toBool()) && index.data(DevicesModel::AttachedRole).toStringList().isEmpty())
+        addAlsaInOut();
+    
     
     QStringList env = QProcess::systemEnvironment();
     
@@ -460,7 +463,7 @@ void DevicesConfig::test()
     QModelIndex index = configUi->devicesListView->currentIndex();
     if(index.isValid())
     {
-        if(index.data(DevicesModel::AttachedRole).toStringList().isEmpty())
+        if((! index.data(DevicesModel::MasterRole).toBool()) && index.data(DevicesModel::AttachedRole).toStringList().isEmpty())
             addAlsaInOut();
         
         QStringList env = QProcess::systemEnvironment();
