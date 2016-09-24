@@ -148,10 +148,10 @@
      <widget class="QWidget" name="scrollAreaWidgetContents">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>560</width>
-        <height>512</height>
+        <x>-39</x>
+        <y>-28</y>
+        <width>579</width>
+        <height>526</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -239,7 +239,14 @@
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The analog to digital converters of your audio device add additional latency, typically less than 1ms.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="styleSheet">
-                <string notr="true">QGroupBox {border:0px solid gray; background-color:palette(base); border-radius:3px;}</string>
+                <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding: 4px; padding-top:10px;}
+
+QGroupBox::title {
+    /*subcontrol-origin: margin;*/
+    subcontrol-position: top center; /* position at the top center */
+    padding: 2 13px;
+   
+}</string>
                </property>
                <property name="title">
                 <string>ADC</string>
@@ -274,7 +281,14 @@
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The digital to analog converters of your audio device add additional latency, typically less than 1ms.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="styleSheet">
-                <string notr="true">QGroupBox {border:0px solid gray; background-color:palette(base); border-radius:3px;}</string>
+                <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding: 4px; padding-top:10px;}
+
+QGroupBox::title {
+    /*subcontrol-origin: margin;*/
+    subcontrol-position: top center; /* position at the top center */
+    padding: 2 13px;
+   
+}</string>
                </property>
                <property name="title">
                 <string>DAC</string>
@@ -365,10 +379,10 @@
                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The Bus system (i.e. the system that transfers data between your audio device and the computer, e.g. USB or PCI) adds additional latency, typically about 1ms.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding-top:10px;}
+                   <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding: 4px; padding-top:10px;}
 
 QGroupBox::title {
-    subcontrol-origin: margin;
+    /*subcontrol-origin: margin;*/
     subcontrol-position: top center; /* position at the top center */
     padding: 2 13px;
    
@@ -376,6 +390,9 @@ QGroupBox::title {
                   </property>
                   <property name="title">
                    <string>Bus</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_5">
                    <item alignment="Qt::AlignHCenter">
@@ -404,7 +421,7 @@ QGroupBox::title {
                    <string>The operating system and your card's device driver need additional time to transmit audio data between the bus system and JACK. This latency is typically about 1ms.</string>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding-top:10px;}
+                   <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding: 4px; padding-top:10px;}
 
 QGroupBox::title {
     subcontrol-origin: margin;
@@ -414,7 +431,7 @@ QGroupBox::title {
 }</string>
                   </property>
                   <property name="title">
-                   <string>O&amp;perating System</string>
+                   <string>Operating System</string>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_6">
                    <item alignment="Qt::AlignHCenter">
@@ -438,10 +455,10 @@ QGroupBox::title {
                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The latency of JACK can be set with the above parameters. If you encounter xruns (clicks, pops, crackles), try to set a higher buffer size or a lower sample rate to increase this latency and give our audio applications more time to process the audio data.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding-top:10px;}
+                   <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding: 4px; padding-top:10px;}
 
 QGroupBox::title {
-    subcontrol-origin: margin;
+    /*subcontrol-origin: margin;*/
     subcontrol-position: top center; /* position at the top center */
     padding: 2 13px;
    
@@ -484,10 +501,10 @@ QGroupBox::title {
                    <string>The operating system and your card's device driver need additional time to transmit audio data between the bus system and JACK. This latency is typically about 1ms.</string>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding-top:10px;}
+                   <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding: 4px; padding-top:10px;}
 
 QGroupBox::title {
-    subcontrol-origin: margin;
+    /*subcontrol-origin: margin;*/
     subcontrol-position: top center; /* position at the top center */
     padding: 2 13px;
    
@@ -518,10 +535,10 @@ QGroupBox::title {
                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The Bus system (i.e. the system that transfers data between your audio device and the computer, e.g. USB or PCI) adds additional latency, typically about 1ms.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding-top:10px;}
+                   <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding: 4px; padding-top:10px;}
 
 QGroupBox::title {
-    subcontrol-origin: margin;
+    /*subcontrol-origin: margin;*/
     subcontrol-position: top center; /* position at the top center */
     padding: 2 13px;
    
