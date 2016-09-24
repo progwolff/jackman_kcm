@@ -503,7 +503,7 @@ const QStringList DevicesModel::alsaInOut(const QString& name) const
     if(!exec->waitForFinished(3000))
         return QStringList();
     
-    QRegularExpressionMatchIterator it = QRegularExpression("\\n(\\d+)(?= .*alsa.*"+name+")").globalMatch(QString::fromLatin1(exec->readAllStandardOutput()));
+    QRegularExpressionMatchIterator it = QRegularExpression("\\s(\\d+)(?= .*alsa.*"+name+")").globalMatch(QString::fromLatin1(exec->readAllStandardOutput()));
     
     QStringList ret;
     while(it.hasNext())

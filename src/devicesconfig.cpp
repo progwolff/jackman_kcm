@@ -328,8 +328,6 @@ void DevicesConfig::addAlsaInOut()
         exec = new QProcess(this);
         exec->setEnvironment(env);
         
-        qDebug() << "switch master";
-        
         connect(exec, SIGNAL(finished(int,QProcess::ExitStatus)), exec, SLOT(deleteLater()));
         
         exec->startDetached("alsa_out",QStringList() << args);
@@ -341,8 +339,6 @@ void DevicesConfig::addAlsaInOut()
         
         exec = new QProcess(this);
         exec->setEnvironment(env);
-        
-        qDebug() << "switch master";
         
         connect(exec, SIGNAL(finished(int,QProcess::ExitStatus)), exec, SLOT(deleteLater()));
         
@@ -368,8 +364,6 @@ void DevicesConfig::removeAlsaInOut()
         
         exec = new QProcess(this);
         exec->setEnvironment(env);
-        
-        qDebug() << "switch master";
         
         connect(exec, SIGNAL(finished(int,QProcess::ExitStatus)), exec, SLOT(deleteLater()));
         
@@ -423,7 +417,9 @@ void DevicesConfig::showContextMenu(const QPoint &pos)
             action->setEnabled(false);
         
         myMenu.addSeparator();
-        myMenu.addAction(QIcon::fromTheme("media-playback-start"), i18n("Test"), this, SLOT(test()));
+        action = myMenu.addAction(QIcon::fromTheme("media-playback-start"), i18n("Test"), this, SLOT(test()));
+        if(mTestPlaying || index.data(DevicesModel::DeviceRole).toString().isEmpty())
+            action->setEnabled(false);
         
         if(index.data(DevicesModel::DeviceRole).toString().isEmpty())
         {
