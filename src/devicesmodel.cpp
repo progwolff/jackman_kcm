@@ -79,21 +79,27 @@ QVariant DevicesModel::data(const QModelIndex &index, int role) const
             {
                 QIcon ico;
                 if(!metadata.vendor().isEmpty())
-                    ico = QIcon::fromTheme("vendor-"+metadata.vendor(),QIcon::fromTheme("audio-card"));
+                    //ico = QIcon::fromTheme("vendor-"+metadata.vendor(),QIcon::fromTheme("audio-card"));
+                    if(metadata.name() == m_currentMaster)
+                        ico = QIcon::fromTheme("audio-card");
+                    else if(!mInOutCache[index.row()])
+                        ico = QIcon::fromTheme("network-disconnect");
+                    else
+                        ico = QIcon::fromTheme("network-connect");
                 return ico;
             }
             else
             {
-                QIcon ico = QIcon::fromTheme("dialog-warning");//QVariant();
+                QIcon ico = QIcon::fromTheme("action-unavailable-symbolic");
                 return ico;
             }
         case Qt::FontRole:
-            if(metadata.name() == m_currentMaster)  
+            /*if(metadata.name() == m_currentMaster)  
             {
                 QFont font;
-                font.setBold(true);
+                //font.setBold(true);
                 return font;
-            }
+            }*/
         case DevicesModel::MasterRole:
             return QVariant::fromValue<bool>(metadata.name() == m_currentMaster);
         case DevicesModel::IdRole:
@@ -135,7 +141,9 @@ QVariant DevicesModel::data(const QModelIndex &index, int role) const
         case DevicesModel::ConfigRole:
             return metadata.dump();
         case DevicesModel::AttachedRole:
-            return alsaInOut(metadata.name());
+            const QStringList& ret = alsaInOut(metadata.name());
+            mInOutCache[index.row()] = !ret.isEmpty();
+            return ret;
     }
     
     return QVariant();
@@ -203,6 +211,11 @@ void DevicesModel::populate()
     foreach (const QString &device, devices) {
         const QString& conf = jackConfig->group("Devices").readEntry(device);
         add(device, conf);
+        mInOutCache << false;
+    }
+    
+    for (int i=0; i<mDevicesList.size(); ++i) {
+        mInOutCache[i] = !alsaInOut(mDevicesList[i].name()).isEmpty();
     }
     
     m_currentMaster = currentMaster();
@@ -500,6 +513,7 @@ const QStringList DevicesModel::alsaInOut(const QString& name) const
     }
         
     exec->deleteLater();
+    
     return ret;
     
 }

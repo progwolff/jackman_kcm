@@ -347,6 +347,10 @@ void DevicesConfig::addAlsaInOut()
         connect(exec, SIGNAL(finished(int,QProcess::ExitStatus)), exec, SLOT(deleteLater()));
         
         exec->startDetached("alsa_in", QStringList() << args);
+        
+        exec->waitForStarted();
+        
+        index.data(DevicesModel::AttachedRole);
     }
 }
 
@@ -360,7 +364,7 @@ void DevicesConfig::removeAlsaInOut()
         
         QProcess *exec;
         
-        args << "-9" << index.data(DevicesModel::AttachedRole).toStringList();
+        args << "-9" << "-w" << index.data(DevicesModel::AttachedRole).toStringList();
         
         exec = new QProcess(this);
         exec->setEnvironment(env);
@@ -370,6 +374,10 @@ void DevicesConfig::removeAlsaInOut()
         connect(exec, SIGNAL(finished(int,QProcess::ExitStatus)), exec, SLOT(deleteLater()));
         
         exec->start("kill", QStringList() << args);
+        
+        exec->waitForFinished();
+        
+        index.data(DevicesModel::AttachedRole);
     }
 }
 
@@ -399,9 +407,9 @@ void DevicesConfig::showContextMenu(const QPoint &pos)
         else
         {
             if(! index.data(DevicesModel::AttachedRole).toStringList().isEmpty())
-                action = myMenu.addAction(QIcon::fromTheme("list-remove"), i18n("Detach device"), this, SLOT(removeAlsaInOut()));
+                action = myMenu.addAction(QIcon::fromTheme("network-disconnect"), i18n("Detach device"), this, SLOT(removeAlsaInOut()));
             else if (! index.data(DevicesModel::DeviceRole).toString().isEmpty())
-                action = myMenu.addAction(QIcon::fromTheme("list-add"), i18n("Attach device"), this, SLOT(addAlsaInOut()));
+                action = myMenu.addAction(QIcon::fromTheme("network-connect"), i18n("Attach device"), this, SLOT(addAlsaInOut()));
         }
         
         myMenu.addSeparator();
@@ -413,6 +421,9 @@ void DevicesConfig::showContextMenu(const QPoint &pos)
         action = myMenu.addAction(QIcon::fromTheme("go-down"), i18n("Defer"), this, SLOT(defer()));
         if(index.row() >= configUi->devicesListView->model()->rowCount()-1)
             action->setEnabled(false);
+        
+        myMenu.addSeparator();
+        myMenu.addAction(QIcon::fromTheme("media-playback-start"), i18n("Test"), this, SLOT(test()));
         
         if(index.data(DevicesModel::DeviceRole).toString().isEmpty())
         {

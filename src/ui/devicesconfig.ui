@@ -150,8 +150,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>585</width>
-        <height>540</height>
+        <width>560</width>
+        <height>512</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -238,6 +238,9 @@
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The analog to digital converters of your audio device add additional latency, typically less than 1ms.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {border:0px solid gray; background-color:palette(base); border-radius:3px;}</string>
+               </property>
                <property name="title">
                 <string>ADC</string>
                </property>
@@ -265,156 +268,13 @@
                </layout>
               </widget>
              </item>
-             <item row="0" column="1">
-              <widget class="QGroupBox" name="groupBox_8">
-               <property name="title">
-                <string>Computer</string>
-               </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_7">
-                <item>
-                 <widget class="QGroupBox" name="groupBox_3">
-                  <property name="toolTip">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The Bus system (i.e. the system that transfers data between your audio device and the computer, e.g. USB or PCI) adds additional latency, typically about 1ms.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                  </property>
-                  <property name="title">
-                   <string>Bus</string>
-                  </property>
-                  <layout class="QHBoxLayout" name="horizontalLayout_5">
-                   <item alignment="Qt::AlignHCenter">
-                    <widget class="QLabel" name="label_2">
-                     <property name="font">
-                      <font>
-                       <pointsize>14</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>→</string>
-                     </property>
-                     <property name="textFormat">
-                      <enum>Qt::AutoText</enum>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item alignment="Qt::AlignHCenter">
-                 <widget class="QGroupBox" name="groupBox_6">
-                  <property name="toolTip">
-                   <string>The operating system and your card's device driver need additional time to transmit audio data between the bus system and JACK. This latency is typically about 1ms.</string>
-                  </property>
-                  <property name="title">
-                   <string>Operating System</string>
-                  </property>
-                  <layout class="QHBoxLayout" name="horizontalLayout_6">
-                   <item alignment="Qt::AlignHCenter">
-                    <widget class="QLabel" name="label_3">
-                     <property name="font">
-                      <font>
-                       <pointsize>14</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>→</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QGroupBox" name="groupBox_7">
-                  <property name="toolTip">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The latency of JACK can be set with the above parameters. If you encounter xruns (clicks, pops, crackles), try to set a higher buffer size or a lower sample rate to increase this latency and give our audio applications more time to process the audio data.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                  </property>
-                  <property name="title">
-                   <string>JACK</string>
-                  </property>
-                  <property name="flat">
-                   <bool>false</bool>
-                  </property>
-                  <layout class="QHBoxLayout" name="horizontalLayout_3">
-                   <item>
-                    <widget class="QLabel" name="latency_jack_capture">
-                     <property name="text">
-                      <string>?ms</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_5">
-                     <property name="text">
-                      <string>+</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="latency_jack">
-                     <property name="text">
-                      <string>?ms</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QGroupBox" name="groupBox_5">
-                  <property name="toolTip">
-                   <string>The operating system and your card's device driver need additional time to transmit audio data between the bus system and JACK. This latency is typically about 1ms.</string>
-                  </property>
-                  <property name="title">
-                   <string>Operating System</string>
-                  </property>
-                  <layout class="QHBoxLayout" name="horizontalLayout_9">
-                   <item alignment="Qt::AlignHCenter">
-                    <widget class="QLabel" name="label">
-                     <property name="font">
-                      <font>
-                       <pointsize>14</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>→</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QGroupBox" name="groupBox_2">
-                  <property name="toolTip">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The Bus system (i.e. the system that transfers data between your audio device and the computer, e.g. USB or PCI) adds additional latency, typically about 1ms.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                  </property>
-                  <property name="title">
-                   <string>Bus</string>
-                  </property>
-                  <layout class="QHBoxLayout" name="horizontalLayout_10">
-                   <item alignment="Qt::AlignHCenter">
-                    <widget class="QLabel" name="label_4">
-                     <property name="font">
-                      <font>
-                       <pointsize>14</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>→</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
              <item row="0" column="2" alignment="Qt::AlignHCenter">
               <widget class="QGroupBox" name="groupBox">
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The digital to analog converters of your audio device add additional latency, typically less than 1ms.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {border:0px solid gray; background-color:palette(base); border-radius:3px;}</string>
                </property>
                <property name="title">
                 <string>DAC</string>
@@ -483,6 +343,210 @@
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QGroupBox" name="groupBox_8">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox#groupBox_8 { 
+	background-color:palette(alternate-base);
+ } </string>
+               </property>
+               <property name="title">
+                <string>Computer</string>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_7">
+                <item>
+                 <widget class="QGroupBox" name="groupBox_3">
+                  <property name="toolTip">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The Bus system (i.e. the system that transfers data between your audio device and the computer, e.g. USB or PCI) adds additional latency, typically about 1ms.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding-top:10px;}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center; /* position at the top center */
+    padding: 2 13px;
+   
+}</string>
+                  </property>
+                  <property name="title">
+                   <string>Bus</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_5">
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QLabel" name="label_2">
+                     <property name="font">
+                      <font>
+                       <pointsize>14</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>→</string>
+                     </property>
+                     <property name="textFormat">
+                      <enum>Qt::AutoText</enum>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item alignment="Qt::AlignHCenter">
+                 <widget class="QGroupBox" name="groupBox_6">
+                  <property name="toolTip">
+                   <string>The operating system and your card's device driver need additional time to transmit audio data between the bus system and JACK. This latency is typically about 1ms.</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding-top:10px;}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center; /* position at the top center */
+    padding: 2 13px;
+   
+}</string>
+                  </property>
+                  <property name="title">
+                   <string>O&amp;perating System</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_6">
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QLabel" name="label_3">
+                     <property name="font">
+                      <font>
+                       <pointsize>14</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>→</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_7">
+                  <property name="toolTip">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The latency of JACK can be set with the above parameters. If you encounter xruns (clicks, pops, crackles), try to set a higher buffer size or a lower sample rate to increase this latency and give our audio applications more time to process the audio data.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding-top:10px;}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center; /* position at the top center */
+    padding: 2 13px;
+   
+}</string>
+                  </property>
+                  <property name="title">
+                   <string>JACK</string>
+                  </property>
+                  <property name="flat">
+                   <bool>false</bool>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_3">
+                   <item>
+                    <widget class="QLabel" name="latency_jack_capture">
+                     <property name="text">
+                      <string>?ms</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_5">
+                     <property name="text">
+                      <string>+</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="latency_jack">
+                     <property name="text">
+                      <string>?ms</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_5">
+                  <property name="toolTip">
+                   <string>The operating system and your card's device driver need additional time to transmit audio data between the bus system and JACK. This latency is typically about 1ms.</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding-top:10px;}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center; /* position at the top center */
+    padding: 2 13px;
+   
+}</string>
+                  </property>
+                  <property name="title">
+                   <string>Operating System</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_9">
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QLabel" name="label">
+                     <property name="font">
+                      <font>
+                       <pointsize>14</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>→</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_2">
+                  <property name="toolTip">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The Bus system (i.e. the system that transfers data between your audio device and the computer, e.g. USB or PCI) adds additional latency, typically about 1ms.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QGroupBox{border:0px solid gray; background-color:palette(base); border-radius:3px; padding-top:10px;}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center; /* position at the top center */
+    padding: 2 13px;
+   
+}</string>
+                  </property>
+                  <property name="title">
+                   <string>Bus</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_10">
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QLabel" name="label_4">
+                     <property name="font">
+                      <font>
+                       <pointsize>14</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>→</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
             </layout>

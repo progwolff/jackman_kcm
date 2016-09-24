@@ -81,6 +81,8 @@ private:
     
     QList<DevicesMetadata> mDevicesList;
     
+    mutable QList<bool> mInOutCache;
+    
     int movedindex;
     
     static QStringList vendorList;
