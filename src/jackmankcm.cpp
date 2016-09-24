@@ -122,7 +122,7 @@ void JackKcm::save()
     
     
     jackConfig->sync();
-    //load();
+    load();
 }
 
 void JackKcm::prepareUi()
