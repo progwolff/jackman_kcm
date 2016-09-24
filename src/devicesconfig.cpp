@@ -598,8 +598,8 @@ QVariantMap DevicesConfig::save()
     +"softmode="+(PROP("softmode").toBool()?"true":"false")+";"
     +"monitor="+(PROP("monitor").toBool()?"true":"false")+";"
     +"dither="+((PROP("dither").toInt()==DevicesMetadata::Dither::None)?"n":((PROP("dither").toInt()==DevicesMetadata::Dither::Rectangular)?"r":((PROP("dither").toInt()==DevicesMetadata::Dither::Shaped)?"s":((PROP("dither").toInt()==DevicesMetadata::Dither::Triangular)?"t":"n"))))+";"
-    +((PROP("inchannels").toInt() > 0)?("inchannels="+(PROP("inchannels").toString())+";"):QString())
-    +((PROP("outchannels").toInt() > 0)?("outchannels="+(PROP("outchannels").toString())+";"):QString())
+    +"inchannels="+(PROP("inchannels").toString())+";"
+    +"outchannels="+(PROP("outchannels").toString())+";"
     +"shorts="+(PROP("shorts").toBool()?"true":"false")+";"
     +"input-latency="+(PROP("inputlatency").toString())+";"
     +"output-latency="+(PROP("outputlatency").toString())+";"
