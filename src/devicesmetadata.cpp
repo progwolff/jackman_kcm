@@ -245,8 +245,8 @@ QString DevicesMetadata::dump() const
     +"softmode="+(softmode()?"true":"false")+";"
     +"monitor="+(monitor()?"true":"false")+";"
     +"dither="+((dither()==Dither::None)?"n":((dither()==Dither::Rectangular)?"r":((dither()==Dither::Shaped)?"s":((dither()==Dither::Triangular)?"t":"n"))))+";"
-    +((inchannels() > 0)?("inchannels="+QString::number(inchannels())+";"):QString())
-    +((outchannels() > 0)?("outchannels="+QString::number(outchannels())+";"):QString())
+    +"inchannels="+QString::number(inchannels())+";"
+    +"outchannels="+QString::number(outchannels())+";"
     +"shorts="+(shorts()?"true":"false")+";"
     +"input-latency="+QString::number(inputlatency())+";"
     +"output-latency="+QString::number(outputlatency())+";"
