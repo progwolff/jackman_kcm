@@ -84,6 +84,9 @@ QWidget(parent)
     connect(model, SIGNAL(changed(bool)), this, SIGNAL(changed(bool)));
     //connect(configUi->selectBackgroundButton, SIGNAL(imagePathChanged(QString)), SLOT(backgroundChanged(QString)));
     
+    configUi->quickWidget->setAttribute(Qt::WA_AlwaysStackOnTop);
+    configUi->quickWidget->setClearColor(Qt::transparent);
+    
     connect(configUi->preferButton, SIGNAL(clicked()), SLOT(prefer()));
     connect(configUi->deferButton, SIGNAL(clicked()), SLOT(defer()));
     connect(configUi->testButton, SIGNAL(clicked()), SLOT(test()));

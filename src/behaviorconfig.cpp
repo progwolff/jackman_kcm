@@ -69,6 +69,9 @@ QWidget(parent)
     //binds things like kconfig and icons
     kdeclarative.setupBindings();
     
+    configUi->quickWidget->setAttribute(Qt::WA_AlwaysStackOnTop);
+    configUi->quickWidget->setClearColor(Qt::transparent);
+    
     mHotplug = true;
     mAttachOthers = true;
     

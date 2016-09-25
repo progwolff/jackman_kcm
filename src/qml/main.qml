@@ -328,7 +328,7 @@ GroupBox
             //width: parent.width/4
             text: i18n("Input Latency")
             TooltipArea {
-                text: i18n("Extra input latency (frames).\nThis value might be used by audio software to compensate lantency e.g.\nduring recording.")
+                text: i18n("Extra input latency (frames).\nNo actual latency will be added regardless of the value in this field.\nThis value might rather be used by audio software to compensate lantency, e.g. during recording.\nMeasure the round trip latency of your device with the current settings to get optimal values.")
             }
         }
         SpinBox {
@@ -378,7 +378,7 @@ GroupBox
             //width: parent.width/4
             text: i18n("Output Latency")
             TooltipArea {
-                text: i18n("Extra output latency (frames).\nThis value might be used by audio software to compensate lantency e.g.\nduring recording.")
+                text: i18n("Extra output latency (frames).\nNo actual latency will be added regardless of the value in this field.\nThis value might rather be used by audio software to compensate lantency, e.g. during recording.\nMeasure the round trip latency of your device with the current settings to get optimal values.")
             }
         }
         SpinBox {
