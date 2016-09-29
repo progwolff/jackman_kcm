@@ -679,6 +679,7 @@ void DevicesConfig::deviceSelected(const QModelIndex &index)
     {
         const QString mainQmlPath = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "jackman_kcm/main.qml");
         configUi->quickWidget->setSource(QUrl::fromLocalFile(mainQmlPath));
+        configUi->quickWidget->updateGeometry();
     }
     
     configUi->quickWidget->setEnabled(true);

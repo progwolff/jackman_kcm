@@ -148,10 +148,10 @@
      <widget class="QWidget" name="scrollAreaWidgetContents">
       <property name="geometry">
        <rect>
-        <x>-39</x>
-        <y>-28</y>
-        <width>579</width>
-        <height>526</height>
+        <x>0</x>
+        <y>0</y>
+        <width>567</width>
+        <height>492</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -200,18 +200,13 @@
              <bool>true</bool>
             </property>
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+             <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
             <property name="resizeMode">
              <enum>QQuickWidget::SizeRootObjectToView</enum>
-            </property>
-            <property name="source">
-             <url>
-              <string>file:///home/wolff/repos/jackman_kcm/src/qml/main.qml</string>
-             </url>
             </property>
             <property name="background" stdset="0">
              <string/>

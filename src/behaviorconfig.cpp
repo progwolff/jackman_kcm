@@ -125,6 +125,7 @@ void BehaviorConfig::updateConfigurationUi()
     {
         const QString mainQmlPath = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "jackman_kcm/behavior.qml");
         configUi->quickWidget->setSource(QUrl::fromLocalFile(mainQmlPath));
+        configUi->quickWidget->updateGeometry();
     }
     
     configUi->quickWidget->setEnabled(true);
