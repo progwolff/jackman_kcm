@@ -17,6 +17,7 @@ arch:
     - qt5-tools
     - xdg-utils
     - python
+    - python2-dbus
     - kdelibs
     - plasma-framework
   script:
