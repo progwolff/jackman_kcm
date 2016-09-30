@@ -488,22 +488,29 @@ void DevicesConfig::test()
             port = "system";
         
         QString soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/KDE-Sys-Log-In.ogg");
-        qDebug() << "soundfile: " + soundfile;
-        if(soundfile.isEmpty())
+        if(!soundfile.isEmpty())
+        {
+            args << "-ao" << "jack:port="+port << "-volume" << "80" << soundfile;
+        }
+        else
         {
             soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/freedesktop/stereo/service-login.oga");
-            qDebug() << "soundfile: " + soundfile;
         }
-        if(soundfile.isEmpty())
+        if(!soundfile.isEmpty())
         {
-            soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/alsa/Front_Center.wav");
-            args << "-af" << "extrastereo=0";
-            qDebug() << "soundfile: " + soundfile;
+            args << "-ao" << "jack:port="+port << "-volume" << "80" << soundfile;
+        }
+        else
+        {
+            soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/alsa/Front_Left.wav");
+            args << "-ao" << "jack:port="+port+".playback_2" << "-volume" << "80" << soundfile;
+            soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/alsa/Front_Right.wav");
+            args << "-ao" << "jack:port="+port+".playback_1" << soundfile;
         }
         
         connect(exec, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(testFinished(int, QProcess::ExitStatus)));
         
-        exec->start("mplayer", args << "-ao" << "jack:port="+port << "-volume" << "80" << soundfile);
+        exec->start("mplayer", args);
         qDebug() << "mplayer" << exec->arguments().join(' ');
         
         mTestPlaying = true;
