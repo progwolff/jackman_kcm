@@ -470,56 +470,68 @@ void DevicesConfig::switchMaster(QModelIndex index)
 
 void DevicesConfig::test()
 {
-    QModelIndex index = configUi->devicesListView->currentIndex();
-    if(index.isValid())
+    static QProcess *exec = nullptr;
+    
+    if(!mTestPlaying)
     {
-        if((! index.data(DevicesModel::MasterRole).toBool()) && index.data(DevicesModel::AttachedRole).toStringList().isEmpty())
-            addAlsaInOut();
-        
-        QStringList env = QProcess::systemEnvironment();
-        QStringList args;
-        
-        QProcess *exec;
-        exec = new QProcess(this);
-        exec->setEnvironment(env);
-        
-        QString port = index.data(DevicesModel::IdRole).toString().replace(',',"\\,");
-        if(index.data(DevicesModel::MasterRole).toBool())
-            port = "system";
-        
-        QString soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/KDE-Sys-Log-In.ogg");
-        if(!soundfile.isEmpty())
+        QModelIndex index = configUi->devicesListView->currentIndex();
+        if(index.isValid())
         {
-            args << "-ao" << "jack:port="+port << "-volume" << "80" << soundfile;
-        }
-        else
-        {
-            soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/freedesktop/stereo/service-login.oga");
+            if((! index.data(DevicesModel::MasterRole).toBool()) && index.data(DevicesModel::AttachedRole).toStringList().isEmpty())
+                addAlsaInOut();
+            
+            QStringList env = QProcess::systemEnvironment();
+            QStringList args;
+            
+            exec = new QProcess(this);
+            exec->setEnvironment(env);
+            
+            QString port = index.data(DevicesModel::IdRole).toString().replace(',',"\\,");
+            if(index.data(DevicesModel::MasterRole).toBool())
+                port = "system";
+            
+            QString soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/KDE-Sys-Log-In.ogg");
             if(!soundfile.isEmpty())
             {
                 args << "-ao" << "jack:port="+port << "-volume" << "80" << soundfile;
             }
             else
             {
-                soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/alsa/Front_Left.wav");
-                args << "-ao" << "jack:port="+port+".playback_2" << "-volume" << "80" << soundfile;
-                soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/alsa/Front_Right.wav");
-                args << "-ao" << "jack:port="+port+".playback_1" << soundfile;
+                soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/freedesktop/stereo/service-login.oga");
+                if(!soundfile.isEmpty())
+                {
+                    args << "-ao" << "jack:port="+port << "-volume" << "80" << soundfile;
+                }
+                else
+                {
+                    soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/alsa/Front_Left.wav");
+                    args << "-ao" << "jack:port="+port+".playback_2" << "-volume" << "80" << soundfile;
+                    soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/alsa/Front_Right.wav");
+                    args << "-ao" << "jack:port="+port+".playback_1" << soundfile;
+                }
             }
+            
+            connect(exec, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(testFinished(int, QProcess::ExitStatus)));
+            
+            exec->start("mplayer", args);
+            qDebug() << "mplayer" << exec->arguments().join(' ');
+            
+            mTestPlaying = true;
+            configUi->testButton->setChecked(true);
+            
         }
-        
-        connect(exec, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(testFinished(int, QProcess::ExitStatus)));
-        
-        exec->start("mplayer", args);
-        qDebug() << "mplayer" << exec->arguments().join(' ');
-        
-        mTestPlaying = true;
-        configUi->testButton->setEnabled(false);
-        
+        else
+        {
+            qDebug() << "can't test card with invalid index";
+        }
     }
     else
     {
-        qDebug() << "can't test card with invalid index";
+        if(exec)
+        {
+            exec->terminate();
+            exec = nullptr;
+        }
     }
 }
 
@@ -548,7 +560,7 @@ void DevicesConfig::testFinished(int /*exitcode*/, QProcess::ExitStatus /*status
     
     QModelIndex index = configUi->devicesListView->currentIndex();
     if(!index.data(DevicesModel::DeviceRole).toString().isEmpty())
-        configUi->testButton->setEnabled(true);
+        configUi->testButton->setChecked(false);
 }
 
 
