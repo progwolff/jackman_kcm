@@ -477,6 +477,7 @@ void DevicesConfig::test()
             addAlsaInOut();
         
         QStringList env = QProcess::systemEnvironment();
+        QStringList args;
         
         QProcess *exec;
         exec = new QProcess(this);
@@ -487,10 +488,22 @@ void DevicesConfig::test()
             port = "system";
         
         QString soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/KDE-Sys-Log-In.ogg");
+        qDebug() << "soundfile: " + soundfile;
+        if(soundfile.isEmpty())
+        {
+            soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/freedesktop/stereo/service-login.oga");
+            qDebug() << "soundfile: " + soundfile;
+        }
+        if(soundfile.isEmpty())
+        {
+            soundfile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sounds/alsa/Front_Center.wav");
+            args << "-af" << "extrastereo=0";
+            qDebug() << "soundfile: " + soundfile;
+        }
         
         connect(exec, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(testFinished(int, QProcess::ExitStatus)));
         
-        exec->start("mplayer", QStringList() << "-ao" << "jack:port="+port << "-volume" << "80" << soundfile);
+        exec->start("mplayer", args << "-ao" << "jack:port="+port << "-volume" << "80" << soundfile);
         qDebug() << "mplayer" << exec->arguments().join(' ');
         
         mTestPlaying = true;
