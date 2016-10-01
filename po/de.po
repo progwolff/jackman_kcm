@@ -300,7 +300,7 @@ msgid ""
 "Select the input and output ports of your audio device that you want to use "
 "for measuring round trip latency.\n"
 msgstr ""
-"Wählen Sie jeweils denjenigen Eingang und Ausgang Ihres Audiogeräts, welchen Sie zum Messen der Round-Trip-Latenz verwenden möchten."
+"Wählen Sie jeweils denjenigen Eingang und Ausgang Ihres Audiogeräts, welchen Sie zum Messen der Round-Trip-Latenz verwenden möchten.\n"
 
 #: src/devicesconfig.cpp:259
 #
