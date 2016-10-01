@@ -687,6 +687,7 @@ void DevicesConfig::deviceSelected(const QModelIndex &index)
         msgBox.setText(i18n("The configuration of the currently selected device has been modified."));
         msgBox.setInformativeText(i18n("Do you want to save your changes?"));
         msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        msgBox.setIcon(QMessageBox::Information);
         msgBox.setDefaultButton(QMessageBox::Save);
         int ret = msgBox.exec();
         switch (ret) {
