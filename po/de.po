@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-25 12:50+0200\n"
+"POT-Creation-Date: 2016-10-01 16:04+0200\n"
 "PO-Revision-Date: 2016-08-22 14:46+0200\n"
 "Last-Translator: Julian Wolff <wolff@julianwolff.de>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -16,85 +16,42 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 16bit\n"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:41
-#. i18n: ectx: property (text), widget (QToolButton, testButton)
 #. i18n: file: src/ui/devicesconfig.ui:41
 #. i18n: ectx: property (text), widget (QToolButton, testButton)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:41
-#. i18n: ectx: property (text), widget (QToolButton, testButton)
-#. i18n: file: src/ui/devicesconfig.ui:41
-#. i18n: ectx: property (text), widget (QToolButton, testButton)
-#: build/src/ui_devicesconfig.h:445
-#: dist/arch/src/build/src/ui_devicesconfig.h:372 rc.cpp:3 rc.cpp:99
-#: src/devicesconfig.cpp:423
+#: build/src/ui_devicesconfig.h:446 rc.cpp:3 src/devicesconfig.cpp:438
 msgid "Test"
 msgstr "Test"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:58
+#. i18n: file: src/ui/devicesconfig.ui:64
 #. i18n: ectx: property (text), widget (QToolButton, preferButton)
-#. i18n: file: src/ui/devicesconfig.ui:58
-#. i18n: ectx: property (text), widget (QToolButton, preferButton)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:58
-#. i18n: ectx: property (text), widget (QToolButton, preferButton)
-#. i18n: file: src/ui/devicesconfig.ui:58
-#. i18n: ectx: property (text), widget (QToolButton, preferButton)
-#: build/src/ui_devicesconfig.h:446
-#: dist/arch/src/build/src/ui_devicesconfig.h:373
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:334 rc.cpp:6 rc.cpp:102
-#: src/devicesconfig.cpp:414
+#: build/src/ui_devicesconfig.h:447 rc.cpp:6 src/devicesconfig.cpp:429
 msgid "Prefer"
 msgstr "Vorziehen"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:74
+#. i18n: file: src/ui/devicesconfig.ui:80
 #. i18n: ectx: property (text), widget (QToolButton, deferButton)
-#. i18n: file: src/ui/devicesconfig.ui:74
-#. i18n: ectx: property (text), widget (QToolButton, deferButton)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:74
-#. i18n: ectx: property (text), widget (QToolButton, deferButton)
-#. i18n: file: src/ui/devicesconfig.ui:74
-#. i18n: ectx: property (text), widget (QToolButton, deferButton)
-#: build/src/ui_devicesconfig.h:447
-#: dist/arch/src/build/src/ui_devicesconfig.h:374
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:338 rc.cpp:9 rc.cpp:105
-#: src/devicesconfig.cpp:418
+#: build/src/ui_devicesconfig.h:448 rc.cpp:9 src/devicesconfig.cpp:433
 msgid "Defer"
 msgstr "Zurückstellen"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:109
+#. i18n: file: src/ui/devicesconfig.ui:115
 #. i18n: ectx: property (toolTip), widget (QListView, devicesListView)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:112
+#. i18n: file: src/ui/devicesconfig.ui:118
 #. i18n: ectx: property (whatsThis), widget (QListView, devicesListView)
-#. i18n: file: src/ui/devicesconfig.ui:109
+#. i18n: file: src/ui/devicesconfig.ui:115
 #. i18n: ectx: property (toolTip), widget (QListView, devicesListView)
-#. i18n: file: src/ui/devicesconfig.ui:112
+#. i18n: file: src/ui/devicesconfig.ui:118
 #. i18n: ectx: property (whatsThis), widget (QListView, devicesListView)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:109
-#. i18n: ectx: property (toolTip), widget (QListView, devicesListView)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:112
-#. i18n: ectx: property (whatsThis), widget (QListView, devicesListView)
-#. i18n: file: src/ui/devicesconfig.ui:109
-#. i18n: ectx: property (toolTip), widget (QListView, devicesListView)
-#. i18n: file: src/ui/devicesconfig.ui:112
-#. i18n: ectx: property (whatsThis), widget (QListView, devicesListView)
-#: build/src/ui_devicesconfig.h:449 build/src/ui_devicesconfig.h:452
-#: dist/arch/src/build/src/ui_devicesconfig.h:376
-#: dist/arch/src/build/src/ui_devicesconfig.h:379 rc.cpp:12 rc.cpp:15
-#: rc.cpp:108 rc.cpp:111
+#: build/src/ui_devicesconfig.h:450 build/src/ui_devicesconfig.h:453 rc.cpp:12
+#: rc.cpp:15
 msgid "A list of audio devices"
 msgstr ""
 "Liste von Audiogeräten. Die Reihenfolge der Geräte in dieser Liste gibt an, "
 "welche Geräte als Master bevorzugt werden."
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:230
+#. i18n: file: src/ui/devicesconfig.ui:231
 #. i18n: ectx: property (toolTip), widget (QGroupBox, latencyBox)
-#. i18n: file: src/ui/devicesconfig.ui:230
-#. i18n: ectx: property (toolTip), widget (QGroupBox, latencyBox)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:230
-#. i18n: ectx: property (toolTip), widget (QGroupBox, latencyBox)
-#. i18n: file: src/ui/devicesconfig.ui:230
-#. i18n: ectx: property (toolTip), widget (QGroupBox, latencyBox)
-#: build/src/ui_devicesconfig.h:457
-#: dist/arch/src/build/src/ui_devicesconfig.h:384 rc.cpp:21 rc.cpp:117
+#: build/src/ui_devicesconfig.h:458 rc.cpp:18
 msgid ""
 "Latency is the period of delay between when an audio signal enters and when "
 "it emerges from a system."
@@ -103,29 +60,15 @@ msgstr ""
 "System und der Wieder- oder Weitergabe dieses Signals."
 
 #
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:233
+#. i18n: file: src/ui/devicesconfig.ui:234
 #. i18n: ectx: property (title), widget (QGroupBox, latencyBox)
-#. i18n: file: src/ui/devicesconfig.ui:233
-#. i18n: ectx: property (title), widget (QGroupBox, latencyBox)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:233
-#. i18n: ectx: property (title), widget (QGroupBox, latencyBox)
-#. i18n: file: src/ui/devicesconfig.ui:233
-#. i18n: ectx: property (title), widget (QGroupBox, latencyBox)
-#: build/src/ui_devicesconfig.h:459
-#: dist/arch/src/build/src/ui_devicesconfig.h:386 rc.cpp:24 rc.cpp:120
+#: build/src/ui_devicesconfig.h:460 rc.cpp:21
 msgid "Latency"
 msgstr "Latenz"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:239
+#. i18n: file: src/ui/devicesconfig.ui:240
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_4)
-#. i18n: file: src/ui/devicesconfig.ui:239
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_4)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:239
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_4)
-#. i18n: file: src/ui/devicesconfig.ui:239
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_4)
-#: build/src/ui_devicesconfig.h:461
-#: dist/arch/src/build/src/ui_devicesconfig.h:388 rc.cpp:27 rc.cpp:123
+#: build/src/ui_devicesconfig.h:462 rc.cpp:24
 msgid ""
 "<html><head/><body><p>The analog to digital converters of your audio device "
 "add additional latency, typically less than 1ms.</p></body></html>"
@@ -134,29 +77,15 @@ msgstr ""
 "eine zusätzliche Latenz, welche meist weniger als 1ms beträgt.</p></body></"
 "html>"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:242
+#. i18n: file: src/ui/devicesconfig.ui:253
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
-#. i18n: file: src/ui/devicesconfig.ui:252
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:242
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
-#. i18n: file: src/ui/devicesconfig.ui:252
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
-#: build/src/ui_devicesconfig.h:463
-#: dist/arch/src/build/src/ui_devicesconfig.h:390 rc.cpp:30 rc.cpp:126
+#: build/src/ui_devicesconfig.h:464 rc.cpp:27
 msgid "ADC"
 msgstr "ADC"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:403
+#. i18n: file: src/ui/devicesconfig.ui:282
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox)
-#. i18n: file: src/ui/devicesconfig.ui:281
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:403
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox)
-#. i18n: file: src/ui/devicesconfig.ui:281
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox)
-#: build/src/ui_devicesconfig.h:466
-#: dist/arch/src/build/src/ui_devicesconfig.h:419 rc.cpp:81 rc.cpp:129
+#: build/src/ui_devicesconfig.h:467 rc.cpp:30
 msgid ""
 "<html><head/><body><p>The digital to analog converters of your audio device "
 "add additional latency, typically less than 1ms.</p></body></html>"
@@ -165,94 +94,49 @@ msgstr ""
 "eine zusätzliche Latenz, welche meist weniger als 1ms beträgt.</p></body></"
 "html>"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:406
+#. i18n: file: src/ui/devicesconfig.ui:295
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#. i18n: file: src/ui/devicesconfig.ui:294
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:406
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#. i18n: file: src/ui/devicesconfig.ui:294
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
-#: build/src/ui_devicesconfig.h:468
-#: dist/arch/src/build/src/ui_devicesconfig.h:421 rc.cpp:84 rc.cpp:132
+#: build/src/ui_devicesconfig.h:469 rc.cpp:33
 msgid "DAC"
 msgstr "DAC"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:432
+#. i18n: file: src/ui/devicesconfig.ui:321
 #. i18n: ectx: property (toolTip), widget (QLabel, latency_roundtrip)
-#. i18n: file: src/ui/devicesconfig.ui:320
-#. i18n: ectx: property (toolTip), widget (QLabel, latency_roundtrip)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:432
-#. i18n: ectx: property (toolTip), widget (QLabel, latency_roundtrip)
-#. i18n: file: src/ui/devicesconfig.ui:320
-#. i18n: ectx: property (toolTip), widget (QLabel, latency_roundtrip)
-#: build/src/ui_devicesconfig.h:471
-#: dist/arch/src/build/src/ui_devicesconfig.h:424 rc.cpp:87 rc.cpp:135
+#: build/src/ui_devicesconfig.h:472 rc.cpp:36
 msgid "Round Trip Latency is the sum of all of the components shown above."
 msgstr "Round-Trip-Latenz ist die Summe der obigen Komponenten."
 
 #
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:435
+#. i18n: file: src/ui/devicesconfig.ui:324
 #. i18n: ectx: property (text), widget (QLabel, latency_roundtrip)
-#. i18n: file: src/ui/devicesconfig.ui:323
-#. i18n: ectx: property (text), widget (QLabel, latency_roundtrip)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:435
-#. i18n: ectx: property (text), widget (QLabel, latency_roundtrip)
-#. i18n: file: src/ui/devicesconfig.ui:323
-#. i18n: ectx: property (text), widget (QLabel, latency_roundtrip)
-#: build/src/ui_devicesconfig.h:473
-#: dist/arch/src/build/src/ui_devicesconfig.h:426 rc.cpp:90 rc.cpp:138
+#: build/src/ui_devicesconfig.h:474 rc.cpp:39
 msgid "Round trip latency: ?"
 msgstr "Round-Trip-Latenz: ?"
 
 #
 #
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:454
+#. i18n: file: src/ui/devicesconfig.ui:343
 #. i18n: ectx: property (text), widget (QPushButton, latencyButton)
-#. i18n: file: src/ui/devicesconfig.ui:342
-#. i18n: ectx: property (text), widget (QPushButton, latencyButton)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:454
-#. i18n: ectx: property (text), widget (QPushButton, latencyButton)
-#. i18n: file: src/ui/devicesconfig.ui:342
-#. i18n: ectx: property (text), widget (QPushButton, latencyButton)
-#: build/src/ui_devicesconfig.h:477
-#: dist/arch/src/build/src/ui_devicesconfig.h:430 rc.cpp:93 rc.cpp:141
+#: build/src/ui_devicesconfig.h:478 rc.cpp:42
 msgid "Measure round trip latency"
 msgstr "Round-Trip-Latenz messen"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:271
+#. i18n: file: src/ui/devicesconfig.ui:371
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_8)
-#. i18n: file: src/ui/devicesconfig.ui:370
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_8)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:271
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_8)
-#. i18n: file: src/ui/devicesconfig.ui:370
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_8)
-#: build/src/ui_devicesconfig.h:478
-#: dist/arch/src/build/src/ui_devicesconfig.h:392 rc.cpp:33 rc.cpp:144
+#: build/src/ui_devicesconfig.h:479 rc.cpp:45
 msgid "Computer"
 msgstr "Computer"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:277
+#. i18n: file: src/ui/devicesconfig.ui:380
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_3)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:376
+#. i18n: file: src/ui/devicesconfig.ui:536
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_2)
-#. i18n: file: src/ui/devicesconfig.ui:379
+#. i18n: file: src/ui/devicesconfig.ui:380
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_3)
-#. i18n: file: src/ui/devicesconfig.ui:535
+#. i18n: file: src/ui/devicesconfig.ui:536
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_2)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:277
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_3)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:376
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_2)
-#. i18n: file: src/ui/devicesconfig.ui:379
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_3)
-#. i18n: file: src/ui/devicesconfig.ui:535
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_2)
-#: build/src/ui_devicesconfig.h:480 build/src/ui_devicesconfig.h:502
-#: dist/arch/src/build/src/ui_devicesconfig.h:394
-#: dist/arch/src/build/src/ui_devicesconfig.h:414 rc.cpp:36 rc.cpp:72
-#: rc.cpp:147 rc.cpp:189
+#: build/src/ui_devicesconfig.h:481 build/src/ui_devicesconfig.h:503 rc.cpp:48
+#: rc.cpp:90
 msgid ""
 "<html><head/><body><p>The Bus system (i.e. the system that transfers data "
 "between your audio device and the computer, e.g. USB or PCI) adds additional "
@@ -262,91 +146,51 @@ msgstr ""
 "Audiogerät und dem Computer überträgt, z.B. USB, PCI) erzeugt eine "
 "zusätzliche Latenz, welche meist etwa 1ms beträgt.</p></body></html>"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:280
+#. i18n: file: src/ui/devicesconfig.ui:393
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:379
+#. i18n: file: src/ui/devicesconfig.ui:549
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
-#. i18n: file: src/ui/devicesconfig.ui:392
+#. i18n: file: src/ui/devicesconfig.ui:393
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
-#. i18n: file: src/ui/devicesconfig.ui:548
+#. i18n: file: src/ui/devicesconfig.ui:549
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:280
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:379
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
-#. i18n: file: src/ui/devicesconfig.ui:392
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
-#. i18n: file: src/ui/devicesconfig.ui:548
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
-#: build/src/ui_devicesconfig.h:482 build/src/ui_devicesconfig.h:504
-#: dist/arch/src/build/src/ui_devicesconfig.h:396
-#: dist/arch/src/build/src/ui_devicesconfig.h:416 rc.cpp:39 rc.cpp:75
-#: rc.cpp:150 rc.cpp:192
+#: build/src/ui_devicesconfig.h:483 build/src/ui_devicesconfig.h:505 rc.cpp:51
+#: rc.cpp:93
 msgid "Bus"
 msgstr "Bus"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:293
+#. i18n: file: src/ui/devicesconfig.ui:409
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:320
+#. i18n: file: src/ui/devicesconfig.ui:446
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:366
+#. i18n: file: src/ui/devicesconfig.ui:526
 #. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:390
+#. i18n: file: src/ui/devicesconfig.ui:560
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#. i18n: file: src/ui/devicesconfig.ui:408
+#. i18n: file: src/ui/devicesconfig.ui:409
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#. i18n: file: src/ui/devicesconfig.ui:445
+#. i18n: file: src/ui/devicesconfig.ui:446
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#. i18n: file: src/ui/devicesconfig.ui:525
+#. i18n: file: src/ui/devicesconfig.ui:526
 #. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/ui/devicesconfig.ui:559
+#. i18n: file: src/ui/devicesconfig.ui:560
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:293
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:320
-#. i18n: ectx: property (text), widget (QLabel, label_3)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:366
-#. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:390
-#. i18n: ectx: property (text), widget (QLabel, label_4)
-#. i18n: file: src/ui/devicesconfig.ui:408
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#. i18n: file: src/ui/devicesconfig.ui:445
-#. i18n: ectx: property (text), widget (QLabel, label_3)
-#. i18n: file: src/ui/devicesconfig.ui:525
-#. i18n: ectx: property (text), widget (QLabel, label)
-#. i18n: file: src/ui/devicesconfig.ui:559
-#. i18n: ectx: property (text), widget (QLabel, label_4)
-#: build/src/ui_devicesconfig.h:483 build/src/ui_devicesconfig.h:488
-#: build/src/ui_devicesconfig.h:500 build/src/ui_devicesconfig.h:505
-#: dist/arch/src/build/src/ui_devicesconfig.h:397
-#: dist/arch/src/build/src/ui_devicesconfig.h:402
-#: dist/arch/src/build/src/ui_devicesconfig.h:412
-#: dist/arch/src/build/src/ui_devicesconfig.h:417 rc.cpp:42 rc.cpp:51 rc.cpp:69
-#: rc.cpp:78 rc.cpp:153 rc.cpp:162 rc.cpp:186 rc.cpp:195
+#: build/src/ui_devicesconfig.h:484 build/src/ui_devicesconfig.h:489
+#: build/src/ui_devicesconfig.h:501 build/src/ui_devicesconfig.h:506 rc.cpp:54
+#: rc.cpp:63 rc.cpp:87 rc.cpp:96
 msgid "→"
 msgstr ""
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:306
+#. i18n: file: src/ui/devicesconfig.ui:422
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_6)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:352
+#. i18n: file: src/ui/devicesconfig.ui:502
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
-#. i18n: file: src/ui/devicesconfig.ui:421
+#. i18n: file: src/ui/devicesconfig.ui:422
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_6)
-#. i18n: file: src/ui/devicesconfig.ui:501
+#. i18n: file: src/ui/devicesconfig.ui:502
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:306
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_6)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:352
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
-#. i18n: file: src/ui/devicesconfig.ui:421
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_6)
-#. i18n: file: src/ui/devicesconfig.ui:501
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_5)
-#: build/src/ui_devicesconfig.h:485 build/src/ui_devicesconfig.h:497
-#: dist/arch/src/build/src/ui_devicesconfig.h:399
-#: dist/arch/src/build/src/ui_devicesconfig.h:409 rc.cpp:45 rc.cpp:63
-#: rc.cpp:156 rc.cpp:180
+#: build/src/ui_devicesconfig.h:486 build/src/ui_devicesconfig.h:498 rc.cpp:57
+#: rc.cpp:81
 msgid ""
 "The operating system and your card's device driver need additional time to "
 "transmit audio data between the bus system and JACK. This latency is "
@@ -356,39 +200,22 @@ msgstr ""
 "Zeit, um Audiodaten zwischen dem Bussystem und JACK zu übertragen. Diese "
 "Latenz beträgt meist etwa 1ms"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:309
+#. i18n: file: src/ui/devicesconfig.ui:435
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:355
+#. i18n: file: src/ui/devicesconfig.ui:515
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#. i18n: file: src/ui/devicesconfig.ui:434
+#. i18n: file: src/ui/devicesconfig.ui:435
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
-#. i18n: file: src/ui/devicesconfig.ui:514
+#. i18n: file: src/ui/devicesconfig.ui:515
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:309
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:355
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#. i18n: file: src/ui/devicesconfig.ui:434
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
-#. i18n: file: src/ui/devicesconfig.ui:514
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
-#: build/src/ui_devicesconfig.h:487 build/src/ui_devicesconfig.h:499
-#: dist/arch/src/build/src/ui_devicesconfig.h:401
-#: dist/arch/src/build/src/ui_devicesconfig.h:411 rc.cpp:48 rc.cpp:66
-#: rc.cpp:159 rc.cpp:183
+#: build/src/ui_devicesconfig.h:488 build/src/ui_devicesconfig.h:500 rc.cpp:60
+#: rc.cpp:84
 msgid "Operating System"
 msgstr "Betriebssystem"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:330
+#. i18n: file: src/ui/devicesconfig.ui:456
 #. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_7)
-#. i18n: file: src/ui/devicesconfig.ui:455
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_7)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:330
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_7)
-#. i18n: file: src/ui/devicesconfig.ui:455
-#. i18n: ectx: property (toolTip), widget (QGroupBox, groupBox_7)
-#: build/src/ui_devicesconfig.h:490
-#: dist/arch/src/build/src/ui_devicesconfig.h:404 rc.cpp:54 rc.cpp:165
+#: build/src/ui_devicesconfig.h:491 rc.cpp:66
 msgid ""
 "<html><head/><body><p>The latency of JACK can be set with the above "
 "parameters. If you encounter xruns (clicks, pops, crackles), try to set a "
@@ -401,346 +228,120 @@ msgstr ""
 "die Latenz erhöht und Audioanwendungen mehr Zeit zum Verarbeiten der "
 "Audiodaten gegeben."
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:333
+#. i18n: file: src/ui/devicesconfig.ui:469
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_7)
-#. i18n: file: src/ui/devicesconfig.ui:468
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_7)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:333
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_7)
-#. i18n: file: src/ui/devicesconfig.ui:468
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox_7)
-#: build/src/ui_devicesconfig.h:492
-#: dist/arch/src/build/src/ui_devicesconfig.h:406 rc.cpp:57 rc.cpp:168
+#: build/src/ui_devicesconfig.h:493 rc.cpp:69
 msgid "JACK"
 msgstr "JACK"
 
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:342
-#. i18n: ectx: property (text), widget (QLabel, latency_jack)
-#. i18n: file: src/ui/devicesconfig.ui:477
+#. i18n: file: src/ui/devicesconfig.ui:478
 #. i18n: ectx: property (text), widget (QLabel, latency_jack_capture)
-#. i18n: file: src/ui/devicesconfig.ui:491
+#. i18n: file: src/ui/devicesconfig.ui:492
 #. i18n: ectx: property (text), widget (QLabel, latency_jack)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:342
-#. i18n: ectx: property (text), widget (QLabel, latency_jack)
-#. i18n: file: src/ui/devicesconfig.ui:477
+#. i18n: file: src/ui/devicesconfig.ui:478
 #. i18n: ectx: property (text), widget (QLabel, latency_jack_capture)
-#. i18n: file: src/ui/devicesconfig.ui:491
+#. i18n: file: src/ui/devicesconfig.ui:492
 #. i18n: ectx: property (text), widget (QLabel, latency_jack)
-#: build/src/ui_devicesconfig.h:493 build/src/ui_devicesconfig.h:495
-#: dist/arch/src/build/src/ui_devicesconfig.h:407 rc.cpp:60 rc.cpp:171
-#: rc.cpp:177
+#: build/src/ui_devicesconfig.h:494 build/src/ui_devicesconfig.h:496 rc.cpp:72
+#: rc.cpp:78
 msgid "?ms"
 msgstr ""
 
-#. i18n: file: src/ui/devicesconfig.ui:484
+#. i18n: file: src/ui/devicesconfig.ui:485
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: build/src/ui_devicesconfig.h:494 rc.cpp:174
+#: build/src/ui_devicesconfig.h:495 rc.cpp:75
 msgid "+"
 msgstr ""
 
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:53
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:53 src/qml/main.qml:53
-msgid "Configure Device"
-msgstr "Gerät konfigurieren"
+#: rc.cpp:97
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Julian Wolff"
 
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:67
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:638
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:643
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:67 src/devicesconfig.cpp:735
-#: src/devicesconfig.cpp:740 src/devicesconfig.cpp:742 src/qml/main.qml:67
-msgid "Sample Rate"
-msgstr "Abtastrate"
+#: rc.cpp:98
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "wolff@julianwolff.de"
 
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:69
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:69 src/qml/main.qml:69
-msgid ""
-"Specify the sample rate.\n"
-"The default is 48000."
-msgstr "Abtastrate. Voreinstellung ist 48000Hz"
+#: src/devicesconfig.cpp:161
+msgid "Measuring round trip latency requires both capture and playback ports."
+msgstr "Das Messen der Round-Trip-Latenz erfordert sowohl Eingänge als auch Ausgänge."
 
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:110
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:638
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:643
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:110 src/devicesconfig.cpp:735
-#: src/devicesconfig.cpp:740 src/devicesconfig.cpp:742 src/qml/main.qml:110
-msgid "Buffer Size"
-msgstr "Puffergröße"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:112
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:112 src/qml/main.qml:112
-msgid ""
-"Specify the number of frames between JACK process() calls.\n"
-"This value must be a power of 2, and the default is 1024.\n"
-"If you need low latency, set this as low as you can go without seeing "
-"xruns.\n"
-"A larger period size yields higher latency, but makes xruns less likely.\n"
-"The JACK capture latency in seconds is buffer size divided by sample rate."
-msgstr ""
-"Anzahl frames zwischen zwei Aufrufen von JACK process().\n"
-"Dieser Wert muss eine Zweierpotenz sein. Voreinstellung ist 1024\n"
-"Für geringe Latenz sollte dieser Wert so niedrig gesetzt werden, wie es ohne "
-"Auftreten von xruns möglich ist.\n"
-"Eine größere Puffergröße führt zu einer höheren Latenz, senkt aber "
-"gleichzeitig die Wahrscheinlichkeit für xruns.\n"
-"Die Aufnahmelatenz für JACK in Sekunden berechnet sich aus der Puffergröße "
-"dividiert durch die Abtastrate."
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:155
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:638
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:643
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:155 src/devicesconfig.cpp:735
-#: src/devicesconfig.cpp:740 src/qml/main.qml:155
-msgid "Periods/Buffer"
-msgstr "Perioden/Puffer"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:157
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:157 src/qml/main.qml:157
-msgid ""
-"Specify the number of periods of playback latency.\n"
-"The default is 2, the minimum allowable.\n"
-"For most devices, there is no need for any other value.\n"
-"With boards providing unreliable interrupts, a larger value may yield fewer "
-"xruns.\n"
-"This can also help if the system is not tuned for reliable realtime "
-"scheduling."
-msgstr ""
-"Anzahl an Perioden der Ausgangslatenz\n"
-"Voreinstellung und der niedrigst mögliche Wert ist 2.\n"
-"Für die meisten Geräte ist dieser Wert ausreichend.\n"
-"Für Geräte mit unzuverlässigen Interrupts können höhere Werte benötigt "
-"werden.\n"
-"Höhere Werte können ebenfalls helfen, falls das System nicht für "
-"Echtzeitbedingungen optimiert ist."
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:183
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:183 src/qml/main.qml:183
-msgid "Monitor"
-msgstr "Monitor"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:185
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:185 src/qml/main.qml:185
-msgid "Provide monitor ports for the output."
-msgstr "Stelle zusätzliche Monitor-Kanäle bereit."
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:203
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:203 src/qml/main.qml:203
-msgid "Hardware Monitor"
-msgstr "Hardware-Monitor"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:205
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:205 src/qml/main.qml:205
-msgid ""
-"Enable hardware monitoring of capture ports.\n"
-"This is a method for obtaining \"zero latency\" monitoring of audio input.\n"
-"It requires support in hardware and from the underlying ALSA device driver"
-msgstr ""
-"Aktiviere Hardware-Monitoring der Eingangskanäle.\n"
-"Hierdurch wird ein Abhören der Eingangssignale \"ohne Latenz\" ermöglicht.\n"
-"Diese Einstellung erfordert Unterstützung der Hardware und des "
-"Gerätetreibers."
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:222
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:222 src/qml/main.qml:222
-msgid "Hardware Meter"
-msgstr "Hardware-Pegelmessung"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:224
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:224 src/qml/main.qml:224
-msgid ""
-"Enable hardware metering for devices that support it.\n"
-"Otherwise, use software metering."
-msgstr ""
-"Aktiviere Hardware-Pegelmessung für Geräte, die dies unterstützen.\n"
-"Ansonsten wird eine softwareseitige Pegelmessung verwendet."
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:260
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:260 src/qml/main.qml:260
-msgid "Dither"
-msgstr "Dither"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:262
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:262 src/qml/main.qml:262
-msgid "Set dithering mode."
-msgstr "Dithering"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:270
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:434
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:270
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:434 src/qml/main.qml:270
-#: src/qml/main.qml:434
-msgid "None"
-msgstr "Kein"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:270
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:270 src/qml/main.qml:270
-msgid "Rectangular"
-msgstr "Rechteck"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:270
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:270 src/qml/main.qml:270
-msgid "Shaped"
-msgstr ""
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:270
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:270 src/qml/main.qml:270
-msgid "Triangular"
-msgstr "Dreieck"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:283
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:283 src/qml/main.qml:283
-msgid "Softmode"
-msgstr "Ignoriere XRuns"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:285
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:285 src/qml/main.qml:285
-msgid ""
-"Ignore xruns reported by the ALSA driver.\n"
-"This makes JACK less likely to disconnect unresponsive ports"
-msgstr ""
-"Ignoriere xruns, die vom ALSA-Treiber berichtet werden.\n"
-"Hierdurch sinkt die Wahrscheinlichkeit, dass JACK nicht reagierende Ports "
-"abschaltet."
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:303
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:303 src/qml/main.qml:303
-msgid "Input Channels"
-msgstr "Eingangskanäle"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:305
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:305 src/qml/main.qml:305
-msgid ""
-"Number of capture channels.\n"
-"If set to 0, the maximum supported by hardware is used."
-msgstr ""
-"Anzahl der Eingangskanäle.\n"
-"Falls 0, werden alle verfügbaren Kanäle verwendet."
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:329
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:329 src/qml/main.qml:329
-msgid "Input Latency"
-msgstr "Eingangslatenz"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:331
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:331
-msgid ""
-"Extra input latency (frames).\n"
-"This value might be used by audio software to compensate lantency e.g.\n"
-"during recording."
-msgstr ""
-"Eingangslatenz (frames).\n"
-"Dieser Wert kann von Audio-Software verwendet werden, um Latenzen z.B. "
-"während einer Aufnahme zu kompensieren."
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:354
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:354 src/qml/main.qml:354
-msgid "Output Channels"
-msgstr "Ausgangskanäle"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:356
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:356 src/qml/main.qml:356
-msgid ""
-"Number of playback channels.\n"
-"If set to 0, the maximum supported by hardware is used."
-msgstr ""
-"Anzahl der Ausgangskanäle.\n"
-"Falls 0, werden alle verfügbaren Kanäle verwendet."
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:379
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:379 src/qml/main.qml:379
-msgid "Output Latency"
-msgstr "Ausgangslatenz"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:381
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:381
-msgid ""
-"Extra output latency (frames).\n"
-"This value might be used by audio software to compensate lantency e.g.\n"
-"during recording."
-msgstr ""
-"Ausgangslatenz (frames).\n"
-"Dieser Wert kann von Audio-Software verwendet werden, um Latenzen z.B. "
-"während einer Aufnahme zu kompensieren."
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:406
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:406 src/qml/main.qml:406
-msgid "Force 16-bit"
-msgstr "16-bit erzwingen"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:408
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:408 src/qml/main.qml:408
-msgid ""
-"Try to configure card for 16-bit samples first, only trying 32-bits if "
-"unsuccessful.\n"
-"Default is to prefer 32-bit samples."
-msgstr ""
-"Versuche zunächst 16-bit samples zu verwenden. Verwende 32-bit nur falls "
-"dies fehlschlägt.\n"
-"Falls deaktiviert werden 32-bit bevorzugt."
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:425
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:425 src/qml/main.qml:425
-msgid "MIDI Driver"
-msgstr "MIDI-Treiber"
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:427
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:427 src/qml/main.qml:427
-msgid ""
-"Specify which ALSA MIDI system to provide access to.\n"
-"Using raw will provide a set of JACK MIDI ports that correspond to each raw "
-"ALSA device on the machine.\n"
-"Using seq will provide a set of JACK MIDI ports that correspond to each ALSA "
-"\"sequencer\" client (which includes each hardware MIDI port on the "
-"machine).\n"
-"raw provides slightly better performance but does not permit JACK MIDI "
-"communication with software written to use the ALSA \"sequencer\" API."
-msgstr ""
-"ALSA MIDI-Treiber.\n"
-"\"ALSA Raw-MIDI\" stellt für alle ALSA-Geräte im System JACK MIDI ports zur "
-"Verfügung.\n"
-"\"ALSA Sequencer\" stellt für alle ALSA-Sequencer Clients (was alle ALSA-"
-"Hardwaregeräte einschließt) JACK MIDI ports zur Verfügung.\n"
-"ALSA Raw-MIDI ist geringfügig performanter, lässt jedoch keine Verbindung "
-"mit Software zu, die die ALSA Sequencer API verwendet."
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:434
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:434 src/qml/main.qml:434
-msgid "Alsa Sequencer"
-msgstr ""
-
-#: dist/arch/pkg/jackman-kcm-git/usr/share/jackman_kcm/main.qml:434
-#: dist/arch/src/jackman_kcm/src/qml/main.qml:434 src/qml/main.qml:434
-msgid "Alsa Raw-MIDI"
-msgstr ""
-
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:159
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:547
-#: src/devicesconfig.cpp:162 src/devicesconfig.cpp:639
+#: src/devicesconfig.cpp:173 src/devicesconfig.cpp:686
 msgid "The configuration of the currently selected device has been modified."
 msgstr "Die Konfiguration des aktuell ausgewählten Geräts wurde geändert."
 
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:160
-#: src/devicesconfig.cpp:163
+#: src/devicesconfig.cpp:174
 msgid "You need to save before round trip latency can be measured."
 msgstr ""
 "Sie müssen speichern, bevor die Round-Trip-Latenz gemessen werden kann."
 
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:160
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:548
-#: src/devicesconfig.cpp:163 src/devicesconfig.cpp:640
+#: src/devicesconfig.cpp:174 src/devicesconfig.cpp:687
 msgid "Do you want to save your changes?"
 msgstr "Möchten Sie die Änderungen speichern?"
 
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:184
-#: src/devicesconfig.cpp:190
+#: src/devicesconfig.cpp:202
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: src/devicesconfig.cpp:215 src/devicesconfig.cpp:308
+#: src/devicesconfig.cpp:321
+msgid "Could not measure latency"
+msgstr "Konnte Latenz nicht messen"
+
+#: src/devicesconfig.cpp:242 src/devicesconfig.cpp:777
+#, c-format
+msgctxt "ms for Milliseconds"
+msgid "Round trip latency: %1ms"
+msgstr "Round-Trip-Latenz: %1ms"
+
+#: src/devicesconfig.cpp:258
 msgid ""
-"Use a patch cable to connect the first output of your audio device to the "
-"first input.\n"
+"Select the input and output ports of your audio device that you want to use "
+"for measuring round trip latency.\n"
+msgstr ""
+"Wählen Sie jeweils denjenigen Eingang und Ausgang Ihres Audiogeräts, welchen Sie zum Messen der Round-Trip-Latenz verwenden möchten."
+
+#: src/devicesconfig.cpp:259
+#
+msgid ""
+"\n"
+"\n"
+"Disconnect speakers from the selected output port. Loud noise will be send "
+"to this port."
+msgstr ""
+"\n\nEntfernen Sie alle Lautsprecher vom gewählten Ausgang des Audiogeräts."
+"Laute Signale werden an diesen Ausgang angelegt."
+
+#: src/devicesconfig.cpp:260
+#
+msgid ""
+"\n"
+"\n"
+"Note that this device is not the current master device. The round trip "
+"latency of this device would be much lower if it was set as master device.\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Beachten Sie, dass dieses Gerät nicht das Mastergerät ist."
+"Die Round-Trip-Latenz wäre wesentlich niedriger, wenn es das Mastergerät "
+"wäre.\n\n"
+
+#
+#: src/devicesconfig.cpp:261
+msgid "Do you want to continue?"
+msgstr "Möchten Sie fortfahren?"
+
+#: src/devicesconfig.cpp:280
+msgid ""
+"Use a patch cable to connect output %1 of your audio device to input %2.\n"
 "This message box will close automatically when a connection is established.\n"
 "\n"
 "Note that in rare cases connecting inputs and outputs of the same card might "
 "damage an audio device. Ask your device manufacturer if you're unsure."
 msgstr ""
-"Verbinden Sie den ersten Ausgang mit dem ersten Eingang des Audiogeräts.\n"
+"Verbinden Sie Ausgang %1 mit Eingang %2 des Audiogeräts.\n"
 "Diese Meldung schließt sich automatisch, wenn die Verbindung hergestellt "
 "ist.\n"
 "\n"
@@ -748,81 +349,33 @@ msgstr ""
 "dieses in seltenen Fällen beschädigen kann. Fragen Sie im Zweifel vorher den "
 "Hersteller des Geräts."
 
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:184
-#: src/devicesconfig.cpp:190
-msgid "Cancel"
-msgstr "Abbrechen"
-
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:197
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:286
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:299
-#: src/devicesconfig.cpp:203 src/devicesconfig.cpp:293
-#: src/devicesconfig.cpp:306
-msgid "Could not measure latency"
-msgstr "Konnte Latenz nicht messen"
-
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:223
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:632
-#: src/devicesconfig.cpp:230 src/devicesconfig.cpp:729
-#, c-format
-msgctxt "ms for Milliseconds"
-msgid "Round trip latency: %1ms"
-msgstr "Round-Trip-Latenz: %1ms"
-
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:240
-#: src/devicesconfig.cpp:247
-msgid ""
-"Disconnect speakers from the first output of your audio device.\n"
-"Loud noise will be send to this output."
-msgstr ""
-"Entfernen Sie alle Lautsprecher vom ersten Ausgang des Audiogeräts.\n"
-"Laute Signale werden an diesen Ausgang angelegt."
-
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:241
-#: src/devicesconfig.cpp:248
-msgid ""
-"\n"
-"\n"
-"Note that this device is not the current master device.\n"
-"The round trip latency of this device would be much lower if it was set as "
-"master device."
-msgstr ""
-"\n"
-"\n"
-"Beachten Sie, dass dieses Gerät nicht das Mastergerät ist.\n"
-"Die Round-Trip-Latenz wäre wesentlich niedriger, wenn es das Mastergerät "
-"wäre."
-
-#
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:244
-#: src/devicesconfig.cpp:251
-msgid "Do you want to continue?"
-msgstr "Möchten Sie fortfahren?"
-
 #
 #
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:260
-#: src/devicesconfig.cpp:267
+#: src/devicesconfig.cpp:282
 msgid "Measuring round trip latency"
 msgstr "Messe die Round-Trip-Latenz"
 
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:326
-#: src/devicesconfig.cpp:397
+#: src/devicesconfig.cpp:412
 msgid "Switch Master"
 msgstr "Master wechseln"
 
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:345
-#: src/devicesconfig.cpp:430
+#: src/devicesconfig.cpp:422
+msgid "Detach device"
+msgstr "Gerät aushängen"
+
+#: src/devicesconfig.cpp:424
+msgid "Attach device"
+msgstr "Gerät einbinden"
+
+#: src/devicesconfig.cpp:445
 msgid "Remove entry"
 msgstr "Eintrag löschen"
 
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:423
-#: src/devicesconfig.cpp:511
+#: src/devicesconfig.cpp:558
 msgid "Jack failed to start"
 msgstr "JACK konnte nicht gestartet werden."
 
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:424
-#: src/devicesconfig.cpp:512
+#: src/devicesconfig.cpp:559
 msgid ""
 "This audio device is not compatible with the current settings. Please try "
 "other values."
@@ -830,17 +383,18 @@ msgstr ""
 "Dieses Gerät ist mit den gewählten Einstellungen nicht kompatibel. Bitte "
 "versuchen Sie es mit anderen Einstellungen erneut."
 
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:620
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:660
-#: src/devicesconfig.cpp:712 src/devicesconfig.cpp:717
-#: src/devicesconfig.cpp:758 src/devicesconfig.cpp:762
+#: src/devicesconfig.cpp:760 src/devicesconfig.cpp:765
+#: src/devicesconfig.cpp:806 src/devicesconfig.cpp:810
 #, c-format
 msgctxt "ms for Milliseconds"
 msgid "%1ms"
 msgstr "%1ms"
 
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:638
-#: src/devicesconfig.cpp:735
+#: src/devicesconfig.cpp:783 src/devicesconfig.cpp:788
+msgid "Playback latency."
+msgstr "Ausgangslatenz."
+
+#: src/devicesconfig.cpp:783
 msgid ""
 "This value should be a whole number if this device is a USB device.\n"
 "If this device is not a USB device, ignore this warning.\n"
@@ -850,78 +404,60 @@ msgstr ""
 "Ignorieren Sie diese Warnung, falls es sich nicht um ein USB-Gerät handelt.\n"
 "\n"
 
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:638
-#: dist/arch/src/jackman_kcm/src/devicesconfig.cpp:643
-#: src/devicesconfig.cpp:735 src/devicesconfig.cpp:740
+#: src/devicesconfig.cpp:783 src/devicesconfig.cpp:788 src/qml/main.qml:155
+msgid "Periods/Buffer"
+msgstr "Perioden/Puffer"
+
+#: src/devicesconfig.cpp:783 src/devicesconfig.cpp:788
+#: src/devicesconfig.cpp:790 src/qml/main.qml:110
+msgid "Buffer Size"
+msgstr "Puffergröße"
+
+#: src/devicesconfig.cpp:783 src/devicesconfig.cpp:788
+#: src/devicesconfig.cpp:790 src/qml/main.qml:67
+msgid "Sample Rate"
+msgstr "Abtastrate"
+
+#: src/devicesconfig.cpp:783 src/devicesconfig.cpp:788
 msgid "This value is \"%1\" multiplied with \"%2\" and divided by \"%3\"."
 msgstr ""
 "Dieser Wert berechnet sich aus \"%1\" multipliziert mit \"%2\" und dividiert "
 "durch \"%3\"."
 
-#: dist/arch/src/jackman_kcm/src/jackmankcm.cpp:45 src/jackmankcm.cpp:46
-msgid "JACK Audio Devices Config"
-msgstr "Konfiguration der Audiogeräte"
-
-#: dist/arch/src/jackman_kcm/src/jackmankcm.cpp:47 src/jackmankcm.cpp:48
-msgid "Configure audio devices used with Jack"
-msgstr "Konfiguration der Audiogeräte, die von Jack benutzt werden"
-
-#: dist/arch/src/jackman_kcm/src/jackmankcm.cpp:51 src/jackmankcm.cpp:52
-msgid "Author"
-msgstr "Autor"
-
-#: dist/arch/src/jackman_kcm/src/jackmankcm.cpp:114 src/jackmankcm.cpp:138
-msgid "Audio Devices"
-msgstr "Audiogeräte"
-
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:213
-#. i18n: ectx: property (source), widget (QQuickWidget, quickWidget)
-#. i18n: file: src/ui/devicesconfig.ui:213
-#. i18n: ectx: property (source), widget (QQuickWidget, quickWidget)
-#. i18n: file: dist/arch/src/jackman_kcm/src/ui/devicesconfig.ui:213
-#. i18n: ectx: property (source), widget (QQuickWidget, quickWidget)
-#. i18n: file: src/ui/devicesconfig.ui:213
-#. i18n: ectx: property (source), widget (QQuickWidget, quickWidget)
-#: rc.cpp:18 rc.cpp:114
-msgid "file:///home/wolff/repos/jackman_kcm/src/qml/main.qml"
-msgstr ""
-
-#. i18n: file: src/ui/behaviorconfig.ui:63
-#. i18n: ectx: property (source), widget (QQuickWidget, quickWidget)
-#: rc.cpp:96
-msgid "file:///home/wolff/repos/jackman_kcm/src/qml/behavior.qml"
-msgstr ""
-
-#: rc.cpp:196
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Julian Wolff"
-
-#: rc.cpp:197
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "wolff@julianwolff.de"
-
-#: src/devicesconfig.cpp:407
-msgid "Detach device"
-msgstr "Gerät aushängen"
-
-#: src/devicesconfig.cpp:409
-msgid "Attach device"
-msgstr "Gerät einbinden"
-
-#: src/devicesconfig.cpp:735 src/devicesconfig.cpp:740
-msgid "Playback latency."
-msgstr "Ausgangslatenz."
-
-#: src/devicesconfig.cpp:742
+#: src/devicesconfig.cpp:790
 msgid "Capture latency. This value is \"%1\" divided by \"%2\"."
 msgstr ""
 "Eingangslatenz. Dieser Wert berechnet sich aus \"%1\" dividiert durch \"%2\"."
 
+#: src/jackmankcm.cpp:46
+msgid "JACK Audio Devices Config"
+msgstr "Konfiguration der Audiogeräte"
+
+#: src/jackmankcm.cpp:48
+msgid "Configure audio devices used with Jack"
+msgstr "Konfiguration der Audiogeräte, die von Jack benutzt werden"
+
+#: src/jackmankcm.cpp:52
+msgid "Author"
+msgstr "Autor"
+
+#: src/jackmankcm.cpp:138
+msgid "Audio Devices"
+msgstr "Audiogeräte"
+
 #: src/jackmankcm.cpp:144
 msgid "Advanced"
 msgstr "Erweitert"
+
+#: src/latencymeasurebox.cpp:24
+#
+msgid "Input: "
+msgstr "Eingang: "
+
+#: src/latencymeasurebox.cpp:25
+#
+msgid "Output: "
+msgstr "Ausgang: "
 
 #
 #: src/qml/behavior.qml:37
@@ -949,6 +485,140 @@ msgid "Attach alsa_in and alsa_out virtual devices for all devices."
 msgstr ""
 "Binde virtuelle alsa_in- und alsa_out-Geräte für alle vorhandenen Geräte ein."
 
+#: src/qml/main.qml:53
+msgid "Configure Device"
+msgstr "Gerät konfigurieren"
+
+#: src/qml/main.qml:69
+msgid ""
+"Specify the sample rate.\n"
+"The default is 48000."
+msgstr "Abtastrate. Voreinstellung ist 48000Hz"
+
+#: src/qml/main.qml:112
+msgid ""
+"Specify the number of frames between JACK process() calls.\n"
+"This value must be a power of 2, and the default is 1024.\n"
+"If you need low latency, set this as low as you can go without seeing "
+"xruns.\n"
+"A larger period size yields higher latency, but makes xruns less likely.\n"
+"The JACK capture latency in seconds is buffer size divided by sample rate."
+msgstr ""
+"Anzahl frames zwischen zwei Aufrufen von JACK process().\n"
+"Dieser Wert muss eine Zweierpotenz sein. Voreinstellung ist 1024\n"
+"Für geringe Latenz sollte dieser Wert so niedrig gesetzt werden, wie es ohne "
+"Auftreten von xruns möglich ist.\n"
+"Eine größere Puffergröße führt zu einer höheren Latenz, senkt aber "
+"gleichzeitig die Wahrscheinlichkeit für xruns.\n"
+"Die Aufnahmelatenz für JACK in Sekunden berechnet sich aus der Puffergröße "
+"dividiert durch die Abtastrate."
+
+#: src/qml/main.qml:157
+msgid ""
+"Specify the number of periods of playback latency.\n"
+"The default is 2, the minimum allowable.\n"
+"For most devices, there is no need for any other value.\n"
+"With boards providing unreliable interrupts, a larger value may yield fewer "
+"xruns.\n"
+"This can also help if the system is not tuned for reliable realtime "
+"scheduling."
+msgstr ""
+"Anzahl an Perioden der Ausgangslatenz\n"
+"Voreinstellung und der niedrigst mögliche Wert ist 2.\n"
+"Für die meisten Geräte ist dieser Wert ausreichend.\n"
+"Für Geräte mit unzuverlässigen Interrupts können höhere Werte benötigt "
+"werden.\n"
+"Höhere Werte können ebenfalls helfen, falls das System nicht für "
+"Echtzeitbedingungen optimiert ist."
+
+#: src/qml/main.qml:183
+msgid "Monitor"
+msgstr "Monitor"
+
+#: src/qml/main.qml:185
+msgid "Provide monitor ports for the output."
+msgstr "Stelle zusätzliche Monitor-Kanäle bereit."
+
+#: src/qml/main.qml:203
+msgid "Hardware Monitor"
+msgstr "Hardware-Monitor"
+
+#: src/qml/main.qml:205
+msgid ""
+"Enable hardware monitoring of capture ports.\n"
+"This is a method for obtaining \"zero latency\" monitoring of audio input.\n"
+"It requires support in hardware and from the underlying ALSA device driver"
+msgstr ""
+"Aktiviere Hardware-Monitoring der Eingangskanäle.\n"
+"Hierdurch wird ein Abhören der Eingangssignale \"ohne Latenz\" ermöglicht.\n"
+"Diese Einstellung erfordert Unterstützung der Hardware und des "
+"Gerätetreibers."
+
+#: src/qml/main.qml:222
+msgid "Hardware Meter"
+msgstr "Hardware-Pegelmessung"
+
+#: src/qml/main.qml:224
+msgid ""
+"Enable hardware metering for devices that support it.\n"
+"Otherwise, use software metering."
+msgstr ""
+"Aktiviere Hardware-Pegelmessung für Geräte, die dies unterstützen.\n"
+"Ansonsten wird eine softwareseitige Pegelmessung verwendet."
+
+#: src/qml/main.qml:260
+msgid "Dither"
+msgstr "Dither"
+
+#: src/qml/main.qml:262
+msgid "Set dithering mode."
+msgstr "Dithering"
+
+#: src/qml/main.qml:270 src/qml/main.qml:434
+msgid "None"
+msgstr "Kein"
+
+#: src/qml/main.qml:270
+msgid "Rectangular"
+msgstr "Rechteck"
+
+#: src/qml/main.qml:270
+msgid "Shaped"
+msgstr ""
+
+#: src/qml/main.qml:270
+msgid "Triangular"
+msgstr "Dreieck"
+
+#: src/qml/main.qml:283
+msgid "Softmode"
+msgstr "Ignoriere XRuns"
+
+#: src/qml/main.qml:285
+msgid ""
+"Ignore xruns reported by the ALSA driver.\n"
+"This makes JACK less likely to disconnect unresponsive ports"
+msgstr ""
+"Ignoriere xruns, die vom ALSA-Treiber berichtet werden.\n"
+"Hierdurch sinkt die Wahrscheinlichkeit, dass JACK nicht reagierende Ports "
+"abschaltet."
+
+#: src/qml/main.qml:303
+msgid "Input Channels"
+msgstr "Eingangskanäle"
+
+#: src/qml/main.qml:305
+msgid ""
+"Number of capture channels.\n"
+"If set to 0, the maximum supported by hardware is used."
+msgstr ""
+"Anzahl der Eingangskanäle.\n"
+"Falls 0, werden alle verfügbaren Kanäle verwendet."
+
+#: src/qml/main.qml:329
+msgid "Input Latency"
+msgstr "Eingangslatenz"
+
 #: src/qml/main.qml:331
 msgid ""
 "Extra input latency (frames).\n"
@@ -960,9 +630,26 @@ msgid ""
 msgstr ""
 "Eingangslatenz (frames).\n"
 "Es wird keine zusätzliche Latenz erzeugt, unabhängig von diesem Wert.\n"
-"Dieser Wert kann vielmehr von Audio-Software verwendet werden, um Latenzen z.B. "
-"während einer Aufnahme zu kompensieren.\n"
-"Messen Sie die Round-Trip-Latenz Ihres Geräts mit den aktuellen Einstellungen, um optimale Werte zu erhalten."
+"Dieser Wert kann vielmehr von Audio-Software verwendet werden, um Latenzen z."
+"B. während einer Aufnahme zu kompensieren.\n"
+"Messen Sie die Round-Trip-Latenz Ihres Geräts mit den aktuellen "
+"Einstellungen, um optimale Werte zu erhalten."
+
+#: src/qml/main.qml:354
+msgid "Output Channels"
+msgstr "Ausgangskanäle"
+
+#: src/qml/main.qml:356
+msgid ""
+"Number of playback channels.\n"
+"If set to 0, the maximum supported by hardware is used."
+msgstr ""
+"Anzahl der Ausgangskanäle.\n"
+"Falls 0, werden alle verfügbaren Kanäle verwendet."
+
+#: src/qml/main.qml:379
+msgid "Output Latency"
+msgstr "Ausgangslatenz"
 
 #: src/qml/main.qml:381
 msgid ""
@@ -975,10 +662,73 @@ msgid ""
 msgstr ""
 "Ausgangslatenz (frames).\n"
 "Es wird keine zusätzliche Latenz erzeugt, unabhängig von diesem Wert.\n"
-"Dieser Wert kann vielmehr von Audio-Software verwendet werden, um Latenzen z.B. "
-"während einer Aufnahme zu kompensieren.\n"
-"Messen Sie die Round-Trip-Latenz Ihres Geräts mit den aktuellen Einstellungen, um optimale Werte zu erhalten."
+"Dieser Wert kann vielmehr von Audio-Software verwendet werden, um Latenzen z."
+"B. während einer Aufnahme zu kompensieren.\n"
+"Messen Sie die Round-Trip-Latenz Ihres Geräts mit den aktuellen "
+"Einstellungen, um optimale Werte zu erhalten."
 
+#: src/qml/main.qml:406
+msgid "Force 16-bit"
+msgstr "16-bit erzwingen"
+
+#: src/qml/main.qml:408
+msgid ""
+"Try to configure card for 16-bit samples first, only trying 32-bits if "
+"unsuccessful.\n"
+"Default is to prefer 32-bit samples."
+msgstr ""
+"Versuche zunächst 16-bit samples zu verwenden. Verwende 32-bit nur falls "
+"dies fehlschlägt.\n"
+"Falls deaktiviert werden 32-bit bevorzugt."
+
+#: src/qml/main.qml:425
+msgid "MIDI Driver"
+msgstr "MIDI-Treiber"
+
+#: src/qml/main.qml:427
+msgid ""
+"Specify which ALSA MIDI system to provide access to.\n"
+"Using raw will provide a set of JACK MIDI ports that correspond to each raw "
+"ALSA device on the machine.\n"
+"Using seq will provide a set of JACK MIDI ports that correspond to each ALSA "
+"\"sequencer\" client (which includes each hardware MIDI port on the "
+"machine).\n"
+"raw provides slightly better performance but does not permit JACK MIDI "
+"communication with software written to use the ALSA \"sequencer\" API."
+msgstr ""
+"ALSA MIDI-Treiber.\n"
+"\"ALSA Raw-MIDI\" stellt für alle ALSA-Geräte im System JACK MIDI ports zur "
+"Verfügung.\n"
+"\"ALSA Sequencer\" stellt für alle ALSA-Sequencer Clients (was alle ALSA-"
+"Hardwaregeräte einschließt) JACK MIDI ports zur Verfügung.\n"
+"ALSA Raw-MIDI ist geringfügig performanter, lässt jedoch keine Verbindung "
+"mit Software zu, die die ALSA Sequencer API verwendet."
+
+#: src/qml/main.qml:434
+msgid "Alsa Sequencer"
+msgstr ""
+
+#: src/qml/main.qml:434
+msgid "Alsa Raw-MIDI"
+msgstr ""
+
+#~ msgid ""
+#~ "Extra input latency (frames).\n"
+#~ "This value might be used by audio software to compensate lantency e.g.\n"
+#~ "during recording."
+#~ msgstr ""
+#~ "Eingangslatenz (frames).\n"
+#~ "Dieser Wert kann von Audio-Software verwendet werden, um Latenzen z.B. "
+#~ "während einer Aufnahme zu kompensieren."
+
+#~ msgid ""
+#~ "Extra output latency (frames).\n"
+#~ "This value might be used by audio software to compensate lantency e.g.\n"
+#~ "during recording."
+#~ msgstr ""
+#~ "Ausgangslatenz (frames).\n"
+#~ "Dieser Wert kann von Audio-Software verwendet werden, um Latenzen z.B. "
+#~ "während einer Aufnahme zu kompensieren."
 
 #~ msgid ""
 #~ "Playback latency. This value should be a whole number if this device is a "

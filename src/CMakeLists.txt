@@ -12,6 +12,7 @@ set(JACK_KCM_SRCS
     devicesmodel.cpp
     devicesmetadata.cpp
     #devicesdelegate.cpp
+    latencymeasurebox.cpp
 )
 
 set(JACK_KCM_UI

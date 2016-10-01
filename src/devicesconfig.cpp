@@ -24,6 +24,7 @@
 #include "devicesmodel.h"
 #include "devicesmetadata.h"
 //#include "devicesdelegate.h"
+#include "latencymeasurebox.h"
 
 #include <QFile>
 #include <QQuickView>
@@ -154,6 +155,16 @@ void DevicesConfig::measureLatency()
         return;
     }
     
+    if(PROP("inchannels").toInt() <= 0 || PROP("outchannels").toInt() <= 0)
+    {
+        QMessageBox msgBox;
+        msgBox.setText(i18n("Measuring round trip latency requires both capture and playback ports."));
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.exec();
+        return;
+    }
+    
     QModelIndex index = configUi->devicesListView->currentIndex();
     
     if(mChanged && index == mChangedIndex)
@@ -187,7 +198,8 @@ void DevicesConfig::measureLatency()
     
     qDebug() << "measure latency";
     
-    QProgressDialog *msgBox = new QProgressDialog(i18n("Use a patch cable to connect the first output of your audio device to the first input.\nThis message box will close automatically when a connection is established.\n\nNote that in rare cases connecting inputs and outputs of the same card might damage an audio device. Ask your device manufacturer if you're unsure."), i18n("Cancel"), 0, 0, this);
+    
+    QProgressDialog *msgBox = new QProgressDialog("", i18n("Cancel"), 0, 0, this);
     msgBox->setValue(0);
     msgBox->setMinimumDuration(std::numeric_limits<int>::max()); //TODO: is there a better workaround to prevent the dialog from showing up?
     connect(msgBox, &QProgressDialog::canceled, exec, [exec,msgBox](){
@@ -242,18 +254,18 @@ void DevicesConfig::measureLatency()
     
     exec->start("jack_iodelay");
     
-    QMessageBox warnBox;
-    warnBox.setText(
-        i18n("Disconnect speakers from the first output of your audio device.\nLoud noise will be send to this output.")
-        +((index.data(DevicesModel::MasterRole).toBool())?"":i18n("\n\nNote that this device is not the current master device.\nThe round trip latency of this device would be much lower if it was set as master device."))
+    LatencyMeasureBox warnBox(this,
+        i18n("Select the input and output ports of your audio device that you want to use for measuring round trip latency.\n"),
+        i18n("\n\nDisconnect speakers from the selected output port. Loud noise will be send to this port.")
+        +((index.data(DevicesModel::MasterRole).toBool())?"":i18n("\n\nNote that this device is not the current master device. The round trip latency of this device would be much lower if it was set as master device.\n\n"))
+        +i18n("Do you want to continue?"),
+        PROP("inchannels").toInt(),
+        PROP("outchannels").toInt()
     );
-    warnBox.setIcon(QMessageBox::Warning);
-    warnBox.setInformativeText(i18n("Do you want to continue?"));
-    warnBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-    warnBox.setDefaultButton(QMessageBox::Save);
+    
     int ret = warnBox.exec();
     switch (ret) {
-        case QMessageBox::No:
+        case QDialog::Rejected:
             exec->terminate();
             disconnect(exec, &QProcess::errorOccurred, 0, 0);
             msgBox->reset();
@@ -263,6 +275,9 @@ void DevicesConfig::measureLatency()
             break;
     }
     
+    int input = warnBox.input->value();
+    int output = warnBox.output->value();
+    msgBox->setLabelText(i18n("Use a patch cable to connect output %1 of your audio device to input %2.\nThis message box will close automatically when a connection is established.\n\nNote that in rare cases connecting inputs and outputs of the same card might damage an audio device. Ask your device manufacturer if you're unsure.", output, input));
     msgBox->setWindowModality(Qt::WindowModal);
     msgBox->setWindowTitle(i18n("Measuring round trip latency"));
     msgBox->setMinimumDuration(0);
@@ -270,19 +285,19 @@ void DevicesConfig::measureLatency()
     
     exec->waitForStarted();
     
-    QTimer::singleShot(200, this, [this,env,msgBox](){
+    QTimer::singleShot(200, this, [this,env,msgBox,input,output](){
                        
-        //connect jack_iodelay to the first ports of this audio device
+        //connect jack_iodelay to the appropriate ports of this audio device
         
         QModelIndex index = configUi->devicesListView->currentIndex();
         QString port = index.data(DevicesModel::IdRole).toString();
-        QString inport = port+" - in:capture_1";
-        QString outport = port+" - out:playback_1";
+        QString inport = port+" - in:capture_"+QString::number(input);
+        QString outport = port+" - out:playback_"+QString::number(output);
         if(index.data(DevicesModel::MasterRole).toBool())
         {
             port = "system";
-            inport = port+":capture_1";
-            outport = port+":playback_1";
+            inport = port+":capture_"+QString::number(input);
+            outport = port+":playback_"+QString::number(output);
         }
         QProcess *exec = new QProcess(this);
         exec->setEnvironment(env);
