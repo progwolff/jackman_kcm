@@ -711,7 +711,7 @@ void DevicesConfig::deviceSelected(const QModelIndex &index)
     
     configUi->deferButton->setEnabled(false);
     configUi->preferButton->setEnabled(false);
-    configUi->testButton->setEnabled(false);
+    //configUi->testButton->setEnabled(false);
     if(index.row() < configUi->devicesListView->model()->rowCount()-1)
         configUi->deferButton->setEnabled(true);
     if(index.row() > 0)
