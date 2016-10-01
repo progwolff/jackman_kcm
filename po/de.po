@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-01 16:04+0200\n"
+"POT-Creation-Date: 2016-10-01 16:53+0200\n"
 "PO-Revision-Date: 2016-08-22 14:46+0200\n"
 "Last-Translator: Julian Wolff <wolff@julianwolff.de>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -18,19 +18,19 @@ msgstr ""
 
 #. i18n: file: src/ui/devicesconfig.ui:41
 #. i18n: ectx: property (text), widget (QToolButton, testButton)
-#: build/src/ui_devicesconfig.h:446 rc.cpp:3 src/devicesconfig.cpp:438
+#: build/src/ui_devicesconfig.h:446 rc.cpp:3 src/devicesconfig.cpp:439
 msgid "Test"
 msgstr "Test"
 
 #. i18n: file: src/ui/devicesconfig.ui:64
 #. i18n: ectx: property (text), widget (QToolButton, preferButton)
-#: build/src/ui_devicesconfig.h:447 rc.cpp:6 src/devicesconfig.cpp:429
+#: build/src/ui_devicesconfig.h:447 rc.cpp:6 src/devicesconfig.cpp:430
 msgid "Prefer"
 msgstr "Vorziehen"
 
 #. i18n: file: src/ui/devicesconfig.ui:80
 #. i18n: ectx: property (text), widget (QToolButton, deferButton)
-#: build/src/ui_devicesconfig.h:448 rc.cpp:9 src/devicesconfig.cpp:433
+#: build/src/ui_devicesconfig.h:448 rc.cpp:9 src/devicesconfig.cpp:434
 msgid "Defer"
 msgstr "Zurückstellen"
 
@@ -265,9 +265,10 @@ msgstr "wolff@julianwolff.de"
 
 #: src/devicesconfig.cpp:161
 msgid "Measuring round trip latency requires both capture and playback ports."
-msgstr "Das Messen der Round-Trip-Latenz erfordert sowohl Eingänge als auch Ausgänge."
+msgstr ""
+"Das Messen der Round-Trip-Latenz erfordert sowohl Eingänge als auch Ausgänge."
 
-#: src/devicesconfig.cpp:173 src/devicesconfig.cpp:686
+#: src/devicesconfig.cpp:173 src/devicesconfig.cpp:687
 msgid "The configuration of the currently selected device has been modified."
 msgstr "Die Konfiguration des aktuell ausgewählten Geräts wurde geändert."
 
@@ -276,45 +277,49 @@ msgid "You need to save before round trip latency can be measured."
 msgstr ""
 "Sie müssen speichern, bevor die Round-Trip-Latenz gemessen werden kann."
 
-#: src/devicesconfig.cpp:174 src/devicesconfig.cpp:687
+#: src/devicesconfig.cpp:174 src/devicesconfig.cpp:688
 msgid "Do you want to save your changes?"
 msgstr "Möchten Sie die Änderungen speichern?"
 
-#: src/devicesconfig.cpp:202
+#: src/devicesconfig.cpp:203
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/devicesconfig.cpp:215 src/devicesconfig.cpp:308
-#: src/devicesconfig.cpp:321
+#: src/devicesconfig.cpp:216 src/devicesconfig.cpp:309
+#: src/devicesconfig.cpp:322
 msgid "Could not measure latency"
 msgstr "Konnte Latenz nicht messen"
 
-#: src/devicesconfig.cpp:242 src/devicesconfig.cpp:777
+#: src/devicesconfig.cpp:243 src/devicesconfig.cpp:778
 #, c-format
 msgctxt "ms for Milliseconds"
 msgid "Round trip latency: %1ms"
 msgstr "Round-Trip-Latenz: %1ms"
 
-#: src/devicesconfig.cpp:258
+#: src/devicesconfig.cpp:259
 msgid ""
 "Select the input and output ports of your audio device that you want to use "
 "for measuring round trip latency.\n"
 msgstr ""
-"Wählen Sie jeweils denjenigen Eingang und Ausgang Ihres Audiogeräts, welchen Sie zum Messen der Round-Trip-Latenz verwenden möchten.\n"
+"Wählen Sie jeweils denjenigen Eingang und Ausgang Ihres Audiogeräts, welchen "
+"Sie zum Messen der Round-Trip-Latenz verwenden möchten.\n"
 
-#: src/devicesconfig.cpp:259
+#
+#: src/devicesconfig.cpp:260
 #
 msgid ""
 "\n"
 "\n"
 "Disconnect speakers from the selected output port. Loud noise will be send "
-"to this port."
+"to this port.\n"
 msgstr ""
-"\n\nEntfernen Sie alle Lautsprecher vom gewählten Ausgang des Audiogeräts."
-"Laute Signale werden an diesen Ausgang angelegt."
+"\n"
+"\n"
+"Entfernen Sie alle Lautsprecher vom gewählten Ausgang des Audiogeräts. Laute "
+"Signale werden an diesen Ausgang angelegt.\n"
 
-#: src/devicesconfig.cpp:260
 #
+#: src/devicesconfig.cpp:261
 msgid ""
 "\n"
 "\n"
@@ -324,16 +329,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Beachten Sie, dass dieses Gerät nicht das Mastergerät ist."
-"Die Round-Trip-Latenz wäre wesentlich niedriger, wenn es das Mastergerät "
-"wäre.\n\n"
+"Beachten Sie, dass dieses Gerät nicht das Mastergerät ist. Die Round-Trip-"
+"Latenz wäre wesentlich niedriger, wenn es das Mastergerät wäre.\n"
+"\n"
 
 #
-#: src/devicesconfig.cpp:261
+#: src/devicesconfig.cpp:262
 msgid "Do you want to continue?"
 msgstr "Möchten Sie fortfahren?"
 
-#: src/devicesconfig.cpp:280
+#: src/devicesconfig.cpp:281
 msgid ""
 "Use a patch cable to connect output %1 of your audio device to input %2.\n"
 "This message box will close automatically when a connection is established.\n"
@@ -351,31 +356,31 @@ msgstr ""
 
 #
 #
-#: src/devicesconfig.cpp:282
+#: src/devicesconfig.cpp:283
 msgid "Measuring round trip latency"
 msgstr "Messe die Round-Trip-Latenz"
 
-#: src/devicesconfig.cpp:412
+#: src/devicesconfig.cpp:413
 msgid "Switch Master"
 msgstr "Master wechseln"
 
-#: src/devicesconfig.cpp:422
+#: src/devicesconfig.cpp:423
 msgid "Detach device"
 msgstr "Gerät aushängen"
 
-#: src/devicesconfig.cpp:424
+#: src/devicesconfig.cpp:425
 msgid "Attach device"
 msgstr "Gerät einbinden"
 
-#: src/devicesconfig.cpp:445
+#: src/devicesconfig.cpp:446
 msgid "Remove entry"
 msgstr "Eintrag löschen"
 
-#: src/devicesconfig.cpp:558
+#: src/devicesconfig.cpp:559
 msgid "Jack failed to start"
 msgstr "JACK konnte nicht gestartet werden."
 
-#: src/devicesconfig.cpp:559
+#: src/devicesconfig.cpp:560
 msgid ""
 "This audio device is not compatible with the current settings. Please try "
 "other values."
@@ -383,18 +388,18 @@ msgstr ""
 "Dieses Gerät ist mit den gewählten Einstellungen nicht kompatibel. Bitte "
 "versuchen Sie es mit anderen Einstellungen erneut."
 
-#: src/devicesconfig.cpp:760 src/devicesconfig.cpp:765
-#: src/devicesconfig.cpp:806 src/devicesconfig.cpp:810
+#: src/devicesconfig.cpp:761 src/devicesconfig.cpp:766
+#: src/devicesconfig.cpp:807 src/devicesconfig.cpp:811
 #, c-format
 msgctxt "ms for Milliseconds"
 msgid "%1ms"
 msgstr "%1ms"
 
-#: src/devicesconfig.cpp:783 src/devicesconfig.cpp:788
+#: src/devicesconfig.cpp:784 src/devicesconfig.cpp:789
 msgid "Playback latency."
 msgstr "Ausgangslatenz."
 
-#: src/devicesconfig.cpp:783
+#: src/devicesconfig.cpp:784
 msgid ""
 "This value should be a whole number if this device is a USB device.\n"
 "If this device is not a USB device, ignore this warning.\n"
@@ -404,27 +409,27 @@ msgstr ""
 "Ignorieren Sie diese Warnung, falls es sich nicht um ein USB-Gerät handelt.\n"
 "\n"
 
-#: src/devicesconfig.cpp:783 src/devicesconfig.cpp:788 src/qml/main.qml:155
+#: src/devicesconfig.cpp:784 src/devicesconfig.cpp:789 src/qml/main.qml:155
 msgid "Periods/Buffer"
 msgstr "Perioden/Puffer"
 
-#: src/devicesconfig.cpp:783 src/devicesconfig.cpp:788
-#: src/devicesconfig.cpp:790 src/qml/main.qml:110
+#: src/devicesconfig.cpp:784 src/devicesconfig.cpp:789
+#: src/devicesconfig.cpp:791 src/qml/main.qml:110
 msgid "Buffer Size"
 msgstr "Puffergröße"
 
-#: src/devicesconfig.cpp:783 src/devicesconfig.cpp:788
-#: src/devicesconfig.cpp:790 src/qml/main.qml:67
+#: src/devicesconfig.cpp:784 src/devicesconfig.cpp:789
+#: src/devicesconfig.cpp:791 src/qml/main.qml:67
 msgid "Sample Rate"
 msgstr "Abtastrate"
 
-#: src/devicesconfig.cpp:783 src/devicesconfig.cpp:788
+#: src/devicesconfig.cpp:784 src/devicesconfig.cpp:789
 msgid "This value is \"%1\" multiplied with \"%2\" and divided by \"%3\"."
 msgstr ""
 "Dieser Wert berechnet sich aus \"%1\" multipliziert mit \"%2\" und dividiert "
 "durch \"%3\"."
 
-#: src/devicesconfig.cpp:790
+#: src/devicesconfig.cpp:791
 msgid "Capture latency. This value is \"%1\" divided by \"%2\"."
 msgstr ""
 "Eingangslatenz. Dieser Wert berechnet sich aus \"%1\" dividiert durch \"%2\"."
@@ -449,13 +454,13 @@ msgstr "Audiogeräte"
 msgid "Advanced"
 msgstr "Erweitert"
 
-#: src/latencymeasurebox.cpp:24
 #
+#: src/latencymeasurebox.cpp:24
 msgid "Input: "
 msgstr "Eingang: "
 
-#: src/latencymeasurebox.cpp:25
 #
+#: src/latencymeasurebox.cpp:25
 msgid "Output: "
 msgstr "Ausgang: "
 

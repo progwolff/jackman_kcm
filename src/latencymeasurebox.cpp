@@ -44,8 +44,7 @@ LatencyMeasureBox::LatencyMeasureBox(QWidget *parent, const QString& text, const
     icon = new QLabel(this);
     int iconsize = QApplication::style()->pixelMetric(QStyle::PM_MessageBoxIconSize);
     icon->setPixmap(QApplication::style()->standardIcon(QStyle::SP_MessageBoxWarning).pixmap(iconsize,iconsize));
-    icon->setAlignment(Qt::AlignTop | Qt::AlignCenter);
-    g->addWidget(icon, 0, 0, g->rowCount(), 1);
+    g->addWidget(icon, 0, 0, g->rowCount(), 1, Qt::AlignTop | Qt::AlignCenter);
     
     setLayout(g);
 }

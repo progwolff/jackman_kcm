@@ -173,6 +173,7 @@ void DevicesConfig::measureLatency()
         msgBox.setText(i18n("The configuration of the currently selected device has been modified."));
         msgBox.setInformativeText(i18n("You need to save before round trip latency can be measured.")+"\n"+i18n("Do you want to save your changes?"));
         msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Cancel);
+        msgBox.setIcon(QMessageBox::Information);
         msgBox.setDefaultButton(QMessageBox::Save);
         int ret = msgBox.exec();
         switch (ret) {
@@ -256,7 +257,7 @@ void DevicesConfig::measureLatency()
     
     LatencyMeasureBox warnBox(this,
         i18n("Select the input and output ports of your audio device that you want to use for measuring round trip latency.\n"),
-        i18n("\n\nDisconnect speakers from the selected output port. Loud noise will be send to this port.")
+        i18n("\n\nDisconnect speakers from the selected output port. Loud noise will be send to this port.\n")
         +((index.data(DevicesModel::MasterRole).toBool())?"":i18n("\n\nNote that this device is not the current master device. The round trip latency of this device would be much lower if it was set as master device.\n\n"))
         +i18n("Do you want to continue?"),
         PROP("inchannels").toInt(),
