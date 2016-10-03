@@ -574,9 +574,12 @@ void DevicesConfig::testFinished(int /*exitcode*/, QProcess::ExitStatus /*status
     mTestPlaying = false;
     QObject::sender()->deleteLater();
     
+    configUi->testButton->setChecked(false);
+    
     QModelIndex index = configUi->devicesListView->currentIndex();
-    if(!index.data(DevicesModel::DeviceRole).toString().isEmpty())
-        configUi->testButton->setChecked(false);
+    if(index.data(DevicesModel::DeviceRole).toString().isEmpty())
+        configUi->testButton->setEnabled(false);
+    
 }
 
 
@@ -711,13 +714,13 @@ void DevicesConfig::deviceSelected(const QModelIndex &index)
     
     configUi->deferButton->setEnabled(false);
     configUi->preferButton->setEnabled(false);
-    //configUi->testButton->setEnabled(false);
+    configUi->testButton->setEnabled(false);
     if(index.row() < configUi->devicesListView->model()->rowCount()-1)
         configUi->deferButton->setEnabled(true);
     if(index.row() > 0)
         configUi->preferButton->setEnabled(true);
     
-    if(!mTestPlaying && !index.data(DevicesModel::DeviceRole).toString().isEmpty())
+    if(mTestPlaying || !index.data(DevicesModel::DeviceRole).toString().isEmpty())
         configUi->testButton->setEnabled(true);
     
     configUi->latencyButton->setEnabled(false);
