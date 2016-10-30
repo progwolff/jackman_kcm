@@ -37,17 +37,9 @@ target_link_libraries(kcm-jackman
     KF5::KIOWidgets
     KF5::Declarative
     KF5::I18n
-
-    ${X11_LIBRARIES}
-    XCB::XCB # For mouse cursor themes
 )
 
-if (X11_Xcursor_FOUND)
-   target_link_libraries(kcm-jackman ${X11_Xcursor_LIB})
-endif (X11_Xcursor_FOUND)
-if (X11_Xfixes_FOUND)
-   target_link_libraries(kcm-jackman ${X11_Xfixes_LIB})
-endif (X11_Xfixes_FOUND)
+
 if (ALSA_FOUND)
   target_link_libraries(kcm-jackman ${ALSA_LIBRARY})
 endif (ALSA_FOUND)

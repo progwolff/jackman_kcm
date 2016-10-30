@@ -25,19 +25,6 @@ find_package(KF5 REQUIRED COMPONENTS
 )
 
 
-find_package(X11)
-set_package_properties(X11 PROPERTIES DESCRIPTION "X11 libraries"
-                        URL "http://www.x.org"
-                        TYPE REQUIRED
-                        PURPOSE "Required for building the X11 based workspace"
-                      )
-
-find_package(XCB
-    REQUIRED COMPONENTS
-        XCB SHM IMAGE
-    OPTIONAL_COMPONENTS
-        XKB
-)
 
 find_package(ALSA)
 
