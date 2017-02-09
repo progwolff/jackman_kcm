@@ -47,7 +47,8 @@ public:
 	SampleRateRole,
 	MasterRole,
 	ConfigRole,
-    AttachedRole
+    AttachedRole,
+    NotListedRole
     };
                
     explicit DevicesModel(QObject *parent=0);

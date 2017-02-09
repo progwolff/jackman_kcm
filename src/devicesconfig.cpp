@@ -16,7 +16,7 @@
  */
 
 #define TRANSLATION_DOMAIN "kcm-jackman"
-#include <KLocalizedString>
+// #include <KLocalizedString>
 #include "config.h"
 
 #include "devicesconfig.h"
@@ -654,7 +654,8 @@ QVariantMap DevicesConfig::save()
     +"input-latency="+(PROP("inputlatency").toString())+";"
     +"output-latency="+(PROP("outputlatency").toString())+";"
     +"midi-driver="+((PROP("mididriver").toInt()==DevicesMetadata::MIDIDriver::NoDriver)?"none":((PROP("mididriver").toInt()==DevicesMetadata::MIDIDriver::Sequencer)?"seq":((PROP("mididriver").toInt()==DevicesMetadata::MIDIDriver::Raw)?"raw":"none")))+";"
-    +"priority="+QString::number(index.row());
+    +"priority="+QString::number(index.row())
+    +(index.data(DevicesModel::NotListedRole).toBool()?"notlisted=1":"");
     
     
     args[index.data(DevicesModel::IdRole).toString().split('[').first().trimmed()] = data;//index.data(DevicesModel::ConfigRole);

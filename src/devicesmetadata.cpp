@@ -50,6 +50,7 @@ public:
         mididriver = DevicesMetadata::MIDIDriver::NoDriver;
         buffersize = 256;
         samplerate = 44100;
+        notlisted = false;
     }
     QString name;
     QString device;
@@ -69,6 +70,7 @@ public:
     int mididriver;
     int buffersize;
     int samplerate;
+    bool notlisted;
 };
 
 DevicesMetadata::DevicesMetadata(const QString &id, const QString &conf)
@@ -92,6 +94,7 @@ DevicesMetadata::DevicesMetadata(const QString &id, const QString &conf)
     d->mididriver = DevicesMetadata::MIDIDriver::NoDriver;
     d->samplerate = 44100;
     d->buffersize = 256;
+    d->notlisted = false;
     
     d->name = id;
     foreach (const QString& config, conf.split(';'))
@@ -126,6 +129,7 @@ DevicesMetadata::DevicesMetadata(const QString &id, const QString &conf)
         else if(key == "period") d->buffersize = val.toInt();
         else if(key == "rate") d->samplerate = val.toInt();
         else if(key == "vendor") d->vendor = val;
+        else if(key == "notlisted") d->notlisted = true;
     }
 }
 
@@ -222,6 +226,11 @@ int DevicesMetadata::buffersize() const
     return d->buffersize;
 }
 
+bool DevicesMetadata::notlisted() const
+{
+    return d->notlisted;
+}
+
 void DevicesMetadata::setDevice(const QString& name)
 {
     d->device = name;
@@ -231,7 +240,6 @@ void DevicesMetadata::setVendor(const QString& name)
 {
     d->vendor = name;
 }
-
 
 
 QString DevicesMetadata::dump() const 
@@ -250,5 +258,6 @@ QString DevicesMetadata::dump() const
     +"shorts="+(shorts()?"true":"false")+";"
     +"input-latency="+QString::number(inputlatency())+";"
     +"output-latency="+QString::number(outputlatency())+";"
-    +"midi-driver="+((mididriver()==MIDIDriver::NoDriver)?"none":((mididriver()==MIDIDriver::Sequencer)?"seq":((mididriver()==MIDIDriver::Raw)?"raw":"none")));
+    +"midi-driver="+((mididriver()==MIDIDriver::NoDriver)?"none":((mididriver()==MIDIDriver::Sequencer)?"seq":((mididriver()==MIDIDriver::Raw)?"raw":"none")))
+    +((notlisted())?";notlisted=1":"");
 }

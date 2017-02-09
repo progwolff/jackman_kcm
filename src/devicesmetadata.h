@@ -52,6 +52,7 @@ public:
     int mididriver() const;
     int buffersize() const;
     int samplerate() const;
+    bool notlisted() const;
     
     void setDevice(const QString& name);
     void setVendor(const QString& name);

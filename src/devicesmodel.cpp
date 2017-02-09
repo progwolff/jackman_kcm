@@ -73,7 +73,8 @@ QVariant DevicesModel::data(const QModelIndex &index, int role) const
     QString devicename;
     switch(role) {
         case Qt::DisplayRole:
-            return metadata.name()+(metadata.device().isEmpty()?"":" ["+metadata.device()+"]");
+            devicename = index.data(DevicesModel::DeviceRole).toString();
+            return metadata.name()+(devicename.isEmpty()?"":" ["+devicename+"]");
         case Qt::DecorationRole:
             if(!metadata.device().isEmpty())
             {
@@ -107,7 +108,11 @@ QVariant DevicesModel::data(const QModelIndex &index, int role) const
         case DevicesModel::NumberRole:
             return numberFromName(metadata.name());
         case DevicesModel::DeviceRole:
+            if(metadata.notlisted())
+                return i18n("Not listed");
             return metadata.device();
+        case DevicesModel::NotListedRole:
+            return metadata.notlisted();
         case DevicesModel::NPeriodsRole:
             return metadata.nperiods();
         case DevicesModel::HWMonRole:
