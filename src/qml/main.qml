@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.\nIf not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.7
+import QtQuick 2.4
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.4
 import org.kde.plasma.core 2.0 as PlasmaCore
