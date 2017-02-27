@@ -35,7 +35,7 @@
 
 #include <kpluginfactory.h>
 #include <kpluginloader.h>
-#include <kdeclarative.h>
+#include <kdeclarative/kdeclarative.h>
 
 K_PLUGIN_FACTORY(JackKcmFactory, registerPlugin<JackKcm>();)
 //K_EXPORT_PLUGIN(JackKcmFactory("kcm-jackman"))
